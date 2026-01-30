@@ -4,9 +4,11 @@
   background: white;
   border-radius: 30px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  padding: 30px;
+  padding: 20px; /* 从30px减少 */
   max-width: 500px;
   width: 100%;
+  max-height: calc(100vh - 100px); /* 限制最大高度 */
+  overflow-y: auto;
 }
 
 /* 头部信息栏 */
@@ -14,8 +16,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
-  padding: 15px 20px;
+  margin-bottom: 15px; /* 从30px减少 */
+  padding: 10px 15px; /* 从15px 20px减少 */
   background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
   border-radius: 20px;
   color: white;
@@ -55,15 +57,15 @@
 /* 单词区域 */
 .word-section {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 15px; /* 从30px减少 */
 }
 
 .word-display {
-  font-size: 56px;
+  font-size: 42px; /* 从56px减少 */
   font-weight: bold;
   color: #333;
-  margin-bottom: 15px;
-  min-height: 80px;
+  margin-bottom: 10px;
+  min-height: 60px; /* 从80px减少 */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -138,13 +140,13 @@
 .options-section {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  margin-bottom: 30px;
+  gap: 10px; /* 从15px减少 */
+  margin-bottom: 15px; /* 从30px减少 */
 }
 
 .option-btn {
-  padding: 25px;
-  font-size: 28px;
+  padding: 15px; /* 从25px减少 */
+  font-size: 22px; /* 从28px减少 */
   border: 3px solid #e0e0e0;
   border-radius: 20px;
   background: white;
@@ -244,7 +246,7 @@
   font-size: 12px;
   color: #999;
   text-align: center;
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 /* ========== 响应式样式 ========== */
@@ -314,48 +316,55 @@
   }
 }
 
-/* 手机端 */
+/* 手机端 - 全屏卡片式 UI */
 @media (max-width: 480px) {
   .game-container {
-    padding: 20px 15px;
     max-width: 100%;
-    border-radius: 20px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    min-height: 100vh;
+    max-height: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
   }
 
+  /* 头部精简 */
   .header {
-    margin-bottom: 20px;
-    padding: 10px 12px;
-    border-radius: 15px;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    border-radius: 12px;
     flex-wrap: wrap;
     gap: 8px;
   }
 
   .user-display {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .level-display {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .streak-display {
-    font-size: 20px;
+    font-size: 18px;
     letter-spacing: 2px;
   }
 
   .mode-badge {
-    font-size: 12px;
-    padding: 4px 10px;
+    display: none; /* 隐藏模式标识 */
   }
 
+  /* 单词区域 - 核心展示 */
   .word-section {
-    margin-bottom: 20px;
+    flex: 0 0 auto;
+    margin-bottom: 15px;
+    padding: 20px 0;
   }
 
   .word-display {
-    font-size: 32px;
-    min-height: 50px;
+    font-size: 36px;
+    min-height: auto;
     margin-bottom: 10px;
   }
 
@@ -369,13 +378,13 @@
   }
 
   .example-section {
-    margin: 15px 0;
-    padding: 12px 15px;
+    margin: 10px 0;
+    padding: 10px 12px;
     border-radius: 12px;
   }
 
   .example-text {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .example-text::before,
@@ -384,51 +393,62 @@
   }
 
   .speak-btn {
-    padding: 10px 25px;
-    font-size: 16px;
+    padding: 8px 20px;
+    font-size: 14px;
   }
 
+  /* 选项区域 - 卡片式大按钮 */
   .options-section {
-    gap: 12px;
-    margin-bottom: 20px;
+    flex: 1;
+    gap: 10px;
+    margin-bottom: 10px;
+    justify-content: center;
   }
 
   .option-btn {
-    padding: 15px;
+    padding: 18px 15px;
     font-size: 18px;
-    border-radius: 12px;
+    border-radius: 15px;
     border-width: 2px;
+    min-height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .option-btn:hover {
-    transform: translateX(5px);
+    transform: none; /* 移动端禁用hover效果 */
   }
 
   .option-btn.option-btn-definition {
     font-size: 14px;
-    padding: 12px 15px;
+    padding: 12px;
+    text-align: center;
     min-height: 50px;
   }
 
+  /* 控制区域 - 精简为图标按钮 */
   .controls {
-    flex-wrap: wrap;
     gap: 8px;
-  }
-
-  .control-btn {
-    padding: 10px 14px;
-    font-size: 13px;
-    border-radius: 12px;
+    padding: 10px 0;
+    border-top: 1px solid #eee;
+    flex-wrap: wrap;
   }
 
   .level-select {
-    padding: 10px 14px;
-    font-size: 14px;
+    flex: 1;
+    padding: 8px 10px;
+    font-size: 12px;
+    border-radius: 12px;
+  }
+
+  .control-btn {
+    padding: 8px 12px;
+    font-size: 12px;
     border-radius: 12px;
   }
 
   .level-hint {
-    font-size: 11px;
-    margin-top: 12px;
+    display: none; /* 隐藏级别提示 */
   }
 }

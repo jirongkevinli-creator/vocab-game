@@ -160,13 +160,17 @@
   }
 }
 
-/* 手机端 */
+/* 手机端 - 全屏登录 */
 @media (max-width: 480px) {
   .login-screen {
-    padding: 25px 20px;
     max-width: 100%;
-    border-radius: 20px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    min-height: 100vh;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .login-screen h1 {
