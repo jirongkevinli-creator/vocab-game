@@ -316,7 +316,7 @@
   }
 }
 
-/* 手机端 - 全屏卡片式 UI */
+/* 手机端 - 紧凑全屏布局 */
 @media (max-width: 480px) {
   .game-container {
     max-width: 100%;
@@ -324,131 +324,160 @@
     max-height: none;
     border-radius: 0;
     box-shadow: none;
-    padding: 15px;
+    padding: 10px 12px;
     display: flex;
     flex-direction: column;
   }
 
-  /* 头部精简 */
+  /* 头部 - 单行紧凑布局 */
   .header {
-    padding: 8px 12px;
-    margin-bottom: 10px;
-    border-radius: 12px;
-    flex-wrap: wrap;
-    gap: 8px;
+    padding: 6px 10px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    flex-wrap: nowrap;
+    gap: 6px;
+    justify-content: space-between;
   }
 
   .user-display {
-    font-size: 12px;
+    font-size: 11px;
+    flex-shrink: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 80px;
   }
 
   .level-display {
-    font-size: 16px;
+    font-size: 13px;
+    flex-shrink: 0;
   }
 
   .streak-display {
-    font-size: 18px;
-    letter-spacing: 2px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    flex-shrink: 0;
   }
 
   .mode-badge {
-    display: none; /* 隐藏模式标识 */
+    display: none;
   }
 
-  /* 单词区域 - 核心展示 */
+  /* 单词区域 - 紧凑布局 */
   .word-section {
     flex: 0 0 auto;
-    margin-bottom: 15px;
-    padding: 20px 0;
+    margin-bottom: 8px;
+    padding: 8px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .word-display {
-    font-size: 36px;
+    font-size: 28px;
     min-height: auto;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
+    flex-direction: row; /* 图标和单词并排 */
+    gap: 10px;
   }
 
   .word-icon {
-    font-size: 48px;
-    margin-bottom: 8px;
+    font-size: 36px;
+    margin-bottom: 0;
+    animation: none;
   }
 
   .word-text {
-    gap: 8px;
+    gap: 6px;
   }
 
+  /* 例句 - 紧凑单行 */
   .example-section {
-    margin: 10px 0;
-    padding: 10px 12px;
-    border-radius: 12px;
+    margin: 6px 0;
+    padding: 6px 10px;
+    border-radius: 8px;
+    border-left-width: 3px;
+    width: 100%;
   }
 
   .example-text {
-    font-size: 13px;
+    font-size: 12px;
+    line-height: 1.3;
   }
 
   .example-text::before,
   .example-text::after {
-    font-size: 18px;
-  }
-
-  .speak-btn {
-    padding: 8px 20px;
     font-size: 14px;
   }
 
-  /* 选项区域 - 卡片式大按钮 */
+  /* 朗读按钮 - 小图标样式 */
+  .speak-btn {
+    padding: 6px 16px;
+    font-size: 12px;
+    border-radius: 20px;
+  }
+
+  /* 选项区域 - 2x2 网格布局 */
   .options-section {
     flex: 1;
-    gap: 10px;
-    margin-bottom: 10px;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 8px;
+    align-content: center;
   }
 
   .option-btn {
-    padding: 18px 15px;
-    font-size: 18px;
-    border-radius: 15px;
+    padding: 12px 8px;
+    font-size: 15px;
+    border-radius: 12px;
     border-width: 2px;
-    min-height: 55px;
+    min-height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
+    word-break: break-word;
+    line-height: 1.2;
   }
 
   .option-btn:hover {
-    transform: none; /* 移动端禁用hover效果 */
+    transform: none;
   }
 
+  /* 释义模式 - 单列布局（文字较长） */
   .option-btn.option-btn-definition {
-    font-size: 14px;
-    padding: 12px;
-    text-align: center;
-    min-height: 50px;
+    grid-column: span 2; /* 占满整行 */
+    font-size: 13px;
+    padding: 10px 12px;
+    min-height: 40px;
   }
 
-  /* 控制区域 - 精简为图标按钮 */
+  /* 控制区域 - 单行紧凑 */
   .controls {
-    gap: 8px;
-    padding: 10px 0;
+    gap: 6px;
+    padding: 8px 0;
     border-top: 1px solid #eee;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    justify-content: space-between;
   }
 
   .level-select {
     flex: 1;
-    padding: 8px 10px;
-    font-size: 12px;
-    border-radius: 12px;
+    min-width: 0;
+    padding: 6px 8px;
+    font-size: 11px;
+    border-radius: 8px;
   }
 
   .control-btn {
-    padding: 8px 12px;
-    font-size: 12px;
-    border-radius: 12px;
+    padding: 6px 10px;
+    font-size: 11px;
+    border-radius: 8px;
+    flex-shrink: 0;
   }
 
   .level-hint {
-    display: none; /* 隐藏级别提示 */
+    display: none;
   }
 }
