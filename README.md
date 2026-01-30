@@ -14,7 +14,7 @@
 
 部署到 GitHub Pages 后，通过以下链接访问：
 ```
-https://YOUR_USERNAME.github.io/vocab-game
+https://jirongkevinli-creator.github.io/vocab-game
 ```
 
 ## 部署步骤
