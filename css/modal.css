@@ -1,0 +1,297 @@
+/* modal.css - 弹窗样式 */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 25px;
+  padding: 35px;
+  max-width: 450px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-content h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* 统计信息 */
+.modal-stats {
+  background: #f8f9ff;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.modal-stats p {
+  font-size: 18px;
+  margin: 10px 0;
+  color: #555;
+}
+
+.modal-stats .correct-stat {
+  color: #11998e;
+  font-weight: bold;
+}
+
+.modal-stats .wrong-stat {
+  color: #eb3349;
+  font-weight: bold;
+}
+
+/* 保存错词选项 */
+.save-wrong-words {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+  font-size: 18px;
+  color: #555;
+}
+
+/* 弹窗按钮 */
+.modal-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.modal-btn {
+  padding: 15px 30px;
+  font-size: 18px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  font-weight: bold;
+}
+
+.modal-btn.confirm {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.modal-btn.continue {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  color: white;
+}
+
+.modal-btn.danger {
+  background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+  color: white;
+}
+
+.modal-btn:hover {
+  transform: scale(1.05);
+}
+
+/* 设置弹窗 */
+.settings-modal .modal-content {
+  text-align: left;
+}
+
+.settings-section {
+  margin-bottom: 25px;
+}
+
+.settings-section h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.setting-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.setting-item:last-child {
+  border-bottom: none;
+}
+
+.setting-label {
+  font-size: 16px;
+  color: #555;
+}
+
+.setting-label .hint {
+  display: block;
+  font-size: 12px;
+  color: #999;
+  margin-top: 3px;
+}
+
+/* 开关样式 */
+.toggle-switch {
+  position: relative;
+  width: 50px;
+  height: 26px;
+  background: #e0e0e0;
+  border-radius: 13px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.toggle-switch.active {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+}
+
+.toggle-switch::after {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  background: white;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-switch.active::after {
+  transform: translateX(24px);
+}
+
+/* 数字输入 */
+.setting-input {
+  width: 80px;
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.setting-input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+/* 错词库详情弹窗 */
+.wrong-words-list {
+  max-height: 300px;
+  overflow-y: auto;
+  margin: 20px 0;
+  text-align: left;
+}
+
+.wrong-word-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: #f8f9ff;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.wrong-word-info {
+  flex: 1;
+}
+
+.wrong-word-source {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+.wrong-word-target {
+  font-size: 16px;
+  color: #666;
+  margin-top: 5px;
+}
+
+.wrong-word-stats {
+  font-size: 12px;
+  color: #999;
+  margin-top: 8px;
+}
+
+.wrong-word-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.wrong-word-actions button {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-remove {
+  background: #ffebee;
+  color: #eb3349;
+}
+
+.btn-remove:hover {
+  background: #ffcdd2;
+}
+
+/* 空状态 */
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #999;
+}
+
+.empty-state .emoji {
+  font-size: 64px;
+  margin-bottom: 15px;
+}
+
+.empty-state p {
+  font-size: 16px;
+}
+
+/* 游戏通关弹窗 */
+.game-complete {
+  background: linear-gradient(135deg, #fff9e6 0%, #fff3cc 100%);
+}
+
+.game-complete h2 {
+  color: #d4a017;
+  font-size: 36px;
+}
+
+.complete-emoji {
+  font-size: 64px;
+  margin-bottom: 15px;
+  animation: bounce 1s ease-in-out infinite;
+}
+
+.complete-message {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}

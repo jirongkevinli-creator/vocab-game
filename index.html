@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>词汇学习游戏 v2.0</title>
+  <!-- CSS 模块 -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="css/game.css">
+  <link rel="stylesheet" href="css/modal.css">
+</head>
+<body>
+  <!-- 登录界面 -->
+  <div id="loginScreen" class="login-screen">
+    <h1>词汇学习游戏</h1>
+    <p class="subtitle">多语言 | 双向学习 | 智能错词库</p>
+
+    <input type="text" id="usernameInput" placeholder="请输入你的名字" maxlength="20">
+
+    <div class="practice-mode-section">
+      <label for="practiceModeSelect">练习模式:</label>
+      <select id="practiceModeSelect" class="practice-mode-select">
+        <option value="en-zh">英语 -> 中文</option>
+        <option value="zh-en">中文 -> 英语</option>
+      </select>
+    </div>
+
+    <div class="login-buttons">
+      <button class="login-btn primary" onclick="App.startGame()">开始游戏</button>
+      <button class="login-btn secondary" id="practiceWrongBtn" onclick="App.practiceWrongWords()">练习错词库</button>
+      <p class="wrong-words-count" id="wrongWordsCount"></p>
+    </div>
+
+    <div class="settings-link">
+      <a href="javascript:void(0)" onclick="App.showSettingsModal()">设置</a>
+    </div>
+  </div>
+
+  <!-- 游戏界面 -->
+  <div id="gameScreen" class="game-container hidden">
+    <div class="header">
+      <div class="user-display"><span id="userNameDisplay">用户</span></div>
+      <div class="level-display">Level: <span id="level">0</span></div>
+      <div class="streak-display" id="streak">○○○</div>
+      <div class="mode-badge hidden" id="modeBadge">错词库练习模式</div>
+    </div>
+
+    <div class="word-section">
+      <div class="word-display" id="word">apple</div>
+
+      <!-- 例句区域 -->
+      <div class="example-section hidden" id="exampleSection">
+        <div class="example-text" id="exampleText"></div>
+      </div>
+
+      <button class="speak-btn" onclick="App.speakWord()">朗读</button>
+    </div>
+
+    <div class="options-section" id="options">
+      <!-- 选项按钮会动态生成 -->
+    </div>
+
+    <div class="controls">
+      <select class="level-select" id="levelSelect">
+        <option value="0">Level 0 - 最基础</option>
+        <option value="1">Level 1 - 常见名词</option>
+        <option value="2">Level 2 - 简单动词</option>
+        <option value="3">Level 3 - 家庭身体</option>
+        <option value="4">Level 4 - 日常用品</option>
+        <option value="5">Level 5 - 自然天气</option>
+        <option value="6">Level 6 - 小学低年级</option>
+        <option value="7">Level 7 - 小学高年级</option>
+        <option value="8">Level 8 - 初中词汇</option>
+        <option value="9">Level 9 - 高中词汇</option>
+        <option value="10">Level 10 - 托福词汇</option>
+      </select>
+      <button class="control-btn settings-btn" onclick="App.showSettingsModal()">设置</button>
+      <button class="control-btn end-btn" onclick="App.showEndGameModal()">结束</button>
+      <button class="control-btn restart-btn" onclick="App.restart()">重新开始</button>
+    </div>
+
+    <div class="level-hint">
+      连续答对3次升级 | 连续答错2次降级<br>
+      共1000+单词 | Level 7-10 带图标提示
+    </div>
+  </div>
+
+  <!-- 结束游戏弹窗 -->
+  <div id="endGameModal" class="modal-overlay hidden">
+    <div class="modal-content">
+      <h2>游戏结束</h2>
+      <div class="modal-stats">
+        <p>本次答题: <span id="totalCount">0</span> 题</p>
+        <p>答对: <span id="correctCount" class="correct-stat">0</span> 题</p>
+        <p>答错: <span id="wrongCount" class="wrong-stat">0</span> 题</p>
+      </div>
+      <div class="save-wrong-words" id="saveWrongWordsSection">
+        <input type="checkbox" id="saveWrongWords" checked>
+        <label for="saveWrongWords">将错词加入错词库</label>
+      </div>
+      <div class="modal-buttons">
+        <button class="modal-btn confirm" onclick="App.confirmEndGame()">确认结束</button>
+        <button class="modal-btn continue" onclick="App.hideEndGameModal()">继续游戏</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 设置弹窗 -->
+  <div id="settingsModal" class="modal-overlay hidden settings-modal">
+    <div class="modal-content">
+      <h2>设置</h2>
+
+      <div class="settings-section">
+        <h3>显示设置</h3>
+
+        <div class="setting-item">
+          <div class="setting-label">
+            显示图标
+            <span class="hint">Level 7-10 的单词带图标</span>
+          </div>
+          <div class="toggle-switch active" id="toggleShowIcon"
+               onclick="App.toggleSetting('display.showIcon', this)"></div>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-label">
+            显示例句
+            <span class="hint">部分单词有例句</span>
+          </div>
+          <div class="toggle-switch active" id="toggleShowExample"
+               onclick="App.toggleSetting('display.showExample', this)"></div>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-label">
+            自动朗读
+            <span class="hint">每题自动朗读单词</span>
+          </div>
+          <div class="toggle-switch active" id="toggleAutoSpeak"
+               onclick="App.toggleSetting('display.autoSpeak', this)"></div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <h3>语音设置</h3>
+
+        <div class="setting-item">
+          <div class="setting-label">
+            朗读单词
+          </div>
+          <div class="toggle-switch active" id="toggleSpeakWord"
+               onclick="App.toggleSetting('tts.speakWord', this)"></div>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-label">
+            朗读例句
+            <span class="hint">单词朗读后朗读例句</span>
+          </div>
+          <div class="toggle-switch active" id="toggleSpeakExample"
+               onclick="App.toggleSetting('tts.speakExample', this)"></div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <h3>错词库</h3>
+
+        <div class="setting-item">
+          <button class="modal-btn confirm" onclick="App.showWrongWordsDetail()">
+            查看错词库
+          </button>
+        </div>
+
+        <div class="setting-item">
+          <button class="modal-btn continue" onclick="App.exportWrongWords()">
+            导出错词库
+          </button>
+        </div>
+
+        <div class="setting-item">
+          <button class="modal-btn danger" onclick="App.clearWrongWords()">
+            清空错词库
+          </button>
+        </div>
+      </div>
+
+      <div class="modal-buttons">
+        <button class="modal-btn confirm" onclick="App.hideSettingsModal()">完成</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 错词库详情弹窗 -->
+  <div id="wrongWordsModal" class="modal-overlay hidden">
+    <div class="modal-content">
+      <h2>错词库</h2>
+      <div class="wrong-words-list" id="wrongWordsList">
+        <!-- 错词列表会动态生成 -->
+      </div>
+      <div class="modal-buttons">
+        <button class="modal-btn confirm" onclick="App.hideWrongWordsModal()">关闭</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 游戏通关弹窗 -->
+  <div id="gameCompleteModal" class="modal-overlay hidden">
+    <div class="modal-content game-complete">
+      <div class="complete-emoji">🎊🏆🎊</div>
+      <h2>恭喜通关！</h2>
+      <p class="complete-message">太棒了！你已经完成了所有级别的词汇学习！</p>
+      <div class="modal-stats">
+        <p>本次答题: <span id="completeTotalCount">0</span> 题</p>
+        <p>答对: <span id="completeCorrectCount" class="correct-stat">0</span> 题</p>
+        <p>答错: <span id="completeWrongCount" class="wrong-stat">0</span> 题</p>
+      </div>
+      <div class="modal-buttons">
+        <button class="modal-btn continue" onclick="App.restartFromLevelZero()">从第0级重新开始</button>
+        <button class="modal-btn confirm" onclick="App.exitAfterComplete()">退出游戏</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 页脚：访问统计 + 留言区 -->
+  <footer class="site-footer">
+    <!-- 访问统计 - 不蒜子 -->
+    <div class="visitor-stats">
+      <span id="busuanzi_container_site_pv">
+        本站总访问量 <span id="busuanzi_value_site_pv">--</span> 次
+      </span>
+      <span class="stats-divider">|</span>
+      <span id="busuanzi_container_site_uv">
+        访客数 <span id="busuanzi_value_site_uv">--</span> 人
+      </span>
+    </div>
+
+    <!-- 留言区 - Giscus -->
+    <div class="comments-section">
+      <h3 class="comments-title">留言板</h3>
+      <p class="comments-hint">使用 GitHub 账号登录后可以留言</p>
+      <div id="giscus-container">
+        <!--
+          Giscus 留言组件
+          使用前需要完成以下步骤：
+          1. 在 GitHub 仓库启用 Discussions
+          2. 安装 Giscus App: https://github.com/apps/giscus
+          3. 访问 https://giscus.app/zh-CN 配置并获取代码
+          4. 将下面的 data-repo 等属性替换为你的配置
+        -->
+        <script src="https://giscus.app/client.js"
+                data-repo="YOUR_GITHUB_USERNAME/vocab-game"
+                data-repo-id="YOUR_REPO_ID"
+                data-category="General"
+                data-category-id="YOUR_CATEGORY_ID"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="top"
+                data-theme="light"
+                data-lang="zh-CN"
+                data-loading="lazy"
+                crossorigin="anonymous"
+                async>
+        </script>
+      </div>
+    </div>
+
+    <div class="footer-info">
+      <p>词汇学习游戏 v2.0 | 开源项目</p>
+    </div>
+  </footer>
+
+  <!-- 不蒜子访问统计脚本 -->
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  <!-- JS 模块 -->
+  <!-- 先加载旧词库（兼容） -->
+  <script src="words.js"></script>
+  <!-- 加载新格式词库（包含转换逻辑） -->
+  <script src="data/words-en-zh.js"></script>
+  <!-- 核心模块 -->
+  <script src="js/config.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/tts.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

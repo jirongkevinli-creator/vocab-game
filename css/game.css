@@ -1,0 +1,248 @@
+/* game.css - 游戏界面样式 */
+
+.game-container {
+  background: white;
+  border-radius: 30px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  padding: 30px;
+  max-width: 500px;
+  width: 100%;
+}
+
+/* 头部信息栏 */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 15px 20px;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  border-radius: 20px;
+  color: white;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.user-display {
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.level-display {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.streak-display {
+  font-size: 28px;
+  letter-spacing: 5px;
+}
+
+/* 练习模式标识 */
+.mode-badge {
+  background: rgba(255, 255, 255, 0.3);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  width: 100%;
+  text-align: center;
+  margin-top: 5px;
+}
+
+/* 单词区域 */
+.word-section {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.word-display {
+  font-size: 56px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.word-icon {
+  font-size: 72px;
+  margin-bottom: 10px;
+  animation: iconBounce 1s ease-in-out;
+}
+
+.word-text {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 例句显示 */
+.example-section {
+  margin: 20px 0;
+  padding: 15px 20px;
+  background: linear-gradient(135deg, #f8f9ff 0%, #e8eaff 100%);
+  border-radius: 15px;
+  border-left: 4px solid #667eea;
+}
+
+.example-text {
+  font-size: 18px;
+  color: #555;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.example-text::before {
+  content: '"';
+  font-size: 24px;
+  color: #667eea;
+  margin-right: 5px;
+}
+
+.example-text::after {
+  content: '"';
+  font-size: 24px;
+  color: #667eea;
+  margin-left: 5px;
+}
+
+/* 朗读按钮 */
+.speak-btn {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  border: none;
+  color: white;
+  padding: 15px 40px;
+  font-size: 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 5px 20px rgba(17, 153, 142, 0.4);
+}
+
+.speak-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(17, 153, 142, 0.5);
+}
+
+.speak-btn:active {
+  transform: scale(0.98);
+}
+
+/* 选项区域 */
+.options-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.option-btn {
+  padding: 25px;
+  font-size: 28px;
+  border: 3px solid #e0e0e0;
+  border-radius: 20px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.option-btn:hover {
+  border-color: #667eea;
+  background: #f8f9ff;
+  transform: translateX(10px);
+}
+
+.option-btn:active {
+  transform: scale(0.98);
+}
+
+.option-btn.correct {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  border-color: #11998e;
+  color: white;
+  animation: pulse 0.5s;
+}
+
+.option-btn.wrong {
+  background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+  border-color: #eb3349;
+  color: white;
+  animation: shake 0.5s;
+}
+
+.option-btn.show-correct {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  border-color: #11998e;
+  color: white;
+}
+
+/* 释义模式选项按钮 - 支持多行长文本 */
+.option-btn.option-btn-definition {
+  font-size: 18px;
+  padding: 18px 20px;
+  text-align: left;
+  line-height: 1.4;
+  min-height: 60px;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+/* 控制区域 */
+.controls {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.level-select {
+  padding: 12px 20px;
+  font-size: 18px;
+  border: 2px solid #667eea;
+  border-radius: 15px;
+  background: white;
+  color: #667eea;
+  cursor: pointer;
+}
+
+.control-btn {
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.restart-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.end-btn {
+  background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+  color: white;
+}
+
+.settings-btn {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: white;
+}
+
+.control-btn:hover {
+  transform: scale(1.05);
+}
+
+/* 难度级别说明 */
+.level-hint {
+  font-size: 12px;
+  color: #999;
+  text-align: center;
+  margin-top: 15px;
+}
