@@ -130,3 +130,89 @@
 .settings-link a:hover {
   text-decoration: underline;
 }
+
+/* ========== 响应式样式 ========== */
+
+/* 平板端 */
+@media (max-width: 768px) {
+  .login-screen {
+    padding: 30px 25px;
+    border-radius: 25px;
+  }
+
+  .login-screen h1 {
+    font-size: 28px;
+  }
+
+  .login-screen .subtitle {
+    font-size: 14px;
+    margin-bottom: 25px;
+  }
+
+  .practice-mode-select {
+    padding: 12px 18px;
+    font-size: 16px;
+  }
+
+  .login-btn {
+    padding: 15px 25px;
+    font-size: 18px;
+  }
+}
+
+/* 手机端 */
+@media (max-width: 480px) {
+  .login-screen {
+    padding: 25px 20px;
+    max-width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  }
+
+  .login-screen h1 {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+
+  .login-screen .subtitle {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  .practice-mode-section {
+    margin-bottom: 20px;
+  }
+
+  .practice-mode-section label {
+    font-size: 14px;
+  }
+
+  .practice-mode-select {
+    padding: 12px 15px;
+    font-size: 15px;
+    border-radius: 12px;
+  }
+
+  .login-buttons {
+    gap: 12px;
+  }
+
+  .login-btn {
+    padding: 14px 20px;
+    font-size: 16px;
+    border-radius: 12px;
+  }
+
+  .wrong-words-count {
+    font-size: 12px;
+  }
+
+  .settings-link {
+    margin-top: 15px;
+    padding-top: 15px;
+  }
+
+  .settings-link a {
+    font-size: 13px;
+  }
+}

@@ -246,3 +246,189 @@
   text-align: center;
   margin-top: 15px;
 }
+
+/* ========== 响应式样式 ========== */
+
+/* 平板端 */
+@media (max-width: 768px) {
+  .game-container {
+    padding: 25px 20px;
+    border-radius: 25px;
+  }
+
+  .header {
+    margin-bottom: 25px;
+    padding: 12px 15px;
+  }
+
+  .user-display {
+    font-size: 16px;
+  }
+
+  .level-display {
+    font-size: 20px;
+  }
+
+  .streak-display {
+    font-size: 24px;
+    letter-spacing: 3px;
+  }
+
+  .word-display {
+    font-size: 42px;
+    min-height: 60px;
+  }
+
+  .word-icon {
+    font-size: 56px;
+  }
+
+  .example-text {
+    font-size: 16px;
+  }
+
+  .speak-btn {
+    padding: 12px 30px;
+    font-size: 18px;
+  }
+
+  .option-btn {
+    padding: 18px;
+    font-size: 22px;
+    border-radius: 15px;
+  }
+
+  .option-btn.option-btn-definition {
+    font-size: 16px;
+    padding: 15px 18px;
+  }
+
+  .control-btn {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  .level-select {
+    padding: 10px 16px;
+    font-size: 16px;
+  }
+}
+
+/* 手机端 */
+@media (max-width: 480px) {
+  .game-container {
+    padding: 20px 15px;
+    max-width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  }
+
+  .header {
+    margin-bottom: 20px;
+    padding: 10px 12px;
+    border-radius: 15px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .user-display {
+    font-size: 14px;
+  }
+
+  .level-display {
+    font-size: 18px;
+  }
+
+  .streak-display {
+    font-size: 20px;
+    letter-spacing: 2px;
+  }
+
+  .mode-badge {
+    font-size: 12px;
+    padding: 4px 10px;
+  }
+
+  .word-section {
+    margin-bottom: 20px;
+  }
+
+  .word-display {
+    font-size: 32px;
+    min-height: 50px;
+    margin-bottom: 10px;
+  }
+
+  .word-icon {
+    font-size: 48px;
+    margin-bottom: 8px;
+  }
+
+  .word-text {
+    gap: 8px;
+  }
+
+  .example-section {
+    margin: 15px 0;
+    padding: 12px 15px;
+    border-radius: 12px;
+  }
+
+  .example-text {
+    font-size: 14px;
+  }
+
+  .example-text::before,
+  .example-text::after {
+    font-size: 18px;
+  }
+
+  .speak-btn {
+    padding: 10px 25px;
+    font-size: 16px;
+  }
+
+  .options-section {
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .option-btn {
+    padding: 15px;
+    font-size: 18px;
+    border-radius: 12px;
+    border-width: 2px;
+  }
+
+  .option-btn:hover {
+    transform: translateX(5px);
+  }
+
+  .option-btn.option-btn-definition {
+    font-size: 14px;
+    padding: 12px 15px;
+    min-height: 50px;
+  }
+
+  .controls {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .control-btn {
+    padding: 10px 14px;
+    font-size: 13px;
+    border-radius: 12px;
+  }
+
+  .level-select {
+    padding: 10px 14px;
+    font-size: 14px;
+    border-radius: 12px;
+  }
+
+  .level-hint {
+    font-size: 11px;
+    margin-top: 12px;
+  }
+}
