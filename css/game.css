@@ -480,76 +480,76 @@
     border: none;
     z-index: 1000;
     overflow-y: auto;
-    padding: 15px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
   }
 
   .word-detail-header {
-    margin-bottom: 10px;
-    padding-bottom: 8px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
   }
 
   .word-detail-title {
-    font-size: 16px;
+    font-size: 18px;
   }
 
   .word-detail-hint {
     font-size: 14px;
-    padding: 5px 12px;
+    padding: 6px 14px;
   }
 
   .word-detail-word {
-    margin-bottom: 12px;
+    margin-bottom: 18px;
   }
 
   .word-detail-word #detailEnglish {
-    font-size: 26px;
+    font-size: 32px;
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
   }
 
   .word-detail-word #detailChinese {
-    font-size: 20px;
+    font-size: 24px;
     display: block;
   }
 
   .word-detail-section {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
   }
 
   .word-detail-section .section-title {
-    font-size: 15px;
-    margin-bottom: 6px;
+    font-size: 17px;
+    margin-bottom: 8px;
   }
 
   .word-detail-section .section-content {
-    font-size: 15px;
+    font-size: 17px;
     line-height: 1.6;
   }
 
   .word-detail-section .example-item {
-    padding: 10px;
-    margin-bottom: 6px;
+    padding: 12px;
+    margin-bottom: 8px;
   }
 
   .word-detail-section .example-en {
-    font-size: 15px;
-    margin-bottom: 4px;
+    font-size: 16px;
+    margin-bottom: 5px;
   }
 
   .word-detail-section .example-zh {
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .word-detail-row {
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
   }
 
   .word-detail-row .synonym-box,
   .word-detail-row .antonym-box {
-    font-size: 15px;
+    font-size: 16px;
   }
 }
 
@@ -589,69 +589,72 @@
 }
 
 .word-detail-title {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
   color: #333;
 }
 
 .word-detail-hint {
-  font-size: 12px;
+  font-size: 14px;
   color: #999;
   background: #eee;
-  padding: 3px 8px;
+  padding: 5px 12px;
   border-radius: 10px;
 }
 
 .word-detail-word {
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .word-detail-word #detailEnglish {
-  font-size: 24px;
+  font-size: 36px;
   font-weight: bold;
   color: #333;
-  margin-right: 10px;
+  display: block;
+  margin-bottom: 8px;
 }
 
 .word-detail-word #detailChinese {
-  font-size: 18px;
+  font-size: 26px;
   color: #666;
+  display: block;
 }
 
 .word-detail-section {
-  margin-bottom: 12px;
+  margin-bottom: 18px;
 }
 
 .word-detail-section .section-title {
-  font-size: 14px;
+  font-size: 18px;
   font-weight: bold;
   color: #667eea;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
 
 .word-detail-section .section-content {
-  font-size: 14px;
+  font-size: 18px;
   color: #444;
-  line-height: 1.5;
+  line-height: 1.6;
   padding-left: 5px;
 }
 
 .word-detail-section .example-item {
-  margin-bottom: 8px;
-  padding: 8px;
+  margin-bottom: 10px;
+  padding: 12px;
   background: rgba(255,255,255,0.7);
   border-radius: 8px;
 }
 
 .word-detail-section .example-en {
   color: #333;
-  margin-bottom: 3px;
+  margin-bottom: 5px;
+  font-size: 17px;
 }
 
 .word-detail-section .example-zh {
   color: #666;
-  font-size: 13px;
+  font-size: 16px;
 }
 
 .word-detail-row {
@@ -664,6 +667,7 @@
 .word-detail-row .antonym-box {
   flex: 1;
   min-width: 120px;
+  font-size: 17px;
 }
 
 .word-detail-row .label {
