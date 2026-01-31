@@ -348,27 +348,28 @@ const Game = {
     // 更新显示
     this.updateDisplayAfterAnswer();
 
-    // 10级词汇显示详情面板
+    // 10级词汇显示详情面板（用户点击后才进入下一题）
     const isLevel10 = this.state.currentLevel === 10 && !this.state.isWrongWordsPracticeMode;
     const rawWord = this.state.currentWord;
-    if (isLevel10 && (rawWord.morphology || rawWord.etymology || rawWord.examples)) {
-      UI.showWordDetail(rawWord);
+    const hasDetail = rawWord.morphology || rawWord.etymology || rawWord.examples;
+
+    if (isLevel10 && hasDetail) {
+      // 显示详情面板，等待用户点击
+      UI.showWordDetail(rawWord, () => {
+        this.state.isProcessing = false;
+        this.nextQuestion();
+      });
+    } else {
+      // 非10级或无详情，正常延迟后进入下一题
+      const delay = isCorrect
+        ? GameConfig.display.correctDisplayTime
+        : GameConfig.display.wrongDisplayTime;
+
+      setTimeout(() => {
+        this.state.isProcessing = false;
+        this.nextQuestion();
+      }, delay);
     }
-
-    // 延迟后进入下一题（10级词汇延长显示时间）
-    let delay = isCorrect
-      ? GameConfig.display.correctDisplayTime
-      : GameConfig.display.wrongDisplayTime;
-
-    if (isLevel10 && (rawWord.morphology || rawWord.etymology || rawWord.examples)) {
-      delay = 5000; // 10级词汇详情显示5秒
-    }
-
-    setTimeout(() => {
-      UI.hideWordDetail();
-      this.state.isProcessing = false;
-      this.nextQuestion();
-    }, delay);
   },
 
   /**

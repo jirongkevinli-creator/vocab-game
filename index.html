@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>词汇学习游戏 v2.0</title>
   <!-- CSS 模块 -->
-  <link rel="stylesheet" href="css/main.css?v=4">
-  <link rel="stylesheet" href="css/login.css?v=4">
-  <link rel="stylesheet" href="css/game.css?v=4">
-  <link rel="stylesheet" href="css/modal.css?v=4">
+  <link rel="stylesheet" href="css/main.css?v=5">
+  <link rel="stylesheet" href="css/login.css?v=5">
+  <link rel="stylesheet" href="css/game.css?v=5">
+  <link rel="stylesheet" href="css/modal.css?v=5">
 </head>
 <body>
   <!-- 登录界面 -->
@@ -65,7 +65,7 @@
     <div id="wordDetailPanel" class="word-detail-panel hidden">
       <div class="word-detail-header">
         <span class="word-detail-title">📖 词汇详情</span>
-        <button class="word-detail-close" onclick="App.hideWordDetail()">&times;</button>
+        <span class="word-detail-hint">点击继续</span>
       </div>
       <div class="word-detail-content">
         <div class="word-detail-word">
@@ -279,15 +279,15 @@
 
   <!-- JS 模块 -->
   <!-- 先加载旧词库（兼容） -->
-  <script src="words.js?v=4"></script>
+  <script src="words.js?v=5"></script>
   <!-- 加载新格式词库（包含转换逻辑） -->
-  <script src="data/words-en-zh.js?v=4"></script>
+  <script src="data/words-en-zh.js?v=5"></script>
   <!-- 核心模块 -->
-  <script src="js/config.js?v=4"></script>
-  <script src="js/storage.js?v=4"></script>
-  <script src="js/tts.js?v=4"></script>
-  <script src="js/ui.js?v=4"></script>
-  <script src="js/game.js?v=4"></script>
-  <script src="js/app.js?v=4"></script>
+  <script src="js/config.js?v=5"></script>
+  <script src="js/storage.js?v=5"></script>
+  <script src="js/tts.js?v=5"></script>
+  <script src="js/ui.js?v=5"></script>
+  <script src="js/game.js?v=5"></script>
+  <script src="js/app.js?v=5"></script>
 </body>
 </html>

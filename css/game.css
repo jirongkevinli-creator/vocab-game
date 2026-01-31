@@ -321,26 +321,27 @@
   .game-container {
     max-width: 100%;
     min-height: 100vh;
-    max-height: none;
+    max-height: 100vh;
     border-radius: 0;
     box-shadow: none;
-    padding: 10px 12px;
+    padding: 8px;
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
   }
 
   /* 头部 - 单行紧凑布局 */
   .header {
-    padding: 6px 10px;
-    margin-bottom: 8px;
+    padding: 8px 12px;
+    margin-bottom: 6px;
     border-radius: 10px;
     flex-wrap: nowrap;
-    gap: 6px;
+    gap: 8px;
     justify-content: space-between;
   }
 
   .user-display {
-    font-size: 11px;
+    font-size: 14px;
     flex-shrink: 1;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -349,13 +350,13 @@
   }
 
   .level-display {
-    font-size: 13px;
+    font-size: 16px;
     flex-shrink: 0;
   }
 
   .streak-display {
-    font-size: 14px;
-    letter-spacing: 1px;
+    font-size: 16px;
+    letter-spacing: 2px;
     flex-shrink: 0;
   }
 
@@ -366,23 +367,23 @@
   /* 单词区域 - 紧凑布局 */
   .word-section {
     flex: 0 0 auto;
-    margin-bottom: 8px;
-    padding: 8px 0;
+    margin-bottom: 6px;
+    padding: 6px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
   .word-display {
-    font-size: 28px;
+    font-size: 32px;
     min-height: auto;
     margin-bottom: 6px;
-    flex-direction: row; /* 图标和单词并排 */
-    gap: 10px;
+    flex-direction: row;
+    gap: 8px;
   }
 
   .word-icon {
-    font-size: 36px;
+    font-size: 40px;
     margin-bottom: 0;
     animation: none;
   }
@@ -391,48 +392,33 @@
     gap: 6px;
   }
 
-  /* 例句 - 紧凑单行 */
+  /* 例句 - 隐藏以节省空间 */
   .example-section {
-    margin: 6px 0;
-    padding: 6px 10px;
-    border-radius: 8px;
-    border-left-width: 3px;
-    width: 100%;
+    display: none;
   }
 
-  .example-text {
-    font-size: 12px;
-    line-height: 1.3;
-  }
-
-  .example-text::before,
-  .example-text::after {
-    font-size: 14px;
-  }
-
-  /* 朗读按钮 - 小图标样式 */
+  /* 朗读按钮 - 紧凑 */
   .speak-btn {
-    padding: 6px 16px;
-    font-size: 12px;
+    padding: 8px 20px;
+    font-size: 14px;
     border-radius: 20px;
   }
 
   /* 选项区域 - 2x2 网格布局 */
   .options-section {
-    flex: 1;
+    flex: 0 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin-bottom: 8px;
-    align-content: center;
+    gap: 6px;
+    margin-bottom: 6px;
   }
 
   .option-btn {
-    padding: 12px 8px;
-    font-size: 15px;
+    padding: 14px 10px;
+    font-size: 18px;
     border-radius: 12px;
     border-width: 2px;
-    min-height: 48px;
+    min-height: 55px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -445,40 +431,125 @@
     transform: none;
   }
 
-  /* 释义模式 - 单列布局（文字较长） */
+  /* 释义模式 - 单列布局 */
   .option-btn.option-btn-definition {
-    grid-column: span 2; /* 占满整行 */
-    font-size: 13px;
-    padding: 10px 12px;
-    min-height: 40px;
+    grid-column: span 2;
+    font-size: 15px;
+    padding: 12px;
+    min-height: 45px;
   }
 
   /* 控制区域 - 单行紧凑 */
   .controls {
     gap: 6px;
-    padding: 8px 0;
+    padding: 6px 0;
     border-top: 1px solid #eee;
     flex-wrap: nowrap;
     justify-content: space-between;
+    flex: 0 0 auto;
   }
 
   .level-select {
     flex: 1;
     min-width: 0;
-    padding: 6px 8px;
-    font-size: 11px;
+    padding: 8px 10px;
+    font-size: 13px;
     border-radius: 8px;
   }
 
   .control-btn {
-    padding: 6px 10px;
-    font-size: 11px;
+    padding: 8px 12px;
+    font-size: 13px;
     border-radius: 8px;
     flex-shrink: 0;
   }
 
   .level-hint {
     display: none;
+  }
+
+  /* 手机端详情面板 - 全屏覆盖 */
+  .word-detail-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    z-index: 1000;
+    overflow-y: auto;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .word-detail-header {
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+  }
+
+  .word-detail-title {
+    font-size: 16px;
+  }
+
+  .word-detail-hint {
+    font-size: 14px;
+    padding: 5px 12px;
+  }
+
+  .word-detail-word {
+    margin-bottom: 12px;
+  }
+
+  .word-detail-word #detailEnglish {
+    font-size: 26px;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .word-detail-word #detailChinese {
+    font-size: 20px;
+    display: block;
+  }
+
+  .word-detail-section {
+    margin-bottom: 10px;
+  }
+
+  .word-detail-section .section-title {
+    font-size: 15px;
+    margin-bottom: 6px;
+  }
+
+  .word-detail-section .section-content {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .word-detail-section .example-item {
+    padding: 10px;
+    margin-bottom: 6px;
+  }
+
+  .word-detail-section .example-en {
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+
+  .word-detail-section .example-zh {
+    font-size: 14px;
+  }
+
+  .word-detail-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .word-detail-row .synonym-box,
+  .word-detail-row .antonym-box {
+    font-size: 15px;
   }
 }
 
@@ -490,6 +561,7 @@
   padding: 15px;
   border: 2px solid #667eea;
   animation: slideIn 0.3s ease-out;
+  cursor: pointer;
 }
 
 .word-detail-panel.hidden {
@@ -522,17 +594,12 @@
   color: #333;
 }
 
-.word-detail-close {
-  background: none;
-  border: none;
-  font-size: 24px;
+.word-detail-hint {
+  font-size: 12px;
   color: #999;
-  cursor: pointer;
-  padding: 0 5px;
-}
-
-.word-detail-close:hover {
-  color: #333;
+  background: #eee;
+  padding: 3px 8px;
+  border-radius: 10px;
 }
 
 .word-detail-word {
@@ -603,43 +670,4 @@
   font-weight: bold;
   color: #667eea;
   margin-right: 5px;
-}
-
-/* 手机端详情面板 */
-@media (max-width: 480px) {
-  .word-detail-panel {
-    margin-top: 10px;
-    padding: 10px;
-    border-radius: 10px;
-  }
-
-  .word-detail-header {
-    margin-bottom: 8px;
-    padding-bottom: 5px;
-  }
-
-  .word-detail-title {
-    font-size: 14px;
-  }
-
-  .word-detail-word #detailEnglish {
-    font-size: 18px;
-  }
-
-  .word-detail-word #detailChinese {
-    font-size: 14px;
-  }
-
-  .word-detail-section .section-title {
-    font-size: 12px;
-  }
-
-  .word-detail-section .section-content {
-    font-size: 12px;
-  }
-
-  .word-detail-row {
-    flex-direction: column;
-    gap: 8px;
-  }
 }

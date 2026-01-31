@@ -464,13 +464,20 @@ const UI = {
     window.alert(message);
   },
 
+  // 存储详情面板的回调函数
+  _wordDetailCallback: null,
+
   /**
    * 显示10级词汇详情面板
    * @param {object} word - 单词对象（包含morphology, etymology, examples等）
+   * @param {Function} onClose - 关闭时的回调函数
    */
-  showWordDetail(word) {
+  showWordDetail(word, onClose) {
     const panel = document.getElementById('wordDetailPanel');
     if (!panel) return;
+
+    // 存储回调
+    this._wordDetailCallback = onClose || null;
 
     // 填充基本信息
     document.getElementById('detailEnglish').textContent = word.source || word.english || '';
@@ -532,6 +539,9 @@ const UI = {
 
     // 显示面板
     panel.classList.remove('hidden');
+
+    // 绑定点击事件（点击面板任意位置关闭）
+    panel.onclick = () => this.hideWordDetail();
   },
 
   /**
@@ -541,6 +551,14 @@ const UI = {
     const panel = document.getElementById('wordDetailPanel');
     if (panel) {
       panel.classList.add('hidden');
+      panel.onclick = null;
+    }
+
+    // 执行回调
+    if (this._wordDetailCallback) {
+      const callback = this._wordDetailCallback;
+      this._wordDetailCallback = null;
+      callback();
     }
   }
 };
