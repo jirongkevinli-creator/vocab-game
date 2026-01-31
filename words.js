@@ -942,96 +942,1408 @@ const wordDatabase = {
     { english: "convert", chinese: "转换", wrongOptions: ["保持", "维持"], icon: "🔄" }
   ],
 
-  // Level 10: 托福词汇 (~90词) - 带图标
+  // Level 10: 托福词汇 (200词) - 带图标、词根、词源、例句
   10: [
-    { english: "meticulous", chinese: "一丝不苟的", wrongOptions: ["粗心的", "随意的"], icon: "🔬" },
-    { english: "ubiquitous", chinese: "无处不在的", wrongOptions: ["罕见的", "稀有的"], icon: "🌐" },
-    { english: "pragmatic", chinese: "务实的", wrongOptions: ["理想化的", "空想的"], icon: "🛠️" },
-    { english: "eloquent", chinese: "雄辩的", wrongOptions: ["沉默的", "口拙的"], icon: "🎤" },
-    { english: "ephemeral", chinese: "短暂的", wrongOptions: ["永恒的", "持久的"], icon: "🦋" },
-    { english: "resilient", chinese: "有韧性的", wrongOptions: ["脆弱的", "易碎的"], icon: "💪" },
-    { english: "ambiguous", chinese: "模棱两可的", wrongOptions: ["明确的", "清晰的"], icon: "❔" },
-    { english: "plausible", chinese: "貌似合理的", wrongOptions: ["荒谬的", "不可信的"], icon: "🤷" },
-    { english: "incessant", chinese: "不断的", wrongOptions: ["间歇的", "偶尔的"], icon: "♾️" },
-    { english: "tenacious", chinese: "坚韧的", wrongOptions: ["软弱的", "放弃的"], icon: "🦾" },
-    { english: "meander", chinese: "蜿蜒/漫步", wrongOptions: ["直行", "奔跑"], icon: "🐍" },
-    { english: "ameliorate", chinese: "改善", wrongOptions: ["恶化", "保持"], icon: "📈" },
-    { english: "exacerbate", chinese: "加剧/恶化", wrongOptions: ["改善", "缓解"], icon: "📉" },
-    { english: "corroborate", chinese: "证实", wrongOptions: ["否定", "质疑"], icon: "✅" },
-    { english: "unprecedented", chinese: "史无前例的", wrongOptions: ["常见的", "传统的"], icon: "🆕" },
-    { english: "commensurate", chinese: "相称的", wrongOptions: ["不相称的", "过多的"], icon: "⚖️" },
-    { english: "disseminate", chinese: "传播", wrongOptions: ["隐藏", "保密"], icon: "📡" },
-    { english: "proliferate", chinese: "激增", wrongOptions: ["减少", "消失"], icon: "🌿" },
-    { english: "relinquish", chinese: "放弃", wrongOptions: ["坚持", "获得"], icon: "🤲" },
-    { english: "culminate", chinese: "达到顶点", wrongOptions: ["开始", "下降"], icon: "🏔️" },
-    { english: "exemplify", chinese: "例证", wrongOptions: ["反驳", "否定"], icon: "📋" },
-    { english: "precipitate", chinese: "促使/加速", wrongOptions: ["阻止", "延迟"], icon: "⏩" },
-    { english: "substantiate", chinese: "证实", wrongOptions: ["否定", "反驳"], icon: "📜" },
-    { english: "juxtapose", chinese: "并列/对比", wrongOptions: ["分离", "隔开"], icon: "↔️" },
-    { english: "scrutinize", chinese: "仔细检查", wrongOptions: ["忽略", "草率看"], icon: "🔍" },
-    { english: "articulate", chinese: "清晰表达", wrongOptions: ["含糊不清", "沉默"], icon: "💬" },
-    { english: "consolidate", chinese: "巩固/合并", wrongOptions: ["分散", "削弱"], icon: "🤝" },
-    { english: "alleviate", chinese: "减轻/缓解", wrongOptions: ["加重", "恶化"], icon: "💊" },
-    { english: "mitigate", chinese: "减轻/缓和", wrongOptions: ["加剧", "恶化"], icon: "🛡️" },
-    { english: "augment", chinese: "增加/扩大", wrongOptions: ["减少", "缩小"], icon: "➕" },
-    { english: "deteriorate", chinese: "恶化", wrongOptions: ["改善", "好转"], icon: "📉" },
-    { english: "expedite", chinese: "加速/促进", wrongOptions: ["延迟", "阻碍"], icon: "🚀" },
-    { english: "impede", chinese: "阻碍", wrongOptions: ["促进", "加速"], icon: "🚧" },
-    { english: "facilitate", chinese: "促进/使便利", wrongOptions: ["阻碍", "妨碍"], icon: "🛤️" },
-    { english: "hinder", chinese: "阻碍/妨碍", wrongOptions: ["帮助", "促进"], icon: "⛔" },
-    { english: "undermine", chinese: "破坏/削弱", wrongOptions: ["加强", "支持"], icon: "💣" },
-    { english: "reinforce", chinese: "加强/强化", wrongOptions: ["削弱", "破坏"], icon: "🔩" },
-    { english: "supersede", chinese: "取代", wrongOptions: ["保留", "维持"], icon: "🔄" },
-    { english: "perpetuate", chinese: "使永久/延续", wrongOptions: ["终止", "结束"], icon: "🔁" },
-    { english: "eradicate", chinese: "根除", wrongOptions: ["保留", "培养"], icon: "🗑️" },
-    { english: "pervasive", chinese: "普遍的/蔓延的", wrongOptions: ["罕见的", "局部的"], icon: "🌊" },
-    { english: "elusive", chinese: "难以捉摸的", wrongOptions: ["明显的", "容易抓住的"], icon: "👻" },
-    { english: "tangible", chinese: "有形的/实际的", wrongOptions: ["无形的", "虚幻的"], icon: "✋" },
-    { english: "intangible", chinese: "无形的", wrongOptions: ["有形的", "实际的"], icon: "💨" },
-    { english: "conspicuous", chinese: "显眼的", wrongOptions: ["不起眼的", "隐蔽的"], icon: "🌟" },
-    { english: "inconspicuous", chinese: "不显眼的", wrongOptions: ["显眼的", "突出的"], icon: "🥷" },
-    { english: "ostensible", chinese: "表面上的", wrongOptions: ["真实的", "实际的"], icon: "🎭" },
-    { english: "inherent", chinese: "固有的/内在的", wrongOptions: ["外在的", "后天的"], icon: "🧬" },
-    { english: "intrinsic", chinese: "内在的/本质的", wrongOptions: ["外在的", "表面的"], icon: "💎" },
-    { english: "extrinsic", chinese: "外在的", wrongOptions: ["内在的", "本质的"], icon: "🌍" },
-    { english: "mundane", chinese: "平凡的/世俗的", wrongOptions: ["非凡的", "神圣的"], icon: "📦" },
-    { english: "esoteric", chinese: "深奥的/内行的", wrongOptions: ["浅显的", "普通的"], icon: "🔐" },
-    { english: "prolific", chinese: "多产的", wrongOptions: ["低产的", "无产出的"], icon: "🖊️" },
-    { english: "frugal", chinese: "节俭的", wrongOptions: ["奢侈的", "浪费的"], icon: "💰" },
-    { english: "lavish", chinese: "奢侈的/大方的", wrongOptions: ["节俭的", "吝啬的"], icon: "👑" },
-    { english: "austere", chinese: "朴素的/严厉的", wrongOptions: ["奢华的", "温和的"], icon: "🏛️" },
-    { english: "benevolent", chinese: "仁慈的", wrongOptions: ["恶毒的", "自私的"], icon: "😇" },
-    { english: "malevolent", chinese: "恶意的", wrongOptions: ["善意的", "仁慈的"], icon: "😈" },
-    { english: "altruistic", chinese: "利他的/无私的", wrongOptions: ["自私的", "利己的"], icon: "🤲" },
-    { english: "egocentric", chinese: "自我中心的", wrongOptions: ["无私的", "利他的"], icon: "🪞" },
-    { english: "complacent", chinese: "自满的", wrongOptions: ["谦虚的", "上进的"], icon: "😌" },
-    { english: "diligent", chinese: "勤奋的", wrongOptions: ["懒惰的", "懈怠的"], icon: "📚" },
-    { english: "lethargic", chinese: "无精打采的", wrongOptions: ["精力充沛的", "活跃的"], icon: "😴" },
-    { english: "volatile", chinese: "易变的/不稳定的", wrongOptions: ["稳定的", "不变的"], icon: "🎢" },
-    { english: "immutable", chinese: "不变的", wrongOptions: ["易变的", "可改变的"], icon: "🗿" },
-    { english: "transient", chinese: "短暂的/临时的", wrongOptions: ["永久的", "持久的"], icon: "⏱️" },
-    { english: "perpetual", chinese: "永久的/持续的", wrongOptions: ["短暂的", "临时的"], icon: "♾️" },
-    { english: "sporadic", chinese: "零星的/偶发的", wrongOptions: ["频繁的", "持续的"], icon: "💧" },
-    { english: "perennial", chinese: "多年生的/持久的", wrongOptions: ["短暂的", "一年生的"], icon: "🌳" },
-    { english: "nascent", chinese: "新生的/萌芽的", wrongOptions: ["成熟的", "衰老的"], icon: "🌱" },
-    { english: "obsolete", chinese: "过时的/废弃的", wrongOptions: ["现代的", "流行的"], icon: "📟" },
-    { english: "archaic", chinese: "古老的/陈旧的", wrongOptions: ["现代的", "新颖的"], icon: "🏺" },
-    { english: "novel", chinese: "新颖的", wrongOptions: ["陈旧的", "过时的"], icon: "✨" },
-    { english: "orthodox", chinese: "正统的/传统的", wrongOptions: ["非正统的", "创新的"], icon: "⛪" },
-    { english: "unorthodox", chinese: "非正统的", wrongOptions: ["传统的", "保守的"], icon: "🎪" },
-    { english: "empirical", chinese: "经验的/实证的", wrongOptions: ["理论的", "假设的"], icon: "🔬" },
-    { english: "theoretical", chinese: "理论的", wrongOptions: ["实践的", "经验的"], icon: "📐" },
-    { english: "hypothetical", chinese: "假设的", wrongOptions: ["实际的", "真实的"], icon: "❓" },
-    { english: "spurious", chinese: "虚假的/伪造的", wrongOptions: ["真实的", "可靠的"], icon: "🎭" },
-    { english: "authentic", chinese: "真实的/可靠的", wrongOptions: ["虚假的", "伪造的"], icon: "🏅" },
-    { english: "covert", chinese: "秘密的/隐蔽的", wrongOptions: ["公开的", "明显的"], icon: "🕵️" },
-    { english: "overt", chinese: "公开的/明显的", wrongOptions: ["秘密的", "隐蔽的"], icon: "📢" },
-    { english: "implicit", chinese: "含蓄的/暗示的", wrongOptions: ["明确的", "直接的"], icon: "🤫" },
-    { english: "explicit", chinese: "明确的/直接的", wrongOptions: ["含蓄的", "暗示的"], icon: "📣" },
-    { english: "verbose", chinese: "冗长的/啰嗦的", wrongOptions: ["简洁的", "精炼的"], icon: "📝" },
-    { english: "concise", chinese: "简洁的", wrongOptions: ["冗长的", "啰嗦的"], icon: "✂️" },
-    { english: "succinct", chinese: "简明的/紧凑的", wrongOptions: ["冗长的", "繁琐的"], icon: "📌" },
-    { english: "lucid", chinese: "清晰的/明了的", wrongOptions: ["模糊的", "混乱的"], icon: "💡" },
-    { english: "cryptic", chinese: "神秘的/含义模糊的", wrongOptions: ["清晰的", "明了的"], icon: "🔮" }
+    {
+      english: "meticulous", chinese: "一丝不苟的", wrongOptions: ["粗心的", "随意的"], icon: "🔬",
+      morphology: { breakdown: "metic(小心) + ul(程度) + ous(形容词后缀)" },
+      etymology: { origin: "拉丁", root: "metus", meaning: "恐惧", evolution: "原指因恐惧而谨慎小心，后演变为一丝不苟" },
+      examples: [{ sentence: "She is meticulous about records.", translation: "她对记录一丝不苟。" }, { sentence: "The meticulous planning paid off.", translation: "细致规划得到回报。" }],
+      synonyms: ["thorough", "careful", "precise"], antonyms: ["careless", "sloppy"]
+    },
+    {
+      english: "ubiquitous", chinese: "无处不在的", wrongOptions: ["罕见的", "稀有的"], icon: "🌐",
+      morphology: { breakdown: "ubique(到处) + ous(形容词后缀)" },
+      etymology: { origin: "拉丁", root: "ubique", meaning: "到处", evolution: "直接借用表示无处不在" },
+      examples: [{ sentence: "Smartphones are ubiquitous today.", translation: "智能手机如今无处不在。" }],
+      synonyms: ["omnipresent", "pervasive"], antonyms: ["rare", "scarce"]
+    },
+    {
+      english: "pragmatic", chinese: "务实的", wrongOptions: ["理想化的", "空想的"], icon: "🛠️",
+      morphology: { breakdown: "pragma(行动) + tic(形容词后缀)" },
+      etymology: { origin: "希腊", root: "pragma", meaning: "行为、事务", evolution: "强调实际行动而非理论" },
+      examples: [{ sentence: "We need a pragmatic approach.", translation: "我们需要务实的方法。" }],
+      synonyms: ["practical", "realistic"], antonyms: ["idealistic", "impractical"]
+    },
+    {
+      english: "eloquent", chinese: "雄辩的", wrongOptions: ["沉默的", "口拙的"], icon: "🎤",
+      morphology: { breakdown: "e(出) + loqu(说) + ent(形容词后缀)" },
+      etymology: { origin: "拉丁", root: "loqui", meaning: "说话", evolution: "善于说话、表达流利" },
+      examples: [{ sentence: "She gave an eloquent speech.", translation: "她做了精彩的演讲。" }],
+      synonyms: ["articulate", "fluent"], antonyms: ["inarticulate", "tongue-tied"]
+    },
+    {
+      english: "ephemeral", chinese: "短暂的", wrongOptions: ["永恒的", "持久的"], icon: "🦋",
+      morphology: { breakdown: "epi(在…上) + hemer(天) + al(形容词后缀)" },
+      etymology: { origin: "希腊", root: "hemera", meaning: "天", evolution: "仅存在一天，引申为短暂" },
+      examples: [{ sentence: "Fame can be ephemeral.", translation: "名声可能是短暂的。" }],
+      synonyms: ["transient", "fleeting"], antonyms: ["permanent", "lasting"]
+    },
+    {
+      english: "resilient", chinese: "有韧性的", wrongOptions: ["脆弱的", "易碎的"], icon: "💪",
+      morphology: { breakdown: "re(回) + sili(跳) + ent(形容词后缀)" },
+      etymology: { origin: "拉丁", root: "resilire", meaning: "跳回", evolution: "能够恢复原状" },
+      examples: [{ sentence: "Children are resilient.", translation: "孩子们很有韧性。" }],
+      synonyms: ["tough", "adaptable"], antonyms: ["fragile", "vulnerable"]
+    },
+    {
+      english: "ambiguous", chinese: "模棱两可的", wrongOptions: ["明确的", "清晰的"], icon: "❔",
+      morphology: { breakdown: "ambi(两边) + ig(驱动) + uous(形容词后缀)" },
+      etymology: { origin: "拉丁", root: "ambiguus", meaning: "向两边驱动", evolution: "可作多种理解" },
+      examples: [{ sentence: "The message was ambiguous.", translation: "这条信息含糊不清。" }],
+      synonyms: ["vague", "unclear"], antonyms: ["clear", "unambiguous"]
+    },
+    {
+      english: "plausible", chinese: "貌似合理的", wrongOptions: ["荒谬的", "不可信的"], icon: "🤷",
+      morphology: { breakdown: "plaus(鼓掌) + ible(能…的)" },
+      etymology: { origin: "拉丁", root: "plaudere", meaning: "鼓掌", evolution: "值得鼓掌的、可信的" },
+      examples: [{ sentence: "That's a plausible explanation.", translation: "那是个合理的解释。" }],
+      synonyms: ["credible", "believable"], antonyms: ["implausible", "unlikely"]
+    },
+    {
+      english: "incessant", chinese: "不断的", wrongOptions: ["间歇的", "偶尔的"], icon: "♾️",
+      morphology: { breakdown: "in(不) + cess(停止) + ant(形容词后缀)" },
+      etymology: { origin: "拉丁", root: "cessare", meaning: "停止", evolution: "不停止的" },
+      examples: [{ sentence: "The incessant rain flooded the streets.", translation: "连绵不断的雨淹没了街道。" }],
+      synonyms: ["constant", "continuous"], antonyms: ["intermittent", "occasional"]
+    },
+    {
+      english: "tenacious", chinese: "坚韧的", wrongOptions: ["软弱的", "放弃的"], icon: "🦾",
+      morphology: { breakdown: "ten(握住) + acious(有…特性的)" },
+      etymology: { origin: "拉丁", root: "tenere", meaning: "握住", evolution: "紧紧抓住不放" },
+      examples: [{ sentence: "She is tenacious in pursuit of goals.", translation: "她坚持不懈地追求目标。" }],
+      synonyms: ["persistent", "determined"], antonyms: ["yielding", "irresolute"]
+    },
+    {
+      english: "meander", chinese: "蜿蜒/漫步", wrongOptions: ["直行", "奔跑"], icon: "🐍",
+      morphology: { breakdown: "源自河流名Maeander" },
+      etymology: { origin: "希腊", root: "Maiandros", meaning: "河流名", evolution: "土耳其一条蜿蜒曲折的河流" },
+      examples: [{ sentence: "The river meanders through the valley.", translation: "河流蜿蜒穿过山谷。" }],
+      synonyms: ["wander", "wind"], antonyms: ["go straight", "rush"]
+    },
+    {
+      english: "ameliorate", chinese: "改善", wrongOptions: ["恶化", "保持"], icon: "📈",
+      morphology: { breakdown: "a(向) + melior(更好) + ate(动词后缀)" },
+      etymology: { origin: "拉丁", root: "melior", meaning: "更好", evolution: "使变得更好" },
+      examples: [{ sentence: "Steps to ameliorate the situation.", translation: "改善局势的措施。" }],
+      synonyms: ["improve", "enhance"], antonyms: ["worsen", "deteriorate"]
+    },
+    {
+      english: "exacerbate", chinese: "加剧/恶化", wrongOptions: ["改善", "缓解"], icon: "📉",
+      morphology: { breakdown: "ex(加强) + acerb(尖锐) + ate(动词后缀)" },
+      etymology: { origin: "拉丁", root: "acerbus", meaning: "尖锐的", evolution: "使更尖锐、恶化" },
+      examples: [{ sentence: "His comments exacerbated tensions.", translation: "他的评论加剧了紧张局势。" }],
+      synonyms: ["aggravate", "worsen"], antonyms: ["alleviate", "mitigate"]
+    },
+    {
+      english: "corroborate", chinese: "证实", wrongOptions: ["否定", "质疑"], icon: "✅",
+      morphology: { breakdown: "cor(共同) + robor(力量) + ate(动词后缀)" },
+      etymology: { origin: "拉丁", root: "robur", meaning: "力量", evolution: "共同增强，证实" },
+      examples: [{ sentence: "Evidence corroborates his story.", translation: "证据证实了他的说法。" }],
+      synonyms: ["confirm", "verify"], antonyms: ["contradict", "refute"]
+    },
+    {
+      english: "unprecedented", chinese: "史无前例的", wrongOptions: ["常见的", "传统的"], icon: "🆕",
+      morphology: { breakdown: "un(不) + pre(前) + ced(走) + ent + ed" },
+      etymology: { origin: "拉丁", root: "praecedere", meaning: "走在前面", evolution: "没有先例的" },
+      examples: [{ sentence: "An unprecedented achievement.", translation: "史无前例的成就。" }],
+      synonyms: ["unparalleled", "unique"], antonyms: ["common", "typical"]
+    },
+    {
+      english: "commensurate", chinese: "相称的", wrongOptions: ["不相称的", "过多的"], icon: "⚖️",
+      morphology: { breakdown: "com(共同) + mensur(测量) + ate" },
+      etymology: { origin: "拉丁", root: "mensura", meaning: "测量", evolution: "可以共同测量的、相称的" },
+      examples: [{ sentence: "Salary commensurate with experience.", translation: "薪水与经验相称。" }],
+      synonyms: ["proportionate", "corresponding"], antonyms: ["disproportionate", "inadequate"]
+    },
+    {
+      english: "disseminate", chinese: "传播", wrongOptions: ["隐藏", "保密"], icon: "📡",
+      morphology: { breakdown: "dis(分散) + semin(种子) + ate" },
+      etymology: { origin: "拉丁", root: "semen", meaning: "种子", evolution: "像播种一样散播" },
+      examples: [{ sentence: "Disseminate information widely.", translation: "广泛传播信息。" }],
+      synonyms: ["spread", "distribute"], antonyms: ["conceal", "suppress"]
+    },
+    {
+      english: "proliferate", chinese: "激增", wrongOptions: ["减少", "消失"], icon: "🌿",
+      morphology: { breakdown: "proli(后代) + fer(带来) + ate" },
+      etymology: { origin: "拉丁", root: "proles", meaning: "后代", evolution: "产生后代，大量增殖" },
+      examples: [{ sentence: "Nuclear weapons proliferate.", translation: "核武器在扩散。" }],
+      synonyms: ["multiply", "increase"], antonyms: ["decrease", "diminish"]
+    },
+    {
+      english: "relinquish", chinese: "放弃", wrongOptions: ["坚持", "获得"], icon: "🤲",
+      morphology: { breakdown: "re(后) + linqu(留下) + ish" },
+      etymology: { origin: "拉丁", root: "relinquere", meaning: "留在后面", evolution: "放弃、交出" },
+      examples: [{ sentence: "He relinquished control.", translation: "他放弃了控制权。" }],
+      synonyms: ["surrender", "abandon"], antonyms: ["retain", "keep"]
+    },
+    {
+      english: "culminate", chinese: "达到顶点", wrongOptions: ["开始", "下降"], icon: "🏔️",
+      morphology: { breakdown: "culmin(顶点) + ate" },
+      etymology: { origin: "拉丁", root: "culmen", meaning: "顶点", evolution: "到达最高点" },
+      examples: [{ sentence: "Efforts culminated in success.", translation: "努力最终获得成功。" }],
+      synonyms: ["peak", "climax"], antonyms: ["begin", "start"]
+    },
+    {
+      english: "exemplify", chinese: "例证", wrongOptions: ["反驳", "否定"], icon: "📋",
+      morphology: { breakdown: "ex(出) + empl(取) + ify(使)" },
+      etymology: { origin: "拉丁", root: "exemplum", meaning: "样本", evolution: "作为例子展示" },
+      examples: [{ sentence: "This exemplifies the problem.", translation: "这例证了这个问题。" }],
+      synonyms: ["illustrate", "demonstrate"], antonyms: ["contradict", "disprove"]
+    },
+    {
+      english: "precipitate", chinese: "促使/加速", wrongOptions: ["阻止", "延迟"], icon: "⏩",
+      morphology: { breakdown: "pre(前) + cipit(头) + ate" },
+      etymology: { origin: "拉丁", root: "praeceps", meaning: "头朝下", evolution: "迅速下落、加速" },
+      examples: [{ sentence: "The crisis precipitated changes.", translation: "危机加速了变革。" }],
+      synonyms: ["trigger", "hasten"], antonyms: ["delay", "prevent"]
+    },
+    {
+      english: "substantiate", chinese: "证实", wrongOptions: ["否定", "反驳"], icon: "📜",
+      morphology: { breakdown: "sub(下) + stant(站) + iate" },
+      etymology: { origin: "拉丁", root: "substantia", meaning: "实质", evolution: "提供实质证据" },
+      examples: [{ sentence: "Evidence to substantiate claims.", translation: "证实声称的证据。" }],
+      synonyms: ["verify", "prove"], antonyms: ["disprove", "refute"]
+    },
+    {
+      english: "juxtapose", chinese: "并列/对比", wrongOptions: ["分离", "隔开"], icon: "↔️",
+      morphology: { breakdown: "juxta(旁边) + pose(放置)" },
+      etymology: { origin: "拉丁", root: "juxta", meaning: "紧邻", evolution: "放在一起对比" },
+      examples: [{ sentence: "Juxtapose old and new.", translation: "将新旧并列对比。" }],
+      synonyms: ["compare", "contrast"], antonyms: ["separate", "isolate"]
+    },
+    {
+      english: "scrutinize", chinese: "仔细检查", wrongOptions: ["忽略", "草率看"], icon: "🔍",
+      morphology: { breakdown: "scrutin(检查) + ize(动词后缀)" },
+      etymology: { origin: "拉丁", root: "scrutari", meaning: "搜索", evolution: "仔细搜索检查" },
+      examples: [{ sentence: "Scrutinize the documents.", translation: "仔细检查文件。" }],
+      synonyms: ["examine", "inspect"], antonyms: ["overlook", "ignore"]
+    },
+    {
+      english: "articulate", chinese: "清晰表达", wrongOptions: ["含糊不清", "沉默"], icon: "💬",
+      morphology: { breakdown: "artic(关节) + ul + ate" },
+      etymology: { origin: "拉丁", root: "articulus", meaning: "小关节", evolution: "连接清晰、表达清楚" },
+      examples: [{ sentence: "Articulate your thoughts.", translation: "清晰表达你的想法。" }],
+      synonyms: ["express", "enunciate"], antonyms: ["mumble", "slur"]
+    },
+    {
+      english: "consolidate", chinese: "巩固/合并", wrongOptions: ["分散", "削弱"], icon: "🤝",
+      morphology: { breakdown: "con(共同) + solid(固体) + ate" },
+      etymology: { origin: "拉丁", root: "solidus", meaning: "坚固的", evolution: "使坚固、合并" },
+      examples: [{ sentence: "Consolidate market position.", translation: "巩固市场地位。" }],
+      synonyms: ["strengthen", "merge"], antonyms: ["weaken", "scatter"]
+    },
+    {
+      english: "alleviate", chinese: "减轻/缓解", wrongOptions: ["加重", "恶化"], icon: "💊",
+      morphology: { breakdown: "al(向) + levi(轻) + ate" },
+      etymology: { origin: "拉丁", root: "levis", meaning: "轻的", evolution: "使变轻、减轻" },
+      examples: [{ sentence: "Alleviate the pain.", translation: "缓解疼痛。" }],
+      synonyms: ["relieve", "ease"], antonyms: ["aggravate", "worsen"]
+    },
+    {
+      english: "mitigate", chinese: "减轻/缓和", wrongOptions: ["加剧", "恶化"], icon: "🛡️",
+      morphology: { breakdown: "mit(温和) + ig + ate" },
+      etymology: { origin: "拉丁", root: "mitis", meaning: "温和的", evolution: "使温和、减轻" },
+      examples: [{ sentence: "Mitigate the risks.", translation: "减轻风险。" }],
+      synonyms: ["lessen", "reduce"], antonyms: ["intensify", "exacerbate"]
+    },
+    {
+      english: "augment", chinese: "增加/扩大", wrongOptions: ["减少", "缩小"], icon: "➕",
+      morphology: { breakdown: "aug(增长) + ment" },
+      etymology: { origin: "拉丁", root: "augere", meaning: "增加", evolution: "使增加" },
+      examples: [{ sentence: "Augment your income.", translation: "增加你的收入。" }],
+      synonyms: ["increase", "enlarge"], antonyms: ["decrease", "reduce"]
+    },
+    {
+      english: "deteriorate", chinese: "恶化", wrongOptions: ["改善", "好转"], icon: "📉",
+      morphology: { breakdown: "de(向下) + terior(更坏) + ate" },
+      etymology: { origin: "拉丁", root: "deterior", meaning: "更坏的", evolution: "变得更坏" },
+      examples: [{ sentence: "His health deteriorated.", translation: "他的健康恶化了。" }],
+      synonyms: ["decline", "worsen"], antonyms: ["improve", "recover"]
+    },
+    {
+      english: "expedite", chinese: "加速/促进", wrongOptions: ["延迟", "阻碍"], icon: "🚀",
+      morphology: { breakdown: "ex(出) + ped(脚) + ite" },
+      etymology: { origin: "拉丁", root: "expedire", meaning: "解开脚镣", evolution: "使脱离束缚、加速" },
+      examples: [{ sentence: "Expedite the process.", translation: "加速这个过程。" }],
+      synonyms: ["accelerate", "hasten"], antonyms: ["delay", "hinder"]
+    },
+    {
+      english: "impede", chinese: "阻碍", wrongOptions: ["促进", "加速"], icon: "🚧",
+      morphology: { breakdown: "im(在…中) + ped(脚)" },
+      etymology: { origin: "拉丁", root: "impedire", meaning: "缠住脚", evolution: "阻止前进" },
+      examples: [{ sentence: "Don't impede progress.", translation: "不要阻碍进步。" }],
+      synonyms: ["obstruct", "hinder"], antonyms: ["facilitate", "assist"]
+    },
+    {
+      english: "facilitate", chinese: "促进/使便利", wrongOptions: ["阻碍", "妨碍"], icon: "🛤️",
+      morphology: { breakdown: "facil(容易) + itate" },
+      etymology: { origin: "拉丁", root: "facilis", meaning: "容易的", evolution: "使容易" },
+      examples: [{ sentence: "Technology facilitates learning.", translation: "技术促进学习。" }],
+      synonyms: ["ease", "assist"], antonyms: ["impede", "hinder"]
+    },
+    {
+      english: "hinder", chinese: "阻碍/妨碍", wrongOptions: ["帮助", "促进"], icon: "⛔",
+      morphology: { breakdown: "hind(后面) + er" },
+      etymology: { origin: "古英语", root: "hindrian", meaning: "在后面阻挡", evolution: "阻止前进" },
+      examples: [{ sentence: "Don't hinder my work.", translation: "不要妨碍我的工作。" }],
+      synonyms: ["obstruct", "impede"], antonyms: ["help", "assist"]
+    },
+    {
+      english: "undermine", chinese: "破坏/削弱", wrongOptions: ["加强", "支持"], icon: "💣",
+      morphology: { breakdown: "under(下面) + mine(挖掘)" },
+      etymology: { origin: "古英语", root: "underminen", meaning: "在下面挖", evolution: "暗中破坏" },
+      examples: [{ sentence: "Undermine someone's authority.", translation: "削弱某人的权威。" }],
+      synonyms: ["weaken", "sabotage"], antonyms: ["strengthen", "support"]
+    },
+    {
+      english: "reinforce", chinese: "加强/强化", wrongOptions: ["削弱", "破坏"], icon: "🔩",
+      morphology: { breakdown: "re(再) + in(进入) + force(力量)" },
+      etymology: { origin: "法语", root: "renforcer", meaning: "再加强", evolution: "增强力量" },
+      examples: [{ sentence: "Reinforce the structure.", translation: "加固结构。" }],
+      synonyms: ["strengthen", "fortify"], antonyms: ["weaken", "undermine"]
+    },
+    {
+      english: "supersede", chinese: "取代", wrongOptions: ["保留", "维持"], icon: "🔄",
+      morphology: { breakdown: "super(上) + sede(坐)" },
+      etymology: { origin: "拉丁", root: "supersedere", meaning: "坐在上面", evolution: "取而代之" },
+      examples: [{ sentence: "New rules supersede old ones.", translation: "新规则取代旧规则。" }],
+      synonyms: ["replace", "supplant"], antonyms: ["retain", "keep"]
+    },
+    {
+      english: "perpetuate", chinese: "使永久/延续", wrongOptions: ["终止", "结束"], icon: "🔁",
+      morphology: { breakdown: "per(贯穿) + pet(寻求) + uate" },
+      etymology: { origin: "拉丁", root: "perpetuus", meaning: "持续的", evolution: "使持续" },
+      examples: [{ sentence: "Perpetuate a tradition.", translation: "延续传统。" }],
+      synonyms: ["maintain", "preserve"], antonyms: ["end", "terminate"]
+    },
+    {
+      english: "eradicate", chinese: "根除", wrongOptions: ["保留", "培养"], icon: "🗑️",
+      morphology: { breakdown: "e(出) + radic(根) + ate" },
+      etymology: { origin: "拉丁", root: "radix", meaning: "根", evolution: "连根拔起" },
+      examples: [{ sentence: "Eradicate the disease.", translation: "根除疾病。" }],
+      synonyms: ["eliminate", "destroy"], antonyms: ["establish", "create"]
+    },
+    {
+      english: "pervasive", chinese: "普遍的/蔓延的", wrongOptions: ["罕见的", "局部的"], icon: "🌊",
+      morphology: { breakdown: "per(贯穿) + vas(走) + ive" },
+      etymology: { origin: "拉丁", root: "pervadere", meaning: "贯穿", evolution: "遍布各处" },
+      examples: [{ sentence: "A pervasive sense of fear.", translation: "普遍的恐惧感。" }],
+      synonyms: ["widespread", "prevalent"], antonyms: ["limited", "localized"]
+    },
+    {
+      english: "elusive", chinese: "难以捉摸的", wrongOptions: ["明显的", "容易抓住的"], icon: "👻",
+      morphology: { breakdown: "e(出) + lus(玩) + ive" },
+      etymology: { origin: "拉丁", root: "eludere", meaning: "躲避", evolution: "难以抓住" },
+      examples: [{ sentence: "An elusive goal.", translation: "难以实现的目标。" }],
+      synonyms: ["evasive", "slippery"], antonyms: ["accessible", "tangible"]
+    },
+    {
+      english: "tangible", chinese: "有形的/实际的", wrongOptions: ["无形的", "虚幻的"], icon: "✋",
+      morphology: { breakdown: "tang(触摸) + ible(能…的)" },
+      etymology: { origin: "拉丁", root: "tangere", meaning: "触摸", evolution: "可触摸的" },
+      examples: [{ sentence: "Tangible results.", translation: "实际的成果。" }],
+      synonyms: ["concrete", "palpable"], antonyms: ["intangible", "abstract"]
+    },
+    {
+      english: "intangible", chinese: "无形的", wrongOptions: ["有形的", "实际的"], icon: "💨",
+      morphology: { breakdown: "in(不) + tang(触摸) + ible" },
+      etymology: { origin: "拉丁", root: "tangere", meaning: "触摸", evolution: "不可触摸的" },
+      examples: [{ sentence: "Intangible assets like reputation.", translation: "如声誉等无形资产。" }],
+      synonyms: ["abstract", "immaterial"], antonyms: ["tangible", "concrete"]
+    },
+    {
+      english: "conspicuous", chinese: "显眼的", wrongOptions: ["不起眼的", "隐蔽的"], icon: "🌟",
+      morphology: { breakdown: "con(加强) + spic(看) + uous" },
+      etymology: { origin: "拉丁", root: "conspicere", meaning: "看见", evolution: "容易看见的" },
+      examples: [{ sentence: "A conspicuous sign.", translation: "显眼的标志。" }],
+      synonyms: ["noticeable", "prominent"], antonyms: ["inconspicuous", "hidden"]
+    },
+    {
+      english: "inconspicuous", chinese: "不显眼的", wrongOptions: ["显眼的", "突出的"], icon: "🥷",
+      morphology: { breakdown: "in(不) + con(加强) + spic(看) + uous" },
+      etymology: { origin: "拉丁", root: "conspicere", meaning: "看见", evolution: "不容易看见的" },
+      examples: [{ sentence: "An inconspicuous corner.", translation: "不起眼的角落。" }],
+      synonyms: ["unnoticeable", "hidden"], antonyms: ["conspicuous", "obvious"]
+    },
+    {
+      english: "ostensible", chinese: "表面上的", wrongOptions: ["真实的", "实际的"], icon: "🎭",
+      morphology: { breakdown: "ostens(展示) + ible" },
+      etymology: { origin: "拉丁", root: "ostendere", meaning: "展示", evolution: "表面展示的" },
+      examples: [{ sentence: "The ostensible reason.", translation: "表面上的原因。" }],
+      synonyms: ["apparent", "seeming"], antonyms: ["real", "genuine"]
+    },
+    {
+      english: "inherent", chinese: "固有的/内在的", wrongOptions: ["外在的", "后天的"], icon: "🧬",
+      morphology: { breakdown: "in(在内) + her(黏附) + ent" },
+      etymology: { origin: "拉丁", root: "inhaerere", meaning: "黏附于", evolution: "内在固有的" },
+      examples: [{ sentence: "Inherent risks.", translation: "固有的风险。" }],
+      synonyms: ["innate", "intrinsic"], antonyms: ["external", "acquired"]
+    },
+    {
+      english: "intrinsic", chinese: "内在的/本质的", wrongOptions: ["外在的", "表面的"], icon: "💎",
+      morphology: { breakdown: "intr(内部) + ins(在内) + ic" },
+      etymology: { origin: "拉丁", root: "intrinsecus", meaning: "在内部", evolution: "本质的" },
+      examples: [{ sentence: "Intrinsic value.", translation: "内在价值。" }],
+      synonyms: ["inherent", "essential"], antonyms: ["extrinsic", "external"]
+    },
+    {
+      english: "extrinsic", chinese: "外在的", wrongOptions: ["内在的", "本质的"], icon: "🌍",
+      morphology: { breakdown: "extr(外部) + ins(在内) + ic" },
+      etymology: { origin: "拉丁", root: "extrinsecus", meaning: "从外部", evolution: "外部的" },
+      examples: [{ sentence: "Extrinsic motivation.", translation: "外在动机。" }],
+      synonyms: ["external", "outward"], antonyms: ["intrinsic", "inherent"]
+    },
+    {
+      english: "mundane", chinese: "平凡的/世俗的", wrongOptions: ["非凡的", "神圣的"], icon: "📦",
+      morphology: { breakdown: "mund(世界) + ane" },
+      etymology: { origin: "拉丁", root: "mundus", meaning: "世界", evolution: "世俗的、平凡的" },
+      examples: [{ sentence: "Mundane daily tasks.", translation: "平凡的日常任务。" }],
+      synonyms: ["ordinary", "commonplace"], antonyms: ["extraordinary", "exceptional"]
+    },
+    {
+      english: "esoteric", chinese: "深奥的/内行的", wrongOptions: ["浅显的", "普通的"], icon: "🔐",
+      morphology: { breakdown: "eso(内部) + teric" },
+      etymology: { origin: "希腊", root: "esoterikos", meaning: "内部的", evolution: "只有内行人懂的" },
+      examples: [{ sentence: "Esoteric knowledge.", translation: "深奥的知识。" }],
+      synonyms: ["obscure", "arcane"], antonyms: ["common", "accessible"]
+    },
+    {
+      english: "prolific", chinese: "多产的", wrongOptions: ["低产的", "无产出的"], icon: "🖊️",
+      morphology: { breakdown: "proli(后代) + fic(做)" },
+      etymology: { origin: "拉丁", root: "proles", meaning: "后代", evolution: "产生很多后代的" },
+      examples: [{ sentence: "A prolific writer.", translation: "多产的作家。" }],
+      synonyms: ["productive", "fertile"], antonyms: ["unproductive", "barren"]
+    },
+    {
+      english: "frugal", chinese: "节俭的", wrongOptions: ["奢侈的", "浪费的"], icon: "💰",
+      morphology: { breakdown: "frug(果实) + al" },
+      etymology: { origin: "拉丁", root: "frugalis", meaning: "节俭的", evolution: "只吃果实、节约" },
+      examples: [{ sentence: "A frugal lifestyle.", translation: "节俭的生活方式。" }],
+      synonyms: ["thrifty", "economical"], antonyms: ["extravagant", "wasteful"]
+    },
+    {
+      english: "lavish", chinese: "奢侈的/大方的", wrongOptions: ["节俭的", "吝啬的"], icon: "👑",
+      morphology: { breakdown: "lav(洗) + ish" },
+      etymology: { origin: "法语", root: "lavasse", meaning: "大雨", evolution: "像大雨一样倾泻、奢华" },
+      examples: [{ sentence: "A lavish party.", translation: "奢华的派对。" }],
+      synonyms: ["extravagant", "luxurious"], antonyms: ["frugal", "modest"]
+    },
+    {
+      english: "austere", chinese: "朴素的/严厉的", wrongOptions: ["奢华的", "温和的"], icon: "🏛️",
+      morphology: { breakdown: "auster(干燥) + e" },
+      etymology: { origin: "希腊", root: "austeros", meaning: "干燥的", evolution: "严峻的、朴素的" },
+      examples: [{ sentence: "An austere lifestyle.", translation: "朴素的生活方式。" }],
+      synonyms: ["severe", "plain"], antonyms: ["luxurious", "indulgent"]
+    },
+    {
+      english: "benevolent", chinese: "仁慈的", wrongOptions: ["恶毒的", "自私的"], icon: "😇",
+      morphology: { breakdown: "bene(好) + vol(意愿) + ent" },
+      etymology: { origin: "拉丁", root: "benevolens", meaning: "好意的", evolution: "善意的、仁慈的" },
+      examples: [{ sentence: "A benevolent ruler.", translation: "仁慈的统治者。" }],
+      synonyms: ["kind", "charitable"], antonyms: ["malevolent", "cruel"]
+    },
+    {
+      english: "malevolent", chinese: "恶意的", wrongOptions: ["善意的", "仁慈的"], icon: "😈",
+      morphology: { breakdown: "male(坏) + vol(意愿) + ent" },
+      etymology: { origin: "拉丁", root: "malevolens", meaning: "恶意的", evolution: "怀有恶意的" },
+      examples: [{ sentence: "A malevolent smile.", translation: "恶意的微笑。" }],
+      synonyms: ["malicious", "spiteful"], antonyms: ["benevolent", "kind"]
+    },
+    {
+      english: "altruistic", chinese: "利他的/无私的", wrongOptions: ["自私的", "利己的"], icon: "🤲",
+      morphology: { breakdown: "altr(他人) + uistic" },
+      etymology: { origin: "拉丁", root: "alter", meaning: "其他", evolution: "为他人着想的" },
+      examples: [{ sentence: "Altruistic behavior.", translation: "利他行为。" }],
+      synonyms: ["selfless", "unselfish"], antonyms: ["selfish", "egocentric"]
+    },
+    {
+      english: "egocentric", chinese: "自我中心的", wrongOptions: ["无私的", "利他的"], icon: "🪞",
+      morphology: { breakdown: "ego(自我) + centr(中心) + ic" },
+      etymology: { origin: "拉丁", root: "ego", meaning: "我", evolution: "以自我为中心" },
+      examples: [{ sentence: "Egocentric attitude.", translation: "自我中心的态度。" }],
+      synonyms: ["self-centered", "selfish"], antonyms: ["altruistic", "selfless"]
+    },
+    {
+      english: "complacent", chinese: "自满的", wrongOptions: ["谦虚的", "上进的"], icon: "😌",
+      morphology: { breakdown: "com(加强) + plac(取悦) + ent" },
+      etymology: { origin: "拉丁", root: "complacere", meaning: "取悦", evolution: "自我满足的" },
+      examples: [{ sentence: "Don't become complacent.", translation: "不要变得自满。" }],
+      synonyms: ["smug", "self-satisfied"], antonyms: ["humble", "ambitious"]
+    },
+    {
+      english: "diligent", chinese: "勤奋的", wrongOptions: ["懒惰的", "懈怠的"], icon: "📚",
+      morphology: { breakdown: "di(分散) + lig(选择) + ent" },
+      etymology: { origin: "拉丁", root: "diligere", meaning: "珍视", evolution: "认真对待、勤奋" },
+      examples: [{ sentence: "A diligent student.", translation: "勤奋的学生。" }],
+      synonyms: ["industrious", "hardworking"], antonyms: ["lazy", "idle"]
+    },
+    {
+      english: "lethargic", chinese: "无精打采的", wrongOptions: ["精力充沛的", "活跃的"], icon: "😴",
+      morphology: { breakdown: "leth(遗忘) + arg(不活动) + ic" },
+      etymology: { origin: "希腊", root: "lethargia", meaning: "健忘", evolution: "昏昏欲睡的" },
+      examples: [{ sentence: "Feeling lethargic today.", translation: "今天感觉无精打采。" }],
+      synonyms: ["sluggish", "drowsy"], antonyms: ["energetic", "lively"]
+    },
+    {
+      english: "volatile", chinese: "易变的/不稳定的", wrongOptions: ["稳定的", "不变的"], icon: "🎢",
+      morphology: { breakdown: "volat(飞) + ile" },
+      etymology: { origin: "拉丁", root: "volare", meaning: "飞", evolution: "易飞走的、不稳定" },
+      examples: [{ sentence: "A volatile market.", translation: "动荡的市场。" }],
+      synonyms: ["unstable", "unpredictable"], antonyms: ["stable", "steady"]
+    },
+    {
+      english: "immutable", chinese: "不变的", wrongOptions: ["易变的", "可改变的"], icon: "🗿",
+      morphology: { breakdown: "im(不) + mut(改变) + able" },
+      etymology: { origin: "拉丁", root: "mutare", meaning: "改变", evolution: "不可改变的" },
+      examples: [{ sentence: "Immutable laws of nature.", translation: "不变的自然法则。" }],
+      synonyms: ["unchangeable", "fixed"], antonyms: ["mutable", "changeable"]
+    },
+    {
+      english: "transient", chinese: "短暂的/临时的", wrongOptions: ["永久的", "持久的"], icon: "⏱️",
+      morphology: { breakdown: "trans(穿过) + i + ent" },
+      etymology: { origin: "拉丁", root: "transire", meaning: "经过", evolution: "转瞬即逝的" },
+      examples: [{ sentence: "A transient phase.", translation: "短暂的阶段。" }],
+      synonyms: ["temporary", "fleeting"], antonyms: ["permanent", "lasting"]
+    },
+    {
+      english: "perpetual", chinese: "永久的/持续的", wrongOptions: ["短暂的", "临时的"], icon: "♾️",
+      morphology: { breakdown: "per(贯穿) + pet(寻求) + ual" },
+      etymology: { origin: "拉丁", root: "perpetuus", meaning: "持续的", evolution: "永久持续的" },
+      examples: [{ sentence: "Perpetual motion.", translation: "永动。" }],
+      synonyms: ["eternal", "everlasting"], antonyms: ["temporary", "transient"]
+    },
+    {
+      english: "sporadic", chinese: "零星的/偶发的", wrongOptions: ["频繁的", "持续的"], icon: "💧",
+      morphology: { breakdown: "sporad(散播) + ic" },
+      etymology: { origin: "希腊", root: "sporadikos", meaning: "分散的", evolution: "零星发生的" },
+      examples: [{ sentence: "Sporadic outbreaks.", translation: "零星的爆发。" }],
+      synonyms: ["occasional", "irregular"], antonyms: ["frequent", "constant"]
+    },
+    {
+      english: "perennial", chinese: "多年生的/持久的", wrongOptions: ["短暂的", "一年生的"], icon: "🌳",
+      morphology: { breakdown: "per(贯穿) + enni(年) + al" },
+      etymology: { origin: "拉丁", root: "perennis", meaning: "全年的", evolution: "持续多年的" },
+      examples: [{ sentence: "A perennial problem.", translation: "长期存在的问题。" }],
+      synonyms: ["enduring", "persistent"], antonyms: ["temporary", "annual"]
+    },
+    {
+      english: "nascent", chinese: "新生的/萌芽的", wrongOptions: ["成熟的", "衰老的"], icon: "🌱",
+      morphology: { breakdown: "nasc(出生) + ent" },
+      etymology: { origin: "拉丁", root: "nasci", meaning: "出生", evolution: "刚出生的、萌芽的" },
+      examples: [{ sentence: "A nascent industry.", translation: "新兴产业。" }],
+      synonyms: ["emerging", "budding"], antonyms: ["mature", "established"]
+    },
+    {
+      english: "obsolete", chinese: "过时的/废弃的", wrongOptions: ["现代的", "流行的"], icon: "📟",
+      morphology: { breakdown: "ob(对着) + sol(习惯) + ete" },
+      etymology: { origin: "拉丁", root: "obsolescere", meaning: "变旧", evolution: "过时的" },
+      examples: [{ sentence: "Obsolete technology.", translation: "过时的技术。" }],
+      synonyms: ["outdated", "antiquated"], antonyms: ["modern", "current"]
+    },
+    {
+      english: "archaic", chinese: "古老的/陈旧的", wrongOptions: ["现代的", "新颖的"], icon: "🏺",
+      morphology: { breakdown: "arch(古老) + aic" },
+      etymology: { origin: "希腊", root: "arkhaikos", meaning: "古老的", evolution: "远古的、陈旧的" },
+      examples: [{ sentence: "Archaic language.", translation: "古老的语言。" }],
+      synonyms: ["ancient", "antiquated"], antonyms: ["modern", "contemporary"]
+    },
+    {
+      english: "novel", chinese: "新颖的", wrongOptions: ["陈旧的", "过时的"], icon: "✨",
+      morphology: { breakdown: "nov(新) + el" },
+      etymology: { origin: "拉丁", root: "novus", meaning: "新的", evolution: "新奇的" },
+      examples: [{ sentence: "A novel approach.", translation: "新颖的方法。" }],
+      synonyms: ["new", "innovative"], antonyms: ["old", "traditional"]
+    },
+    {
+      english: "orthodox", chinese: "正统的/传统的", wrongOptions: ["非正统的", "创新的"], icon: "⛪",
+      morphology: { breakdown: "ortho(正确) + dox(观点)" },
+      etymology: { origin: "希腊", root: "orthodoxos", meaning: "正确观点", evolution: "正统的" },
+      examples: [{ sentence: "Orthodox methods.", translation: "传统方法。" }],
+      synonyms: ["conventional", "traditional"], antonyms: ["unorthodox", "unconventional"]
+    },
+    {
+      english: "unorthodox", chinese: "非正统的", wrongOptions: ["传统的", "保守的"], icon: "🎪",
+      morphology: { breakdown: "un(不) + ortho(正确) + dox(观点)" },
+      etymology: { origin: "希腊", root: "orthodoxos", meaning: "正确观点", evolution: "非正统的" },
+      examples: [{ sentence: "An unorthodox solution.", translation: "非传统的解决方案。" }],
+      synonyms: ["unconventional", "unusual"], antonyms: ["orthodox", "conventional"]
+    },
+    {
+      english: "empirical", chinese: "经验的/实证的", wrongOptions: ["理论的", "假设的"], icon: "🔬",
+      morphology: { breakdown: "empir(经验) + ical" },
+      etymology: { origin: "希腊", root: "empeiria", meaning: "经验", evolution: "基于经验的" },
+      examples: [{ sentence: "Empirical evidence.", translation: "实证证据。" }],
+      synonyms: ["experimental", "practical"], antonyms: ["theoretical", "hypothetical"]
+    },
+    {
+      english: "theoretical", chinese: "理论的", wrongOptions: ["实践的", "经验的"], icon: "📐",
+      morphology: { breakdown: "theor(观看) + etical" },
+      etymology: { origin: "希腊", root: "theoria", meaning: "观察", evolution: "理论上的" },
+      examples: [{ sentence: "Theoretical physics.", translation: "理论物理。" }],
+      synonyms: ["abstract", "hypothetical"], antonyms: ["practical", "empirical"]
+    },
+    {
+      english: "hypothetical", chinese: "假设的", wrongOptions: ["实际的", "真实的"], icon: "❓",
+      morphology: { breakdown: "hypo(在下) + thet(放置) + ical" },
+      etymology: { origin: "希腊", root: "hypothesis", meaning: "假设", evolution: "假设的" },
+      examples: [{ sentence: "A hypothetical scenario.", translation: "假设的场景。" }],
+      synonyms: ["supposed", "theoretical"], antonyms: ["actual", "real"]
+    },
+    {
+      english: "spurious", chinese: "虚假的/伪造的", wrongOptions: ["真实的", "可靠的"], icon: "🎭",
+      morphology: { breakdown: "spur(假的) + ious" },
+      etymology: { origin: "拉丁", root: "spurius", meaning: "私生子", evolution: "假的、伪造的" },
+      examples: [{ sentence: "Spurious claims.", translation: "虚假的声称。" }],
+      synonyms: ["false", "fake"], antonyms: ["genuine", "authentic"]
+    },
+    {
+      english: "authentic", chinese: "真实的/可靠的", wrongOptions: ["虚假的", "伪造的"], icon: "🏅",
+      morphology: { breakdown: "auth(自己) + entic" },
+      etymology: { origin: "希腊", root: "authentikos", meaning: "原创的", evolution: "真实的" },
+      examples: [{ sentence: "Authentic documents.", translation: "真实的文件。" }],
+      synonyms: ["genuine", "real"], antonyms: ["fake", "counterfeit"]
+    },
+    {
+      english: "covert", chinese: "秘密的/隐蔽的", wrongOptions: ["公开的", "明显的"], icon: "🕵️",
+      morphology: { breakdown: "co(加强) + vert(转)" },
+      etymology: { origin: "法语", root: "covert", meaning: "覆盖的", evolution: "隐蔽的" },
+      examples: [{ sentence: "A covert operation.", translation: "秘密行动。" }],
+      synonyms: ["secret", "hidden"], antonyms: ["overt", "open"]
+    },
+    {
+      english: "overt", chinese: "公开的/明显的", wrongOptions: ["秘密的", "隐蔽的"], icon: "📢",
+      morphology: { breakdown: "o(打开) + vert(转)" },
+      etymology: { origin: "法语", root: "overt", meaning: "打开的", evolution: "公开的" },
+      examples: [{ sentence: "Overt hostility.", translation: "公开的敌意。" }],
+      synonyms: ["open", "obvious"], antonyms: ["covert", "hidden"]
+    },
+    {
+      english: "implicit", chinese: "含蓄的/暗示的", wrongOptions: ["明确的", "直接的"], icon: "🤫",
+      morphology: { breakdown: "im(在内) + plic(折叠) + it" },
+      etymology: { origin: "拉丁", root: "implicare", meaning: "卷入", evolution: "隐含的" },
+      examples: [{ sentence: "Implicit agreement.", translation: "默示同意。" }],
+      synonyms: ["implied", "tacit"], antonyms: ["explicit", "direct"]
+    },
+    {
+      english: "explicit", chinese: "明确的/直接的", wrongOptions: ["含蓄的", "暗示的"], icon: "📣",
+      morphology: { breakdown: "ex(出) + plic(折叠) + it" },
+      etymology: { origin: "拉丁", root: "explicare", meaning: "展开", evolution: "明确展示的" },
+      examples: [{ sentence: "Explicit instructions.", translation: "明确的指示。" }],
+      synonyms: ["clear", "direct"], antonyms: ["implicit", "vague"]
+    },
+    {
+      english: "verbose", chinese: "冗长的/啰嗦的", wrongOptions: ["简洁的", "精炼的"], icon: "📝",
+      morphology: { breakdown: "verb(词) + ose(多)" },
+      etymology: { origin: "拉丁", root: "verbosus", meaning: "多话的", evolution: "冗长的" },
+      examples: [{ sentence: "A verbose explanation.", translation: "冗长的解释。" }],
+      synonyms: ["wordy", "long-winded"], antonyms: ["concise", "brief"]
+    },
+    {
+      english: "concise", chinese: "简洁的", wrongOptions: ["冗长的", "啰嗦的"], icon: "✂️",
+      morphology: { breakdown: "con(加强) + cis(切)" },
+      etymology: { origin: "拉丁", root: "concisus", meaning: "切短", evolution: "简洁的" },
+      examples: [{ sentence: "A concise summary.", translation: "简洁的总结。" }],
+      synonyms: ["brief", "succinct"], antonyms: ["verbose", "lengthy"]
+    },
+    {
+      english: "succinct", chinese: "简明的/紧凑的", wrongOptions: ["冗长的", "繁琐的"], icon: "📌",
+      morphology: { breakdown: "suc(下) + cinct(束紧)" },
+      etymology: { origin: "拉丁", root: "succinctus", meaning: "束紧腰带", evolution: "紧凑的" },
+      examples: [{ sentence: "A succinct report.", translation: "简明的报告。" }],
+      synonyms: ["brief", "terse"], antonyms: ["verbose", "rambling"]
+    },
+    {
+      english: "lucid", chinese: "清晰的/明了的", wrongOptions: ["模糊的", "混乱的"], icon: "💡",
+      morphology: { breakdown: "luc(光) + id" },
+      etymology: { origin: "拉丁", root: "lucidus", meaning: "明亮的", evolution: "清晰的" },
+      examples: [{ sentence: "A lucid explanation.", translation: "清晰的解释。" }],
+      synonyms: ["clear", "intelligible"], antonyms: ["confusing", "obscure"]
+    },
+    {
+      english: "cryptic", chinese: "神秘的/含义模糊的", wrongOptions: ["清晰的", "明了的"], icon: "🔮",
+      morphology: { breakdown: "crypt(隐藏) + ic" },
+      etymology: { origin: "希腊", root: "kryptos", meaning: "隐藏的", evolution: "神秘难懂的" },
+      examples: [{ sentence: "A cryptic message.", translation: "神秘的信息。" }],
+      synonyms: ["mysterious", "obscure"], antonyms: ["clear", "obvious"]
+    },
+    // 新增词汇 (91-200)
+    {
+      english: "arduous", chinese: "艰巨的", wrongOptions: ["简单的", "轻松的"], icon: "⛰️",
+      morphology: { breakdown: "ardu(陡峭) + ous" },
+      etymology: { origin: "拉丁", root: "arduus", meaning: "陡峭的", evolution: "费力的、艰巨的" },
+      examples: [{ sentence: "An arduous journey.", translation: "艰巨的旅程。" }],
+      synonyms: ["difficult", "strenuous"], antonyms: ["easy", "effortless"]
+    },
+    {
+      english: "auspicious", chinese: "吉祥的", wrongOptions: ["不祥的", "倒霉的"], icon: "🍀",
+      morphology: { breakdown: "au(鸟) + spic(看) + ious" },
+      etymology: { origin: "拉丁", root: "auspicium", meaning: "观鸟占卜", evolution: "好兆头的" },
+      examples: [{ sentence: "An auspicious beginning.", translation: "吉祥的开端。" }],
+      synonyms: ["favorable", "promising"], antonyms: ["ominous", "unfavorable"]
+    },
+    {
+      english: "candid", chinese: "坦率的", wrongOptions: ["虚伪的", "隐瞒的"], icon: "💬",
+      morphology: { breakdown: "cand(白) + id" },
+      etymology: { origin: "拉丁", root: "candidus", meaning: "白色的", evolution: "坦白的、坦率的" },
+      examples: [{ sentence: "A candid opinion.", translation: "坦率的意见。" }],
+      synonyms: ["frank", "honest"], antonyms: ["deceptive", "evasive"]
+    },
+    {
+      english: "capricious", chinese: "反复无常的", wrongOptions: ["稳定的", "可靠的"], icon: "🎭",
+      morphology: { breakdown: "capr(山羊) + icious" },
+      etymology: { origin: "意大利", root: "capriccio", meaning: "山羊跳跃", evolution: "变化无常的" },
+      examples: [{ sentence: "Capricious weather.", translation: "变化无常的天气。" }],
+      synonyms: ["fickle", "unpredictable"], antonyms: ["steady", "constant"]
+    },
+    {
+      english: "daunting", chinese: "令人畏惧的", wrongOptions: ["鼓舞人心的", "简单的"], icon: "😰",
+      morphology: { breakdown: "daunt(威吓) + ing" },
+      etymology: { origin: "法语", root: "danter", meaning: "驯服", evolution: "使人胆怯的" },
+      examples: [{ sentence: "A daunting task.", translation: "令人畏惧的任务。" }],
+      synonyms: ["intimidating", "formidable"], antonyms: ["encouraging", "reassuring"]
+    },
+    {
+      english: "discern", chinese: "辨别/识别", wrongOptions: ["混淆", "忽视"], icon: "👁️",
+      morphology: { breakdown: "dis(分开) + cern(筛选)" },
+      etymology: { origin: "拉丁", root: "discernere", meaning: "分开", evolution: "辨别" },
+      examples: [{ sentence: "Discern truth from lies.", translation: "辨别真假。" }],
+      synonyms: ["perceive", "distinguish"], antonyms: ["overlook", "confuse"]
+    },
+    {
+      english: "eccentric", chinese: "古怪的", wrongOptions: ["正常的", "普通的"], icon: "🤪",
+      morphology: { breakdown: "ec(出) + centr(中心) + ic" },
+      etymology: { origin: "希腊", root: "ekkentros", meaning: "偏离中心", evolution: "古怪的" },
+      examples: [{ sentence: "An eccentric professor.", translation: "古怪的教授。" }],
+      synonyms: ["odd", "peculiar"], antonyms: ["normal", "conventional"]
+    },
+    {
+      english: "fervent", chinese: "热烈的", wrongOptions: ["冷淡的", "漠不关心的"], icon: "🔥",
+      morphology: { breakdown: "ferv(沸腾) + ent" },
+      etymology: { origin: "拉丁", root: "fervere", meaning: "沸腾", evolution: "热烈的" },
+      examples: [{ sentence: "Fervent support.", translation: "热烈的支持。" }],
+      synonyms: ["passionate", "ardent"], antonyms: ["apathetic", "indifferent"]
+    },
+    {
+      english: "gregarious", chinese: "爱社交的", wrongOptions: ["孤僻的", "内向的"], icon: "🎉",
+      morphology: { breakdown: "greg(群) + arious" },
+      etymology: { origin: "拉丁", root: "grex", meaning: "群", evolution: "喜欢群居的" },
+      examples: [{ sentence: "A gregarious personality.", translation: "爱社交的性格。" }],
+      synonyms: ["sociable", "outgoing"], antonyms: ["solitary", "introverted"]
+    },
+    {
+      english: "hackneyed", chinese: "陈腐的", wrongOptions: ["新颖的", "创新的"], icon: "📜",
+      morphology: { breakdown: "hackney(出租马车) + ed" },
+      etymology: { origin: "英语", root: "Hackney", meaning: "地名", evolution: "用滥了的" },
+      examples: [{ sentence: "A hackneyed phrase.", translation: "陈腐的短语。" }],
+      synonyms: ["clichéd", "overused"], antonyms: ["original", "fresh"]
+    },
+    {
+      english: "impeccable", chinese: "无可挑剔的", wrongOptions: ["有缺陷的", "不完美的"], icon: "✨",
+      morphology: { breakdown: "im(不) + pecc(罪) + able" },
+      etymology: { origin: "拉丁", root: "peccare", meaning: "犯罪", evolution: "无罪的、完美的" },
+      examples: [{ sentence: "Impeccable manners.", translation: "无可挑剔的礼仪。" }],
+      synonyms: ["flawless", "perfect"], antonyms: ["flawed", "imperfect"]
+    },
+    {
+      english: "judicious", chinese: "明智的", wrongOptions: ["愚蠢的", "草率的"], icon: "⚖️",
+      morphology: { breakdown: "judic(判断) + ious" },
+      etymology: { origin: "拉丁", root: "judicium", meaning: "判断", evolution: "有判断力的" },
+      examples: [{ sentence: "A judicious decision.", translation: "明智的决定。" }],
+      synonyms: ["wise", "prudent"], antonyms: ["foolish", "rash"]
+    },
+    {
+      english: "lament", chinese: "哀悼/悲叹", wrongOptions: ["庆祝", "欢呼"], icon: "😢",
+      morphology: { breakdown: "lament(哭泣)" },
+      etymology: { origin: "拉丁", root: "lamentum", meaning: "哀号", evolution: "悲叹" },
+      examples: [{ sentence: "Lament the loss.", translation: "哀悼损失。" }],
+      synonyms: ["mourn", "grieve"], antonyms: ["celebrate", "rejoice"]
+    },
+    {
+      english: "meager", chinese: "贫乏的/微薄的", wrongOptions: ["丰富的", "充足的"], icon: "🥣",
+      morphology: { breakdown: "meager(瘦的)" },
+      etymology: { origin: "法语", root: "maigre", meaning: "瘦的", evolution: "贫乏的" },
+      examples: [{ sentence: "A meager salary.", translation: "微薄的工资。" }],
+      synonyms: ["scanty", "sparse"], antonyms: ["abundant", "plentiful"]
+    },
+    {
+      english: "nonchalant", chinese: "漠不关心的", wrongOptions: ["热情的", "焦虑的"], icon: "😎",
+      morphology: { breakdown: "non(不) + chal(热) + ant" },
+      etymology: { origin: "法语", root: "nonchaloir", meaning: "不关心", evolution: "冷漠的" },
+      examples: [{ sentence: "A nonchalant attitude.", translation: "漫不经心的态度。" }],
+      synonyms: ["indifferent", "casual"], antonyms: ["concerned", "anxious"]
+    },
+    {
+      english: "obstinate", chinese: "固执的", wrongOptions: ["灵活的", "顺从的"], icon: "🦴",
+      morphology: { breakdown: "ob(对着) + stin(站) + ate" },
+      etymology: { origin: "拉丁", root: "obstinatus", meaning: "坚持", evolution: "固执的" },
+      examples: [{ sentence: "An obstinate refusal.", translation: "固执的拒绝。" }],
+      synonyms: ["stubborn", "headstrong"], antonyms: ["flexible", "yielding"]
+    },
+    {
+      english: "penchant", chinese: "爱好/嗜好", wrongOptions: ["厌恶", "反感"], icon: "💕",
+      morphology: { breakdown: "pench(倾斜) + ant" },
+      etymology: { origin: "法语", root: "pencher", meaning: "倾斜", evolution: "倾向、爱好" },
+      examples: [{ sentence: "A penchant for adventure.", translation: "对冒险的爱好。" }],
+      synonyms: ["liking", "fondness"], antonyms: ["aversion", "dislike"]
+    },
+    {
+      english: "querulous", chinese: "抱怨的", wrongOptions: ["满足的", "知足的"], icon: "😤",
+      morphology: { breakdown: "querul(抱怨) + ous" },
+      etymology: { origin: "拉丁", root: "querulus", meaning: "抱怨的", evolution: "爱抱怨的" },
+      examples: [{ sentence: "A querulous tone.", translation: "抱怨的语气。" }],
+      synonyms: ["complaining", "whiny"], antonyms: ["content", "satisfied"]
+    },
+    {
+      english: "reticent", chinese: "沉默寡言的", wrongOptions: ["健谈的", "外向的"], icon: "🤐",
+      morphology: { breakdown: "re(回) + tic(沉默) + ent" },
+      etymology: { origin: "拉丁", root: "reticere", meaning: "保持沉默", evolution: "沉默的" },
+      examples: [{ sentence: "Reticent about the past.", translation: "对过去沉默寡言。" }],
+      synonyms: ["reserved", "taciturn"], antonyms: ["talkative", "forthcoming"]
+    },
+    {
+      english: "salient", chinese: "显著的", wrongOptions: ["不重要的", "次要的"], icon: "📍",
+      morphology: { breakdown: "sal(跳) + ient" },
+      etymology: { origin: "拉丁", root: "salire", meaning: "跳", evolution: "突出的" },
+      examples: [{ sentence: "The salient points.", translation: "要点。" }],
+      synonyms: ["prominent", "notable"], antonyms: ["insignificant", "minor"]
+    },
+    {
+      english: "tacit", chinese: "心照不宣的", wrongOptions: ["明确的", "直接的"], icon: "🤝",
+      morphology: { breakdown: "tac(沉默) + it" },
+      etymology: { origin: "拉丁", root: "tacitus", meaning: "沉默的", evolution: "默示的" },
+      examples: [{ sentence: "Tacit approval.", translation: "默许。" }],
+      synonyms: ["implicit", "unspoken"], antonyms: ["explicit", "stated"]
+    },
+    {
+      english: "ubiquitous", chinese: "无处不在的", wrongOptions: ["罕见的", "稀有的"], icon: "🌍",
+      morphology: { breakdown: "ubique(到处) + ous" },
+      etymology: { origin: "拉丁", root: "ubique", meaning: "到处", evolution: "无处不在的" },
+      examples: [{ sentence: "Ubiquitous smartphones.", translation: "无处不在的智能手机。" }],
+      synonyms: ["omnipresent", "universal"], antonyms: ["rare", "uncommon"]
+    },
+    {
+      english: "vacillate", chinese: "犹豫不决", wrongOptions: ["果断", "坚定"], icon: "⚖️",
+      morphology: { breakdown: "vacill(摇摆) + ate" },
+      etymology: { origin: "拉丁", root: "vacillare", meaning: "摇摆", evolution: "犹豫" },
+      examples: [{ sentence: "Vacillate between options.", translation: "在选项间犹豫。" }],
+      synonyms: ["waver", "hesitate"], antonyms: ["decide", "resolve"]
+    },
+    {
+      english: "zealous", chinese: "热心的", wrongOptions: ["冷漠的", "消极的"], icon: "💪",
+      morphology: { breakdown: "zeal(热情) + ous" },
+      etymology: { origin: "希腊", root: "zelos", meaning: "热情", evolution: "热心的" },
+      examples: [{ sentence: "A zealous advocate.", translation: "热心的倡导者。" }],
+      synonyms: ["passionate", "enthusiastic"], antonyms: ["apathetic", "indifferent"]
+    },
+    {
+      english: "aberration", chinese: "反常/偏差", wrongOptions: ["常态", "正常"], icon: "📉",
+      morphology: { breakdown: "ab(离开) + err(走) + ation" },
+      etymology: { origin: "拉丁", root: "aberrare", meaning: "偏离", evolution: "偏差" },
+      examples: [{ sentence: "A statistical aberration.", translation: "统计偏差。" }],
+      synonyms: ["anomaly", "deviation"], antonyms: ["norm", "standard"]
+    },
+    {
+      english: "belligerent", chinese: "好战的", wrongOptions: ["和平的", "友好的"], icon: "⚔️",
+      morphology: { breakdown: "bell(战争) + iger(带来) + ent" },
+      etymology: { origin: "拉丁", root: "bellum", meaning: "战争", evolution: "好战的" },
+      examples: [{ sentence: "Belligerent behavior.", translation: "好战的行为。" }],
+      synonyms: ["aggressive", "hostile"], antonyms: ["peaceful", "friendly"]
+    },
+    {
+      english: "circumspect", chinese: "谨慎的", wrongOptions: ["鲁莽的", "冲动的"], icon: "🔍",
+      morphology: { breakdown: "circum(周围) + spect(看)" },
+      etymology: { origin: "拉丁", root: "circumspicere", meaning: "环顾", evolution: "谨慎的" },
+      examples: [{ sentence: "A circumspect approach.", translation: "谨慎的方法。" }],
+      synonyms: ["cautious", "prudent"], antonyms: ["reckless", "careless"]
+    },
+    {
+      english: "deleterious", chinese: "有害的", wrongOptions: ["有益的", "健康的"], icon: "☠️",
+      morphology: { breakdown: "delete(删除) + rious" },
+      etymology: { origin: "希腊", root: "deleterios", meaning: "有害的", evolution: "造成伤害的" },
+      examples: [{ sentence: "Deleterious effects.", translation: "有害影响。" }],
+      synonyms: ["harmful", "detrimental"], antonyms: ["beneficial", "helpful"]
+    },
+    {
+      english: "equivocal", chinese: "模棱两可的", wrongOptions: ["明确的", "清晰的"], icon: "❔",
+      morphology: { breakdown: "equi(相等) + voc(声音) + al" },
+      etymology: { origin: "拉丁", root: "aequivocus", meaning: "相同声音", evolution: "含糊的" },
+      examples: [{ sentence: "An equivocal response.", translation: "模棱两可的回应。" }],
+      synonyms: ["ambiguous", "vague"], antonyms: ["clear", "definite"]
+    },
+    {
+      english: "fastidious", chinese: "挑剔的", wrongOptions: ["随便的", "马虎的"], icon: "🧐",
+      morphology: { breakdown: "fastidi(厌恶) + ous" },
+      etymology: { origin: "拉丁", root: "fastidium", meaning: "厌恶", evolution: "过分讲究的" },
+      examples: [{ sentence: "Fastidious about cleanliness.", translation: "对清洁很挑剔。" }],
+      synonyms: ["meticulous", "fussy"], antonyms: ["careless", "sloppy"]
+    },
+    {
+      english: "gratuitous", chinese: "无偿的/不必要的", wrongOptions: ["必要的", "有偿的"], icon: "🆓",
+      morphology: { breakdown: "gratu(感谢) + itous" },
+      etymology: { origin: "拉丁", root: "gratuitus", meaning: "免费的", evolution: "无偿的" },
+      examples: [{ sentence: "Gratuitous violence.", translation: "无端的暴力。" }],
+      synonyms: ["unnecessary", "unwarranted"], antonyms: ["necessary", "justified"]
+    },
+    {
+      english: "heinous", chinese: "十恶不赦的", wrongOptions: ["善良的", "高尚的"], icon: "👿",
+      morphology: { breakdown: "hein(仇恨) + ous" },
+      etymology: { origin: "法语", root: "haïneux", meaning: "可恨的", evolution: "极恶的" },
+      examples: [{ sentence: "A heinous crime.", translation: "滔天大罪。" }],
+      synonyms: ["atrocious", "evil"], antonyms: ["admirable", "praiseworthy"]
+    },
+    {
+      english: "iconoclast", chinese: "打破传统者", wrongOptions: ["保守派", "传统主义者"], icon: "🔨",
+      morphology: { breakdown: "icon(偶像) + clast(打破)" },
+      etymology: { origin: "希腊", root: "eikonoklastes", meaning: "打破偶像者", evolution: "反传统者" },
+      examples: [{ sentence: "An iconoclast in art.", translation: "艺术上的反传统者。" }],
+      synonyms: ["rebel", "nonconformist"], antonyms: ["conformist", "traditionalist"]
+    },
+    {
+      english: "idiosyncrasy", chinese: "特质/癖好", wrongOptions: ["普遍性", "常态"], icon: "🎨",
+      morphology: { breakdown: "idio(个人) + syn(一起) + cras(混合) + y" },
+      etymology: { origin: "希腊", root: "idiosynkrasia", meaning: "个人特质", evolution: "癖好" },
+      examples: [{ sentence: "Personal idiosyncrasies.", translation: "个人癖好。" }],
+      synonyms: ["quirk", "peculiarity"], antonyms: ["normality", "conformity"]
+    },
+    {
+      english: "incorrigible", chinese: "无可救药的", wrongOptions: ["可改正的", "可救的"], icon: "🚫",
+      morphology: { breakdown: "in(不) + corrig(改正) + ible" },
+      etymology: { origin: "拉丁", root: "corrigere", meaning: "改正", evolution: "无法改正的" },
+      examples: [{ sentence: "An incorrigible optimist.", translation: "无可救药的乐观主义者。" }],
+      synonyms: ["hopeless", "irredeemable"], antonyms: ["reformable", "redeemable"]
+    },
+    {
+      english: "indefatigable", chinese: "不知疲倦的", wrongOptions: ["疲惫的", "懒散的"], icon: "🏃",
+      morphology: { breakdown: "in(不) + de(加强) + fatig(疲劳) + able" },
+      etymology: { origin: "拉丁", root: "fatigare", meaning: "使疲劳", evolution: "不疲劳的" },
+      examples: [{ sentence: "An indefatigable worker.", translation: "不知疲倦的工人。" }],
+      synonyms: ["tireless", "untiring"], antonyms: ["lazy", "exhausted"]
+    },
+    {
+      english: "insidious", chinese: "阴险的", wrongOptions: ["坦率的", "光明正大的"], icon: "🐍",
+      morphology: { breakdown: "in(在内) + sid(坐) + ious" },
+      etymology: { origin: "拉丁", root: "insidiae", meaning: "埋伏", evolution: "暗中伤害的" },
+      examples: [{ sentence: "An insidious disease.", translation: "阴险的疾病。" }],
+      synonyms: ["treacherous", "cunning"], antonyms: ["straightforward", "honest"]
+    },
+    {
+      english: "magnanimous", chinese: "宽宏大量的", wrongOptions: ["小气的", "心胸狭窄的"], icon: "👑",
+      morphology: { breakdown: "magn(大) + anim(心) + ous" },
+      etymology: { origin: "拉丁", root: "magnus animus", meaning: "伟大的心灵", evolution: "宽宏大量的" },
+      examples: [{ sentence: "A magnanimous gesture.", translation: "宽宏大量的举动。" }],
+      synonyms: ["generous", "noble"], antonyms: ["petty", "mean"]
+    },
+    {
+      english: "nefarious", chinese: "邪恶的", wrongOptions: ["善良的", "正义的"], icon: "😈",
+      morphology: { breakdown: "ne(不) + far(神圣) + ious" },
+      etymology: { origin: "拉丁", root: "nefarius", meaning: "不道德的", evolution: "邪恶的" },
+      examples: [{ sentence: "Nefarious schemes.", translation: "邪恶的阴谋。" }],
+      synonyms: ["wicked", "villainous"], antonyms: ["virtuous", "righteous"]
+    },
+    {
+      english: "obsequious", chinese: "谄媚的", wrongOptions: ["傲慢的", "独立的"], icon: "🙇",
+      morphology: { breakdown: "ob(向) + sequ(跟随) + ious" },
+      etymology: { origin: "拉丁", root: "obsequiosus", meaning: "顺从的", evolution: "过分顺从的" },
+      examples: [{ sentence: "Obsequious behavior.", translation: "谄媚的行为。" }],
+      synonyms: ["servile", "sycophantic"], antonyms: ["assertive", "independent"]
+    },
+    {
+      english: "ostentatious", chinese: "炫耀的", wrongOptions: ["低调的", "谦虚的"], icon: "💎",
+      morphology: { breakdown: "ostent(展示) + atious" },
+      etymology: { origin: "拉丁", root: "ostentare", meaning: "展示", evolution: "卖弄的" },
+      examples: [{ sentence: "Ostentatious wealth.", translation: "炫耀的财富。" }],
+      synonyms: ["showy", "flashy"], antonyms: ["modest", "understated"]
+    },
+    {
+      english: "perfunctory", chinese: "敷衍的", wrongOptions: ["认真的", "仔细的"], icon: "😐",
+      morphology: { breakdown: "per(通过) + funct(执行) + ory" },
+      etymology: { origin: "拉丁", root: "perfunctorius", meaning: "随便的", evolution: "敷衍了事的" },
+      examples: [{ sentence: "A perfunctory greeting.", translation: "敷衍的问候。" }],
+      synonyms: ["cursory", "superficial"], antonyms: ["thorough", "careful"]
+    },
+    {
+      english: "pernicious", chinese: "有害的", wrongOptions: ["有益的", "无害的"], icon: "☠️",
+      morphology: { breakdown: "per(彻底) + nic(杀) + ious" },
+      etymology: { origin: "拉丁", root: "perniciosus", meaning: "致命的", evolution: "非常有害的" },
+      examples: [{ sentence: "Pernicious influence.", translation: "有害的影响。" }],
+      synonyms: ["harmful", "destructive"], antonyms: ["beneficial", "harmless"]
+    },
+    {
+      english: "precocious", chinese: "早熟的", wrongOptions: ["迟钝的", "晚熟的"], icon: "💒",
+      morphology: { breakdown: "pre(提前) + coc(熟) + ious" },
+      etymology: { origin: "拉丁", root: "praecox", meaning: "提前成熟", evolution: "早熟的" },
+      examples: [{ sentence: "A precocious child.", translation: "早熟的孩子。" }],
+      synonyms: ["advanced", "gifted"], antonyms: ["backward", "slow"]
+    },
+    {
+      english: "recalcitrant", chinese: "顽抗的", wrongOptions: ["顺从的", "合作的"], icon: "🦬",
+      morphology: { breakdown: "re(回) + calc(踢) + itrant" },
+      etymology: { origin: "拉丁", root: "recalcitrare", meaning: "向后踢", evolution: "不服从的" },
+      examples: [{ sentence: "A recalcitrant attitude.", translation: "顽抗的态度。" }],
+      synonyms: ["defiant", "uncooperative"], antonyms: ["obedient", "compliant"]
+    },
+    {
+      english: "repudiate", chinese: "否认/拒绝", wrongOptions: ["接受", "认可"], icon: "❌",
+      morphology: { breakdown: "re(回) + pudi(羞耻) + ate" },
+      etymology: { origin: "拉丁", root: "repudiare", meaning: "拒绝", evolution: "否认" },
+      examples: [{ sentence: "Repudiate the allegations.", translation: "否认指控。" }],
+      synonyms: ["reject", "deny"], antonyms: ["accept", "acknowledge"]
+    },
+    {
+      english: "sanguine", chinese: "乐观的", wrongOptions: ["悲观的", "消极的"], icon: "😊",
+      morphology: { breakdown: "sanguin(血) + e" },
+      etymology: { origin: "拉丁", root: "sanguineus", meaning: "血红的", evolution: "乐观的（血气方刚）" },
+      examples: [{ sentence: "A sanguine outlook.", translation: "乐观的前景。" }],
+      synonyms: ["optimistic", "hopeful"], antonyms: ["pessimistic", "gloomy"]
+    },
+    {
+      english: "surreptitious", chinese: "鬼鬼祟祟的", wrongOptions: ["公开的", "光明正大的"], icon: "🥷",
+      morphology: { breakdown: "sur(下面) + rept(爬) + itious" },
+      etymology: { origin: "拉丁", root: "surripere", meaning: "偷偷拿走", evolution: "秘密的" },
+      examples: [{ sentence: "Surreptitious glances.", translation: "偷偷的瞥视。" }],
+      synonyms: ["stealthy", "secret"], antonyms: ["open", "overt"]
+    },
+    {
+      english: "sycophant", chinese: "马屁精", wrongOptions: ["正直的人", "批评者"], icon: "🦮",
+      morphology: { breakdown: "syco(无花果) + phant(显示)" },
+      etymology: { origin: "希腊", root: "sykophantes", meaning: "告密者", evolution: "谄媚者" },
+      examples: [{ sentence: "Surrounded by sycophants.", translation: "被马屁精包围。" }],
+      synonyms: ["flatterer", "toady"], antonyms: ["critic", "detractor"]
+    },
+    {
+      english: "trepidation", chinese: "恐惧/不安", wrongOptions: ["镇定", "自信"], icon: "😨",
+      morphology: { breakdown: "trepid(颤抖) + ation" },
+      etymology: { origin: "拉丁", root: "trepidare", meaning: "颤抖", evolution: "恐惧" },
+      examples: [{ sentence: "With some trepidation.", translation: "带着一些恐惧。" }],
+      synonyms: ["fear", "anxiety"], antonyms: ["confidence", "calm"]
+    },
+    {
+      english: "venerate", chinese: "尊敬/崇拜", wrongOptions: ["蔑视", "嘲笑"], icon: "🙏",
+      morphology: { breakdown: "vener(爱) + ate" },
+      etymology: { origin: "拉丁", root: "venerari", meaning: "崇拜", evolution: "尊敬" },
+      examples: [{ sentence: "Venerate the ancestors.", translation: "尊敬祖先。" }],
+      synonyms: ["revere", "respect"], antonyms: ["despise", "scorn"]
+    },
+    {
+      english: "vicarious", chinese: "代理的/间接体验的", wrongOptions: ["直接的", "亲身的"], icon: "📺",
+      morphology: { breakdown: "vicar(代理) + ious" },
+      etymology: { origin: "拉丁", root: "vicarius", meaning: "代替的", evolution: "间接体验的" },
+      examples: [{ sentence: "Vicarious pleasure.", translation: "间接的快乐。" }],
+      synonyms: ["indirect", "secondhand"], antonyms: ["direct", "firsthand"]
+    },
+    {
+      english: "vindicate", chinese: "证明无辜/辩护", wrongOptions: ["指控", "谴责"], icon: "⚖️",
+      morphology: { breakdown: "vindic(声称) + ate" },
+      etymology: { origin: "拉丁", root: "vindicare", meaning: "声称", evolution: "证明正当" },
+      examples: [{ sentence: "The evidence vindicated him.", translation: "证据证明他无辜。" }],
+      synonyms: ["justify", "exonerate"], antonyms: ["blame", "condemn"]
+    },
+    {
+      english: "wary", chinese: "谨慎的/警惕的", wrongOptions: ["大意的", "粗心的"], icon: "👀",
+      morphology: { breakdown: "war(注意) + y" },
+      etymology: { origin: "古英语", root: "wær", meaning: "谨慎的", evolution: "警惕的" },
+      examples: [{ sentence: "Be wary of strangers.", translation: "警惕陌生人。" }],
+      synonyms: ["cautious", "alert"], antonyms: ["careless", "unwary"]
+    },
+    {
+      english: "ambivalent", chinese: "矛盾的/心理冲突的", wrongOptions: ["确定的", "坚定的"], icon: "🤷",
+      morphology: { breakdown: "ambi(两边) + val(价值) + ent" },
+      etymology: { origin: "拉丁", root: "ambo + valere", meaning: "两边都强", evolution: "矛盾的" },
+      examples: [{ sentence: "Ambivalent feelings.", translation: "矛盾的感情。" }],
+      synonyms: ["conflicted", "uncertain"], antonyms: ["decisive", "certain"]
+    },
+    {
+      english: "anomaly", chinese: "异常/反常", wrongOptions: ["常态", "规律"], icon: "⚠️",
+      morphology: { breakdown: "an(不) + omal(规则) + y" },
+      etymology: { origin: "希腊", root: "anomalos", meaning: "不均匀的", evolution: "反常" },
+      examples: [{ sentence: "A statistical anomaly.", translation: "统计异常。" }],
+      synonyms: ["irregularity", "deviation"], antonyms: ["norm", "regularity"]
+    },
+    {
+      english: "arbitrary", chinese: "任意的/武断的", wrongOptions: ["合理的", "有根据的"], icon: "🎲",
+      morphology: { breakdown: "arbitr(判断) + ary" },
+      etymology: { origin: "拉丁", root: "arbitrarius", meaning: "由仲裁决定", evolution: "任意的" },
+      examples: [{ sentence: "An arbitrary decision.", translation: "武断的决定。" }],
+      synonyms: ["random", "capricious"], antonyms: ["reasoned", "rational"]
+    },
+    {
+      english: "compelling", chinese: "令人信服的", wrongOptions: ["不可信的", "无力的"], icon: "💫",
+      morphology: { breakdown: "com(加强) + pel(驱动) + ling" },
+      etymology: { origin: "拉丁", root: "compellere", meaning: "驱使", evolution: "令人信服的" },
+      examples: [{ sentence: "A compelling argument.", translation: "令人信服的论点。" }],
+      synonyms: ["convincing", "persuasive"], antonyms: ["unconvincing", "weak"]
+    },
+    {
+      english: "convoluted", chinese: "复杂的/错综的", wrongOptions: ["简单的", "直接的"], icon: "🌀",
+      morphology: { breakdown: "con(一起) + volut(卷) + ed" },
+      etymology: { origin: "拉丁", root: "convolvere", meaning: "卷在一起", evolution: "错综复杂的" },
+      examples: [{ sentence: "A convoluted plot.", translation: "错综复杂的情节。" }],
+      synonyms: ["complex", "intricate"], antonyms: ["simple", "straightforward"]
+    },
+    {
+      english: "deference", chinese: "尊重/顺从", wrongOptions: ["蔑视", "傲慢"], icon: "🎩",
+      morphology: { breakdown: "de(向下) + fer(带来) + ence" },
+      etymology: { origin: "拉丁", root: "deferre", meaning: "带下", evolution: "顺从" },
+      examples: [{ sentence: "Show deference to elders.", translation: "对长辈表示尊重。" }],
+      synonyms: ["respect", "submission"], antonyms: ["disrespect", "defiance"]
+    },
+    {
+      english: "didactic", chinese: "说教的", wrongOptions: ["娱乐的", "有趣的"], icon: "📖",
+      morphology: { breakdown: "didact(教) + ic" },
+      etymology: { origin: "希腊", root: "didaktikos", meaning: "善于教的", evolution: "说教的" },
+      examples: [{ sentence: "A didactic tone.", translation: "说教的语气。" }],
+      synonyms: ["instructive", "preachy"], antonyms: ["entertaining", "amusing"]
+    },
+    {
+      english: "disparate", chinese: "不同的/迥异的", wrongOptions: ["相似的", "一致的"], icon: "🔀",
+      morphology: { breakdown: "dis(分开) + par(相等) + ate" },
+      etymology: { origin: "拉丁", root: "disparatus", meaning: "分开的", evolution: "完全不同的" },
+      examples: [{ sentence: "Disparate groups.", translation: "迥然不同的群体。" }],
+      synonyms: ["different", "diverse"], antonyms: ["similar", "alike"]
+    },
+    {
+      english: "dubious", chinese: "怀疑的/可疑的", wrongOptions: ["确定的", "可靠的"], icon: "🤨",
+      morphology: { breakdown: "dubi(两个) + ous" },
+      etymology: { origin: "拉丁", root: "dubius", meaning: "犹豫的", evolution: "可疑的" },
+      examples: [{ sentence: "Dubious claims.", translation: "可疑的声称。" }],
+      synonyms: ["doubtful", "questionable"], antonyms: ["certain", "reliable"]
+    },
+    {
+      english: "enigmatic", chinese: "神秘的", wrongOptions: ["明显的", "清楚的"], icon: "🔮",
+      morphology: { breakdown: "enigma(谜) + tic" },
+      etymology: { origin: "希腊", root: "ainigma", meaning: "谜语", evolution: "神秘的" },
+      examples: [{ sentence: "An enigmatic smile.", translation: "神秘的微笑。" }],
+      synonyms: ["mysterious", "puzzling"], antonyms: ["obvious", "clear"]
+    },
+    {
+      english: "futile", chinese: "徒劳的", wrongOptions: ["有效的", "成功的"], icon: "😞",
+      morphology: { breakdown: "fut(倾倒) + ile" },
+      etymology: { origin: "拉丁", root: "futilis", meaning: "漏的", evolution: "徒劳的" },
+      examples: [{ sentence: "A futile attempt.", translation: "徒劳的尝试。" }],
+      synonyms: ["useless", "pointless"], antonyms: ["effective", "fruitful"]
+    },
+    {
+      english: "galvanize", chinese: "激励/刺激", wrongOptions: ["使消沉", "使懈怠"], icon: "⚡",
+      morphology: { breakdown: "galvan(电) + ize" },
+      etymology: { origin: "意大利", root: "Galvani", meaning: "人名", evolution: "用电刺激、激励" },
+      examples: [{ sentence: "Galvanize the team.", translation: "激励团队。" }],
+      synonyms: ["stimulate", "motivate"], antonyms: ["discourage", "demotivate"]
+    },
+    {
+      english: "haphazard", chinese: "随意的/杂乱的", wrongOptions: ["有序的", "有计划的"], icon: "🎯",
+      morphology: { breakdown: "hap(运气) + hazard(风险)" },
+      etymology: { origin: "英语", root: "hap + hazard", meaning: "运气+风险", evolution: "随意的" },
+      examples: [{ sentence: "A haphazard approach.", translation: "随意的方法。" }],
+      synonyms: ["random", "disorganized"], antonyms: ["systematic", "organized"]
+    },
+    {
+      english: "indolent", chinese: "懒惰的", wrongOptions: ["勤奋的", "活跃的"], icon: "🦥",
+      morphology: { breakdown: "in(不) + dol(痛苦) + ent" },
+      etymology: { origin: "拉丁", root: "indolens", meaning: "不痛苦的", evolution: "懒惰的" },
+      examples: [{ sentence: "An indolent lifestyle.", translation: "懒散的生活方式。" }],
+      synonyms: ["lazy", "idle"], antonyms: ["industrious", "active"]
+    },
+    {
+      english: "intermittent", chinese: "间歇的", wrongOptions: ["持续的", "不断的"], icon: "⏸️",
+      morphology: { breakdown: "inter(之间) + mitt(送) + ent" },
+      etymology: { origin: "拉丁", root: "intermittere", meaning: "中断", evolution: "间歇的" },
+      examples: [{ sentence: "Intermittent rain.", translation: "断断续续的雨。" }],
+      synonyms: ["sporadic", "occasional"], antonyms: ["constant", "continuous"]
+    },
+    {
+      english: "languid", chinese: "倦怠的", wrongOptions: ["精力充沛的", "活跃的"], icon: "😴",
+      morphology: { breakdown: "langu(疲倦) + id" },
+      etymology: { origin: "拉丁", root: "languere", meaning: "变弱", evolution: "倦怠的" },
+      examples: [{ sentence: "A languid afternoon.", translation: "慵懒的下午。" }],
+      synonyms: ["listless", "sluggish"], antonyms: ["energetic", "vigorous"]
+    },
+    {
+      english: "mollify", chinese: "安抚/缓和", wrongOptions: ["激怒", "激化"], icon: "🕊️",
+      morphology: { breakdown: "moll(柔软) + ify" },
+      etymology: { origin: "拉丁", root: "mollire", meaning: "使柔软", evolution: "安抚" },
+      examples: [{ sentence: "Mollify the angry customer.", translation: "安抚愤怒的顾客。" }],
+      synonyms: ["appease", "soothe"], antonyms: ["provoke", "irritate"]
+    },
+    {
+      english: "nebulous", chinese: "模糊的", wrongOptions: ["清晰的", "明确的"], icon: "☁️",
+      morphology: { breakdown: "nebul(云) + ous" },
+      etymology: { origin: "拉丁", root: "nebula", meaning: "云", evolution: "模糊的" },
+      examples: [{ sentence: "Nebulous ideas.", translation: "模糊的想法。" }],
+      synonyms: ["vague", "unclear"], antonyms: ["clear", "definite"]
+    },
+    {
+      english: "palpable", chinese: "可触知的/明显的", wrongOptions: ["难以察觉的", "无形的"], icon: "✋",
+      morphology: { breakdown: "palp(触摸) + able" },
+      etymology: { origin: "拉丁", root: "palpare", meaning: "触摸", evolution: "可触知的" },
+      examples: [{ sentence: "Palpable tension.", translation: "明显的紧张。" }],
+      synonyms: ["tangible", "obvious"], antonyms: ["imperceptible", "intangible"]
+    },
+    {
+      english: "pedantic", chinese: "学究气的", wrongOptions: ["通俗的", "实际的"], icon: "🎓",
+      morphology: { breakdown: "pedant(学究) + ic" },
+      etymology: { origin: "意大利", root: "pedante", meaning: "教师", evolution: "过分学究的" },
+      examples: [{ sentence: "A pedantic lecture.", translation: "学究式的讲座。" }],
+      synonyms: ["academic", "bookish"], antonyms: ["practical", "unpretentious"]
+    },
+    {
+      english: "profound", chinese: "深刻的", wrongOptions: ["肤浅的", "表面的"], icon: "🌊",
+      morphology: { breakdown: "pro(向前) + found(底部)" },
+      etymology: { origin: "拉丁", root: "profundus", meaning: "深的", evolution: "深刻的" },
+      examples: [{ sentence: "A profound impact.", translation: "深刻的影响。" }],
+      synonyms: ["deep", "insightful"], antonyms: ["shallow", "superficial"]
+    },
+    {
+      english: "prosaic", chinese: "平淡的/乏味的", wrongOptions: ["诗意的", "有趣的"], icon: "📄",
+      morphology: { breakdown: "pros(散文) + aic" },
+      etymology: { origin: "拉丁", root: "prosaicus", meaning: "散文的", evolution: "平淡无奇的" },
+      examples: [{ sentence: "A prosaic explanation.", translation: "平淡的解释。" }],
+      synonyms: ["mundane", "dull"], antonyms: ["poetic", "exciting"]
+    },
+    {
+      english: "reprehensible", chinese: "应受谴责的", wrongOptions: ["值得赞扬的", "可接受的"], icon: "👎",
+      morphology: { breakdown: "re(回) + prehens(抓住) + ible" },
+      etymology: { origin: "拉丁", root: "reprehendere", meaning: "抓回", evolution: "应受谴责的" },
+      examples: [{ sentence: "Reprehensible conduct.", translation: "应受谴责的行为。" }],
+      synonyms: ["deplorable", "shameful"], antonyms: ["praiseworthy", "admirable"]
+    },
+    {
+      english: "rudimentary", chinese: "基本的/初级的", wrongOptions: ["高级的", "复杂的"], icon: "🧱",
+      morphology: { breakdown: "rudiment(基础) + ary" },
+      etymology: { origin: "拉丁", root: "rudimentum", meaning: "开始", evolution: "基础的" },
+      examples: [{ sentence: "Rudimentary knowledge.", translation: "基础知识。" }],
+      synonyms: ["basic", "elementary"], antonyms: ["advanced", "sophisticated"]
+    },
+    {
+      english: "soporific", chinese: "催眠的", wrongOptions: ["令人兴奋的", "刺激的"], icon: "💤",
+      morphology: { breakdown: "sopor(睡眠) + ific(使)" },
+      etymology: { origin: "拉丁", root: "sopor", meaning: "深睡", evolution: "催眠的" },
+      examples: [{ sentence: "A soporific lecture.", translation: "令人昏昏欲睡的讲座。" }],
+      synonyms: ["sleep-inducing", "drowsy"], antonyms: ["stimulating", "invigorating"]
+    },
+    {
+      english: "stagnant", chinese: "停滞的", wrongOptions: ["流动的", "活跃的"], icon: "🏚️",
+      morphology: { breakdown: "stagn(池塘) + ant" },
+      etymology: { origin: "拉丁", root: "stagnum", meaning: "池塘", evolution: "不流动的" },
+      examples: [{ sentence: "A stagnant economy.", translation: "停滞的经济。" }],
+      synonyms: ["static", "motionless"], antonyms: ["flowing", "dynamic"]
+    },
+    {
+      english: "stringent", chinese: "严格的", wrongOptions: ["宽松的", "灵活的"], icon: "📏",
+      morphology: { breakdown: "string(拉紧) + ent" },
+      etymology: { origin: "拉丁", root: "stringere", meaning: "拉紧", evolution: "严格的" },
+      examples: [{ sentence: "Stringent regulations.", translation: "严格的规定。" }],
+      synonyms: ["strict", "rigorous"], antonyms: ["lenient", "flexible"]
+    },
+    {
+      english: "superfluous", chinese: "多余的", wrongOptions: ["必要的", "不足的"], icon: "➕",
+      morphology: { breakdown: "super(超过) + flu(流) + ous" },
+      etymology: { origin: "拉丁", root: "superfluus", meaning: "溢出的", evolution: "多余的" },
+      examples: [{ sentence: "Superfluous details.", translation: "多余的细节。" }],
+      synonyms: ["excess", "unnecessary"], antonyms: ["necessary", "essential"]
+    },
+    {
+      english: "tedious", chinese: "乏味的", wrongOptions: ["有趣的", "吸引人的"], icon: "😑",
+      morphology: { breakdown: "ted(厌烦) + ious" },
+      etymology: { origin: "拉丁", root: "taedium", meaning: "厌倦", evolution: "乏味的" },
+      examples: [{ sentence: "A tedious task.", translation: "乏味的任务。" }],
+      synonyms: ["boring", "monotonous"], antonyms: ["interesting", "exciting"]
+    },
+    {
+      english: "trivial", chinese: "琐碎的", wrongOptions: ["重要的", "重大的"], icon: "🔹",
+      morphology: { breakdown: "trivi(三叉路口) + al" },
+      etymology: { origin: "拉丁", root: "trivialis", meaning: "普通的", evolution: "琐碎的" },
+      examples: [{ sentence: "Trivial matters.", translation: "琐碎的事情。" }],
+      synonyms: ["insignificant", "minor"], antonyms: ["important", "significant"]
+    },
+    {
+      english: "unequivocal", chinese: "明确的", wrongOptions: ["模糊的", "含糊的"], icon: "✅",
+      morphology: { breakdown: "un(不) + equi(相等) + voc(声音) + al" },
+      etymology: { origin: "拉丁", root: "aequivocus", meaning: "模棱两可", evolution: "明确的" },
+      examples: [{ sentence: "An unequivocal answer.", translation: "明确的回答。" }],
+      synonyms: ["clear", "definite"], antonyms: ["ambiguous", "vague"]
+    },
+    {
+      english: "unprecedented", chinese: "史无前例的", wrongOptions: ["常见的", "普通的"], icon: "🆕",
+      morphology: { breakdown: "un(不) + pre(前) + ced(走) + ent + ed" },
+      etymology: { origin: "拉丁", root: "praecedere", meaning: "走在前面", evolution: "没有先例的" },
+      examples: [{ sentence: "Unprecedented growth.", translation: "史无前例的增长。" }],
+      synonyms: ["unique", "unparalleled"], antonyms: ["common", "typical"]
+    },
+    {
+      english: "viable", chinese: "可行的", wrongOptions: ["不可行的", "不切实际的"], icon: "✔️",
+      morphology: { breakdown: "vi(生命) + able" },
+      etymology: { origin: "拉丁", root: "vita", meaning: "生命", evolution: "能够存活的、可行的" },
+      examples: [{ sentence: "A viable solution.", translation: "可行的解决方案。" }],
+      synonyms: ["feasible", "practical"], antonyms: ["impractical", "unfeasible"]
+    },
+    {
+      english: "acrimonious", chinese: "尖刻的", wrongOptions: ["和蔼的", "友善的"], icon: "😠",
+      morphology: { breakdown: "acri(尖锐) + moni + ous" },
+      etymology: { origin: "拉丁", root: "acrimonia", meaning: "尖锐", evolution: "言辞尖刻的" },
+      examples: [{ sentence: "An acrimonious debate.", translation: "激烈的辩论。" }],
+      synonyms: ["bitter", "harsh"], antonyms: ["friendly", "cordial"]
+    },
+    {
+      english: "affable", chinese: "和蔼的", wrongOptions: ["冷漠的", "傲慢的"], icon: "😊",
+      morphology: { breakdown: "af(向) + fa(说) + ble" },
+      etymology: { origin: "拉丁", root: "affabilis", meaning: "可交谈的", evolution: "和蔼可亲的" },
+      examples: [{ sentence: "An affable host.", translation: "和蔼的主人。" }],
+      synonyms: ["friendly", "amiable"], antonyms: ["unfriendly", "aloof"]
+    },
+    {
+      english: "assiduous", chinese: "勤勉的", wrongOptions: ["懒惰的", "散漫的"], icon: "📖",
+      morphology: { breakdown: "as(向) + sid(坐) + uous" },
+      etymology: { origin: "拉丁", root: "assiduus", meaning: "坐在旁边", evolution: "勤勉的" },
+      examples: [{ sentence: "Assiduous efforts.", translation: "勤勉的努力。" }],
+      synonyms: ["diligent", "industrious"], antonyms: ["lazy", "negligent"]
+    },
+    {
+      english: "banal", chinese: "平庸的/陈腐的", wrongOptions: ["新颖的", "独特的"], icon: "😐",
+      morphology: { breakdown: "ban(公共) + al" },
+      etymology: { origin: "法语", root: "banal", meaning: "普通的", evolution: "平庸的" },
+      examples: [{ sentence: "Banal remarks.", translation: "平庸的言论。" }],
+      synonyms: ["trite", "clichéd"], antonyms: ["original", "novel"]
+    },
+    {
+      english: "bucolic", chinese: "田园的", wrongOptions: ["城市的", "工业的"], icon: "🌾",
+      morphology: { breakdown: "bucol(牧人) + ic" },
+      etymology: { origin: "希腊", root: "boukolos", meaning: "牧牛人", evolution: "田园风光的" },
+      examples: [{ sentence: "Bucolic scenery.", translation: "田园风光。" }],
+      synonyms: ["pastoral", "rural"], antonyms: ["urban", "metropolitan"]
+    },
+    {
+      english: "cacophony", chinese: "刺耳的声音", wrongOptions: ["悦耳的声音", "和谐"], icon: "🔊",
+      morphology: { breakdown: "caco(坏) + phon(声音) + y" },
+      etymology: { origin: "希腊", root: "kakophonia", meaning: "坏声音", evolution: "刺耳的噪音" },
+      examples: [{ sentence: "A cacophony of horns.", translation: "刺耳的喇叭声。" }],
+      synonyms: ["discord", "noise"], antonyms: ["harmony", "melody"]
+    },
+    {
+      english: "chicanery", chinese: "欺骗/诡计", wrongOptions: ["诚实", "坦率"], icon: "🎭",
+      morphology: { breakdown: "chican(诡辩) + ery" },
+      etymology: { origin: "法语", root: "chicaner", meaning: "诡辩", evolution: "欺骗行为" },
+      examples: [{ sentence: "Political chicanery.", translation: "政治欺骗。" }],
+      synonyms: ["trickery", "deception"], antonyms: ["honesty", "integrity"]
+    },
+    {
+      english: "cogent", chinese: "令人信服的", wrongOptions: ["薄弱的", "无力的"], icon: "💪",
+      morphology: { breakdown: "cog(驱动) + ent" },
+      etymology: { origin: "拉丁", root: "cogere", meaning: "驱使", evolution: "令人信服的" },
+      examples: [{ sentence: "A cogent argument.", translation: "令人信服的论点。" }],
+      synonyms: ["convincing", "compelling"], antonyms: ["weak", "unconvincing"]
+    },
+    {
+      english: "contentious", chinese: "有争议的", wrongOptions: ["一致的", "和谐的"], icon: "⚔️",
+      morphology: { breakdown: "content(争论) + ious" },
+      etymology: { origin: "拉丁", root: "contentiosus", meaning: "争论的", evolution: "有争议的" },
+      examples: [{ sentence: "A contentious issue.", translation: "有争议的问题。" }],
+      synonyms: ["controversial", "disputed"], antonyms: ["uncontroversial", "agreed"]
+    },
+    {
+      english: "copious", chinese: "大量的", wrongOptions: ["稀少的", "缺乏的"], icon: "🌊",
+      morphology: { breakdown: "copi(丰富) + ous" },
+      etymology: { origin: "拉丁", root: "copiosus", meaning: "丰富的", evolution: "大量的" },
+      examples: [{ sentence: "Copious notes.", translation: "大量的笔记。" }],
+      synonyms: ["abundant", "plentiful"], antonyms: ["scarce", "meager"]
+    },
+    {
+      english: "cursory", chinese: "草率的/粗略的", wrongOptions: ["仔细的", "彻底的"], icon: "👀",
+      morphology: { breakdown: "curs(跑) + ory" },
+      etymology: { origin: "拉丁", root: "cursorius", meaning: "奔跑的", evolution: "匆忙的、草率的" },
+      examples: [{ sentence: "A cursory glance.", translation: "草率的一瞥。" }],
+      synonyms: ["superficial", "hasty"], antonyms: ["thorough", "careful"]
+    },
+    {
+      english: "dearth", chinese: "缺乏/不足", wrongOptions: ["丰富", "充足"], icon: "📉",
+      morphology: { breakdown: "dear(贵) + th" },
+      etymology: { origin: "古英语", root: "deorth", meaning: "昂贵", evolution: "稀缺导致昂贵" },
+      examples: [{ sentence: "A dearth of talent.", translation: "人才匮乏。" }],
+      synonyms: ["scarcity", "shortage"], antonyms: ["abundance", "plenty"]
+    },
+    {
+      english: "ebullient", chinese: "热情洋溢的", wrongOptions: ["消沉的", "冷淡的"], icon: "🎊",
+      morphology: { breakdown: "e(出) + bull(沸腾) + ient" },
+      etymology: { origin: "拉丁", root: "ebullire", meaning: "沸腾", evolution: "热情洋溢的" },
+      examples: [{ sentence: "An ebullient personality.", translation: "热情洋溢的性格。" }],
+      synonyms: ["exuberant", "enthusiastic"], antonyms: ["depressed", "gloomy"]
+    },
+    {
+      english: "egregious", chinese: "极坏的/惊人的", wrongOptions: ["优秀的", "普通的"], icon: "😱",
+      morphology: { breakdown: "e(出) + greg(群) + ious" },
+      etymology: { origin: "拉丁", root: "egregius", meaning: "出众的", evolution: "极其恶劣的" },
+      examples: [{ sentence: "An egregious error.", translation: "严重的错误。" }],
+      synonyms: ["flagrant", "outrageous"], antonyms: ["minor", "insignificant"]
+    },
+    {
+      english: "exigent", chinese: "紧迫的", wrongOptions: ["不紧急的", "放松的"], icon: "⏰",
+      morphology: { breakdown: "ex(出) + ig(驱动) + ent" },
+      etymology: { origin: "拉丁", root: "exigere", meaning: "驱赶", evolution: "紧迫的" },
+      examples: [{ sentence: "Exigent circumstances.", translation: "紧急情况。" }],
+      synonyms: ["urgent", "pressing"], antonyms: ["relaxed", "unhurried"]
+    },
+    {
+      english: "garrulous", chinese: "唠叨的", wrongOptions: ["沉默的", "寡言的"], icon: "🗣️",
+      morphology: { breakdown: "garrul(喋喋不休) + ous" },
+      etymology: { origin: "拉丁", root: "garrulus", meaning: "喋喋不休的", evolution: "唠叨的" },
+      examples: [{ sentence: "A garrulous old man.", translation: "唠叨的老人。" }],
+      synonyms: ["talkative", "loquacious"], antonyms: ["taciturn", "quiet"]
+    },
+    {
+      english: "harangue", chinese: "长篇大论/训斥", wrongOptions: ["简洁发言", "赞美"], icon: "📢",
+      morphology: { breakdown: "harangue(演说)" },
+      etymology: { origin: "意大利", root: "aringa", meaning: "公开演说", evolution: "长篇激烈演说" },
+      examples: [{ sentence: "A political harangue.", translation: "政治长篇大论。" }],
+      synonyms: ["tirade", "lecture"], antonyms: ["praise", "compliment"]
+    },
+    {
+      english: "impetuous", chinese: "冲动的", wrongOptions: ["冷静的", "深思熟虑的"], icon: "💨",
+      morphology: { breakdown: "im(向) + pet(追求) + uous" },
+      etymology: { origin: "拉丁", root: "impetuosus", meaning: "猛烈的", evolution: "冲动的" },
+      examples: [{ sentence: "An impetuous decision.", translation: "冲动的决定。" }],
+      synonyms: ["impulsive", "rash"], antonyms: ["cautious", "deliberate"]
+    },
+    {
+      english: "laconic", chinese: "简洁的", wrongOptions: ["冗长的", "啰嗦的"], icon: "✂️",
+      morphology: { breakdown: "lacon(拉科尼亚) + ic" },
+      etymology: { origin: "希腊", root: "Lakonikos", meaning: "斯巴达式的", evolution: "简洁的（斯巴达人以简洁著称）" },
+      examples: [{ sentence: "A laconic reply.", translation: "简短的回答。" }],
+      synonyms: ["brief", "terse"], antonyms: ["verbose", "wordy"]
+    },
+    {
+      english: "mercurial", chinese: "反复无常的", wrongOptions: ["稳定的", "一贯的"], icon: "🌡️",
+      morphology: { breakdown: "mercur(水银) + ial" },
+      etymology: { origin: "拉丁", root: "Mercurius", meaning: "水星神", evolution: "像水银一样善变" },
+      examples: [{ sentence: "A mercurial temperament.", translation: "反复无常的性情。" }],
+      synonyms: ["volatile", "unpredictable"], antonyms: ["stable", "constant"]
+    },
+    {
+      english: "parsimonious", chinese: "吝啬的", wrongOptions: ["慷慨的", "大方的"], icon: "💸",
+      morphology: { breakdown: "parsimoni(节省) + ous" },
+      etymology: { origin: "拉丁", root: "parsimonia", meaning: "节俭", evolution: "过分节俭的" },
+      examples: [{ sentence: "A parsimonious employer.", translation: "吝啬的雇主。" }],
+      synonyms: ["stingy", "miserly"], antonyms: ["generous", "lavish"]
+    },
+    {
+      english: "paucity", chinese: "少量/缺乏", wrongOptions: ["丰富", "大量"], icon: "📉",
+      morphology: { breakdown: "pauc(少) + ity" },
+      etymology: { origin: "拉丁", root: "paucitas", meaning: "少量", evolution: "缺乏" },
+      examples: [{ sentence: "A paucity of resources.", translation: "资源匮乏。" }],
+      synonyms: ["scarcity", "dearth"], antonyms: ["abundance", "plenty"]
+    },
+    {
+      english: "propitious", chinese: "吉利的/有利的", wrongOptions: ["不利的", "倒霉的"], icon: "🌟",
+      morphology: { breakdown: "pro(向前) + pit(寻求) + ious" },
+      etymology: { origin: "拉丁", root: "propitius", meaning: "有利的", evolution: "吉利的" },
+      examples: [{ sentence: "Propitious conditions.", translation: "有利的条件。" }],
+      synonyms: ["favorable", "auspicious"], antonyms: ["unfavorable", "ominous"]
+    },
+    {
+      english: "quintessential", chinese: "典型的/精华的", wrongOptions: ["非典型的", "普通的"], icon: "💎",
+      morphology: { breakdown: "quint(第五) + essent(本质) + ial" },
+      etymology: { origin: "拉丁", root: "quinta essentia", meaning: "第五元素", evolution: "最纯粹的本质" },
+      examples: [{ sentence: "The quintessential example.", translation: "典型的例子。" }],
+      synonyms: ["typical", "archetypal"], antonyms: ["atypical", "unusual"]
+    }
   ]
 };

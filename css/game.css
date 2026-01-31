@@ -481,3 +481,165 @@
     display: none;
   }
 }
+
+/* ========== 10级词汇详情面板 ========== */
+.word-detail-panel {
+  background: linear-gradient(135deg, #f8f9ff 0%, #e8f4f8 100%);
+  border-radius: 15px;
+  margin-top: 15px;
+  padding: 15px;
+  border: 2px solid #667eea;
+  animation: slideIn 0.3s ease-out;
+}
+
+.word-detail-panel.hidden {
+  display: none;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.word-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.word-detail-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.word-detail-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #999;
+  cursor: pointer;
+  padding: 0 5px;
+}
+
+.word-detail-close:hover {
+  color: #333;
+}
+
+.word-detail-word {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.word-detail-word #detailEnglish {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-right: 10px;
+}
+
+.word-detail-word #detailChinese {
+  font-size: 18px;
+  color: #666;
+}
+
+.word-detail-section {
+  margin-bottom: 12px;
+}
+
+.word-detail-section .section-title {
+  font-size: 14px;
+  font-weight: bold;
+  color: #667eea;
+  margin-bottom: 5px;
+}
+
+.word-detail-section .section-content {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.5;
+  padding-left: 5px;
+}
+
+.word-detail-section .example-item {
+  margin-bottom: 8px;
+  padding: 8px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 8px;
+}
+
+.word-detail-section .example-en {
+  color: #333;
+  margin-bottom: 3px;
+}
+
+.word-detail-section .example-zh {
+  color: #666;
+  font-size: 13px;
+}
+
+.word-detail-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.word-detail-row .synonym-box,
+.word-detail-row .antonym-box {
+  flex: 1;
+  min-width: 120px;
+}
+
+.word-detail-row .label {
+  font-weight: bold;
+  color: #667eea;
+  margin-right: 5px;
+}
+
+/* 手机端详情面板 */
+@media (max-width: 480px) {
+  .word-detail-panel {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .word-detail-header {
+    margin-bottom: 8px;
+    padding-bottom: 5px;
+  }
+
+  .word-detail-title {
+    font-size: 14px;
+  }
+
+  .word-detail-word #detailEnglish {
+    font-size: 18px;
+  }
+
+  .word-detail-word #detailChinese {
+    font-size: 14px;
+  }
+
+  .word-detail-section .section-title {
+    font-size: 12px;
+  }
+
+  .word-detail-section .section-content {
+    font-size: 12px;
+  }
+
+  .word-detail-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+}

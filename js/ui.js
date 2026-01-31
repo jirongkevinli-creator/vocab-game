@@ -462,6 +462,86 @@ const UI = {
    */
   alert(message) {
     window.alert(message);
+  },
+
+  /**
+   * 显示10级词汇详情面板
+   * @param {object} word - 单词对象（包含morphology, etymology, examples等）
+   */
+  showWordDetail(word) {
+    const panel = document.getElementById('wordDetailPanel');
+    if (!panel) return;
+
+    // 填充基本信息
+    document.getElementById('detailEnglish').textContent = word.source || word.english || '';
+    document.getElementById('detailChinese').textContent = word.target || word.chinese || '';
+
+    // 词根分解
+    const morphSection = document.getElementById('morphologySection');
+    const morphContent = document.getElementById('detailMorphology');
+    if (word.morphology && word.morphology.breakdown) {
+      morphContent.textContent = word.morphology.breakdown;
+      morphSection.classList.remove('hidden');
+    } else {
+      morphSection.classList.add('hidden');
+    }
+
+    // 词源
+    const etymSection = document.getElementById('etymologySection');
+    const etymContent = document.getElementById('detailEtymology');
+    if (word.etymology) {
+      let etymText = '';
+      if (word.etymology.origin) etymText += word.etymology.origin + '语';
+      if (word.etymology.root) etymText += ' ' + word.etymology.root;
+      if (word.etymology.meaning) etymText += ' (' + word.etymology.meaning + ')';
+      if (word.etymology.evolution) etymText += '\n' + word.etymology.evolution;
+      etymContent.textContent = etymText;
+      etymSection.classList.remove('hidden');
+    } else {
+      etymSection.classList.add('hidden');
+    }
+
+    // 例句
+    const examplesSection = document.getElementById('examplesSection');
+    const examplesContent = document.getElementById('detailExamples');
+    if (word.examples && word.examples.length > 0) {
+      examplesContent.innerHTML = word.examples.map((ex, i) => `
+        <div class="example-item">
+          <div class="example-en">${i + 1}. ${ex.sentence}</div>
+          <div class="example-zh">${ex.translation}</div>
+        </div>
+      `).join('');
+      examplesSection.classList.remove('hidden');
+    } else {
+      examplesSection.classList.add('hidden');
+    }
+
+    // 同义词/反义词
+    const synAntSection = document.getElementById('synonymsAntonymsSection');
+    const synContent = document.getElementById('detailSynonyms');
+    const antContent = document.getElementById('detailAntonyms');
+    const hasSyn = word.synonyms && word.synonyms.length > 0;
+    const hasAnt = word.antonyms && word.antonyms.length > 0;
+    if (hasSyn || hasAnt) {
+      synContent.textContent = hasSyn ? word.synonyms.join(', ') : '-';
+      antContent.textContent = hasAnt ? word.antonyms.join(', ') : '-';
+      synAntSection.classList.remove('hidden');
+    } else {
+      synAntSection.classList.add('hidden');
+    }
+
+    // 显示面板
+    panel.classList.remove('hidden');
+  },
+
+  /**
+   * 隐藏10级词汇详情面板
+   */
+  hideWordDetail() {
+    const panel = document.getElementById('wordDetailPanel');
+    if (panel) {
+      panel.classList.add('hidden');
+    }
   }
 };
 

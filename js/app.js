@@ -309,6 +309,13 @@ const App = {
       UI.hideWrongWordsModal();
       UI.alert('错词库已清空');
     }
+  },
+
+  /**
+   * 隐藏词汇详情面板
+   */
+  hideWordDetail() {
+    UI.hideWordDetail();
   }
 };
 

@@ -61,6 +61,42 @@
       <!-- 选项按钮会动态生成 -->
     </div>
 
+    <!-- 10级词汇详情面板 -->
+    <div id="wordDetailPanel" class="word-detail-panel hidden">
+      <div class="word-detail-header">
+        <span class="word-detail-title">📖 词汇详情</span>
+        <button class="word-detail-close" onclick="App.hideWordDetail()">&times;</button>
+      </div>
+      <div class="word-detail-content">
+        <div class="word-detail-word">
+          <span id="detailEnglish"></span>
+          <span id="detailChinese"></span>
+        </div>
+        <div class="word-detail-section" id="morphologySection">
+          <div class="section-title">📝 词根分解</div>
+          <div class="section-content" id="detailMorphology"></div>
+        </div>
+        <div class="word-detail-section" id="etymologySection">
+          <div class="section-title">🌱 词源</div>
+          <div class="section-content" id="detailEtymology"></div>
+        </div>
+        <div class="word-detail-section" id="examplesSection">
+          <div class="section-title">📚 例句</div>
+          <div class="section-content" id="detailExamples"></div>
+        </div>
+        <div class="word-detail-section word-detail-row" id="synonymsAntonymsSection">
+          <div class="synonym-box">
+            <span class="label">同义词:</span>
+            <span id="detailSynonyms"></span>
+          </div>
+          <div class="antonym-box">
+            <span class="label">反义词:</span>
+            <span id="detailAntonyms"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="controls">
       <select class="level-select" id="levelSelect">
         <option value="0">Level 0 - 最基础</option>
