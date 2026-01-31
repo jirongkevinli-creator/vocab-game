@@ -537,6 +537,12 @@ const UI = {
       synAntSection.classList.add('hidden');
     }
 
+    // 隐藏其他元素，只显示详情面板
+    const wordSection = document.querySelector('.word-section');
+    const optionsSection = document.querySelector('.options-section');
+    if (wordSection) wordSection.classList.add('hidden');
+    if (optionsSection) optionsSection.classList.add('hidden');
+
     // 显示面板
     panel.classList.remove('hidden');
 
@@ -553,6 +559,12 @@ const UI = {
       panel.classList.add('hidden');
       panel.onclick = null;
     }
+
+    // 恢复其他元素显示
+    const wordSection = document.querySelector('.word-section');
+    const optionsSection = document.querySelector('.options-section');
+    if (wordSection) wordSection.classList.remove('hidden');
+    if (optionsSection) optionsSection.classList.remove('hidden');
 
     // 执行回调
     if (this._wordDetailCallback) {
