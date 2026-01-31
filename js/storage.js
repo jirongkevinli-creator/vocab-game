@@ -286,21 +286,91 @@ const Storage = {
   },
 
   /**
+   * 验证错词数据项结构
+   * @param {object} item - 错词项
+   * @returns {boolean} 是否有效
+   */
+  validateWrongWordItem(item) {
+    if (!item || typeof item !== 'object') return false;
+    if (!item.word || typeof item.word !== 'object') return false;
+    if (typeof item.word.source !== 'string' || !item.word.source) return false;
+    if (typeof item.word.target !== 'string' || !item.word.target) return false;
+    return true;
+  },
+
+  /**
+   * 清理错词数据项，移除潜在的危险内容
+   * @param {object} item - 错词项
+   * @returns {object} 清理后的错词项
+   */
+  sanitizeWrongWordItem(item) {
+    return {
+      wordId: String(item.wordId || `imported-${Date.now()}`),
+      word: {
+        source: String(item.word.source).slice(0, 200),
+        target: String(item.word.target).slice(0, 200),
+        wrongOptions: item.word.wrongOptions || { target: [], source: [] },
+        icon: item.word.icon ? String(item.word.icon).slice(0, 10) : null,
+        example: item.word.example ? String(item.word.example).slice(0, 500) : null
+      },
+      stats: {
+        errorCount: parseInt(item.stats?.errorCount) || 0,
+        correctCount: parseInt(item.stats?.correctCount) || 0,
+        lastErrorTime: item.stats?.lastErrorTime || null,
+        lastCorrectTime: item.stats?.lastCorrectTime || null,
+        lastPracticeTime: item.stats?.lastPracticeTime || null
+      },
+      tags: Array.isArray(item.tags) ? item.tags.map(t => String(t).slice(0, 50)).slice(0, 10) : [],
+      note: item.note ? String(item.note).slice(0, 500) : '',
+      addedTime: item.addedTime || new Date().toISOString(),
+      level: parseInt(item.level) || 0
+    };
+  },
+
+  /**
    * 导入错词库
    * @param {string} username - 用户名
    * @param {string} jsonString - JSON字符串
+   * @returns {object} { success: boolean, message: string, imported: number }
    */
   importWrongWords(username, jsonString) {
     try {
       const data = JSON.parse(jsonString);
-      if (data.words && Array.isArray(data.words)) {
-        this.saveWrongWords(username, data);
-        return true;
+
+      if (!data || typeof data !== 'object') {
+        return { success: false, message: '无效的JSON格式', imported: 0 };
       }
-      return false;
+
+      if (!data.words || !Array.isArray(data.words)) {
+        return { success: false, message: '缺少words数组', imported: 0 };
+      }
+
+      if (data.words.length > 10000) {
+        return { success: false, message: '错词数量超过限制(最多10000)', imported: 0 };
+      }
+
+      const validWords = [];
+      for (const item of data.words) {
+        if (this.validateWrongWordItem(item)) {
+          validWords.push(this.sanitizeWrongWordItem(item));
+        }
+      }
+
+      if (validWords.length === 0) {
+        return { success: false, message: '没有有效的错词数据', imported: 0 };
+      }
+
+      const sanitizedData = {
+        version: this.VERSION,
+        lastUpdated: new Date().toISOString(),
+        words: validWords
+      };
+
+      this.saveWrongWords(username, sanitizedData);
+      return { success: true, message: '导入成功', imported: validWords.length };
     } catch (e) {
       console.error('导入错词库失败:', e);
-      return false;
+      return { success: false, message: '解析JSON失败: ' + e.message, imported: 0 };
     }
   },
 

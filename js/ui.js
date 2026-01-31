@@ -8,6 +8,18 @@ const UI = {
   elements: {},
 
   /**
+   * HTML转义，防止XSS攻击
+   * @param {string} str - 需要转义的字符串
+   * @returns {string} 转义后的字符串
+   */
+  escapeHtml(str) {
+    if (str == null) return '';
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  },
+
+  /**
    * 初始化UI，缓存DOM元素
    */
   init() {
@@ -175,11 +187,11 @@ const UI = {
 
     // 图标（仅正向模式和释义模式显示，反向模式看中文不需要图标提示）
     if (word.icon && GameConfig.display.showIcon && !reverse) {
-      html += `<div class="word-icon">${word.icon}</div>`;
+      html += `<div class="word-icon">${this.escapeHtml(word.icon)}</div>`;
     }
 
     // 单词文本
-    html += `<div class="word-text">${textToShow}</div>`;
+    html += `<div class="word-text">${this.escapeHtml(textToShow)}</div>`;
 
     display.innerHTML = html;
 
@@ -424,14 +436,14 @@ const UI = {
       listContainer.innerHTML = words.map((item, index) => `
         <div class="wrong-word-item" data-index="${index}">
           <div class="wrong-word-info">
-            <div class="wrong-word-source">${item.source}</div>
-            <div class="wrong-word-target">${item.target}</div>
+            <div class="wrong-word-source">${this.escapeHtml(item.source)}</div>
+            <div class="wrong-word-target">${this.escapeHtml(item.target)}</div>
             <div class="wrong-word-stats">
-              错误${item.stats?.errorCount || 0}次 | 正确${item.stats?.correctCount || 0}次
+              错误${parseInt(item.stats?.errorCount) || 0}次 | 正确${parseInt(item.stats?.correctCount) || 0}次
             </div>
           </div>
           <div class="wrong-word-actions">
-            <button class="btn-remove" onclick="Game.removeWrongWord(${index})">移除</button>
+            <button class="btn-remove" onclick="Game.removeWrongWord(${parseInt(index)})">移除</button>
           </div>
         </div>
       `).join('');
@@ -514,8 +526,8 @@ const UI = {
     if (word.examples && word.examples.length > 0) {
       examplesContent.innerHTML = word.examples.map((ex, i) => `
         <div class="example-item">
-          <div class="example-en">${i + 1}. ${ex.sentence}</div>
-          <div class="example-zh">${ex.translation}</div>
+          <div class="example-en">${i + 1}. ${this.escapeHtml(ex.sentence)}</div>
+          <div class="example-zh">${this.escapeHtml(ex.translation)}</div>
         </div>
       `).join('');
       examplesSection.classList.remove('hidden');
