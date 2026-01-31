@@ -67,7 +67,13 @@ function initWordDataFromLegacy() {
         tags: generateTags(word, level),
         // 英英释义数据（用于 en-en 模式）
         definition: defData?.definition || null,
-        wrongDefinitions: defData?.wrongDefinitions || []
+        wrongDefinitions: defData?.wrongDefinitions || [],
+        // Level 10 增强字段
+        morphology: word.morphology || null,
+        etymology: word.etymology || null,
+        examples: word.examples || null,
+        synonyms: word.synonyms || null,
+        antonyms: word.antonyms || null
       };
     });
   }
