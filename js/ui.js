@@ -723,6 +723,10 @@ const UI = {
     if (settings) settings.classList.remove('hidden');
     if (loading) loading.classList.add('hidden');
     if (result) result.classList.add('hidden');
+
+    // 移除全屏模式
+    const modal = this.elements.storyModal;
+    if (modal) modal.classList.remove('fullscreen');
   },
 
   /**
@@ -757,6 +761,10 @@ const UI = {
     if (settings) settings.classList.add('hidden');
     if (loading) loading.classList.add('hidden');
     if (result) result.classList.remove('hidden');
+
+    // 添加全屏模式
+    const modal = this.elements.storyModal;
+    if (modal) modal.classList.add('fullscreen');
 
     // 渲染故事内容
     this.renderStoryContent();

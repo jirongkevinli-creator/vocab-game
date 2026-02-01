@@ -57,6 +57,7 @@ const Story = {
   // 当前状态
   state: {
     isGenerating: false,
+    isSpeaking: false,
     currentStory: null,
     englishText: '',
     chineseText: ''
@@ -343,20 +344,27 @@ ${wordList}
     const paragraphs = text.split(/\n\n|\n/).filter(p => p.trim());
 
     TTS.cancel();
+    this.state.isSpeaking = true;
 
     for (const paragraph of paragraphs) {
+      // 检查是否应该停止
+      if (!this.state.isSpeaking) break;
+
       if (paragraph.trim()) {
         await TTS.speak(paragraph.trim(), lang);
         // 段落间短暂停顿
         await new Promise(resolve => setTimeout(resolve, 300));
       }
     }
+
+    this.state.isSpeaking = false;
   },
 
   /**
    * 停止朗读
    */
   stopSpeaking() {
+    this.state.isSpeaking = false;
     TTS.cancel();
   },
 
