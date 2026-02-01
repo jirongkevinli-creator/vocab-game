@@ -48,6 +48,7 @@ const UI = {
       settingsModal: document.getElementById('settingsModal'),
       wrongWordsModal: document.getElementById('wrongWordsModal'),
       gameCompleteModal: document.getElementById('gameCompleteModal'),
+      storyModal: document.getElementById('storyModal'),
     };
   },
 
@@ -583,6 +584,206 @@ const UI = {
       const callback = this._wordDetailCallback;
       this._wordDetailCallback = null;
       callback();
+    }
+  },
+
+  // ========== 故事生成弹窗 ==========
+
+  /**
+   * 显示故事生成弹窗
+   */
+  showStoryModal() {
+    const modal = this.elements.storyModal;
+    if (!modal) return;
+
+    // 初始化风格选项
+    this.initStoryStyleOptions();
+
+    // 初始化模型选项
+    this.initStoryModelOptions();
+
+    // 更新 API Key 状态
+    this.updateApiKeyStatus();
+
+    // 更新错词数量
+    this.updateStoryWordsCount();
+
+    // 显示设置区域，隐藏结果区域
+    this.showStorySettings();
+
+    modal.classList.remove('hidden');
+  },
+
+  /**
+   * 隐藏故事生成弹窗
+   */
+  hideStoryModal() {
+    const modal = this.elements.storyModal;
+    if (modal) {
+      modal.classList.add('hidden');
+    }
+    // 停止朗读
+    if (typeof Story !== 'undefined') {
+      Story.stopSpeaking();
+    }
+  },
+
+  /**
+   * 初始化故事风格选项
+   */
+  initStoryStyleOptions() {
+    const container = document.getElementById('styleOptions');
+    if (!container || typeof Story === 'undefined') return;
+
+    container.innerHTML = '';
+    let first = true;
+
+    Object.values(Story.STYLES).forEach(style => {
+      const div = document.createElement('div');
+      div.className = 'style-option' + (first ? ' selected' : '');
+      div.dataset.style = style.id;
+      div.innerHTML = `
+        <div class="style-name">${this.escapeHtml(style.name)}</div>
+        <div class="style-desc">${this.escapeHtml(style.description)}</div>
+      `;
+      div.onclick = () => this.selectStoryStyle(style.id);
+      container.appendChild(div);
+      first = false;
+    });
+  },
+
+  /**
+   * 选择故事风格
+   * @param {string} styleId - 风格ID
+   */
+  selectStoryStyle(styleId) {
+    const options = document.querySelectorAll('.style-option');
+    options.forEach(opt => {
+      opt.classList.toggle('selected', opt.dataset.style === styleId);
+    });
+  },
+
+  /**
+   * 初始化模型选项
+   */
+  initStoryModelOptions() {
+    const select = document.getElementById('modelSelect');
+    if (!select || typeof Story === 'undefined') return;
+
+    select.innerHTML = '';
+    Story.MODELS.forEach(model => {
+      const option = document.createElement('option');
+      option.value = model.id;
+      option.textContent = `${model.name} - ${model.description}`;
+      select.appendChild(option);
+    });
+  },
+
+  /**
+   * 更新 API Key 状态显示
+   */
+  updateApiKeyStatus() {
+    const status = document.getElementById('apiKeyStatus');
+    if (!status || typeof Story === 'undefined') return;
+
+    if (Story.hasApiKey()) {
+      const masked = Story.getMaskedKey();
+      status.innerHTML = `<span class="api-key-label api-key-saved">已保存: ${this.escapeHtml(masked)}</span>`;
+    } else {
+      status.innerHTML = `<span class="api-key-label">未配置</span>`;
+    }
+  },
+
+  /**
+   * 更新错词数量显示
+   */
+  updateStoryWordsCount() {
+    const countEl = document.getElementById('storyWordsCount');
+    if (!countEl) return;
+
+    const username = (typeof Game !== 'undefined' && Game.state.currentUser) ||
+                     (typeof Storage !== 'undefined' && Storage.getCurrentUser()) || '';
+
+    if (username && typeof Storage !== 'undefined') {
+      const count = Storage.getWrongWordsCount(username);
+      countEl.textContent = count;
+    } else {
+      countEl.textContent = '0';
+    }
+  },
+
+  /**
+   * 显示故事设置区域
+   */
+  showStorySettings() {
+    const settings = document.getElementById('storySettings');
+    const loading = document.getElementById('storyLoading');
+    const result = document.getElementById('storyResult');
+
+    if (settings) settings.classList.remove('hidden');
+    if (loading) loading.classList.add('hidden');
+    if (result) result.classList.add('hidden');
+  },
+
+  /**
+   * 显示故事加载状态
+   */
+  showStoryLoading() {
+    const settings = document.getElementById('storySettings');
+    const loading = document.getElementById('storyLoading');
+    const result = document.getElementById('storyResult');
+
+    if (settings) settings.classList.add('hidden');
+    if (loading) loading.classList.remove('hidden');
+    if (result) result.classList.add('hidden');
+  },
+
+  /**
+   * 隐藏故事加载状态
+   */
+  hideStoryLoading() {
+    const loading = document.getElementById('storyLoading');
+    if (loading) loading.classList.add('hidden');
+  },
+
+  /**
+   * 显示故事结果
+   */
+  showStoryResult() {
+    const settings = document.getElementById('storySettings');
+    const loading = document.getElementById('storyLoading');
+    const result = document.getElementById('storyResult');
+
+    if (settings) settings.classList.add('hidden');
+    if (loading) loading.classList.add('hidden');
+    if (result) result.classList.remove('hidden');
+
+    // 渲染故事内容
+    this.renderStoryContent();
+  },
+
+  /**
+   * 渲染故事内容
+   */
+  renderStoryContent() {
+    if (typeof Story === 'undefined') return;
+
+    const englishEl = document.getElementById('storyEnglish');
+    const chineseEl = document.getElementById('storyChinese');
+
+    if (englishEl) {
+      englishEl.innerHTML = Story.getEnglishHtml();
+    }
+
+    if (chineseEl) {
+      const chineseHtml = Story.getChineseHtml();
+      if (chineseHtml) {
+        chineseEl.innerHTML = chineseHtml;
+        chineseEl.parentElement.classList.remove('hidden');
+      } else {
+        // 如果没有中文翻译，隐藏中文列
+        chineseEl.parentElement.classList.add('hidden');
+      }
     }
   }
 };

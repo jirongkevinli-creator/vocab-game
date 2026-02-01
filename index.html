@@ -215,6 +215,12 @@
         </div>
 
         <div class="setting-item">
+          <button class="modal-btn story" onclick="App.showStoryModal()">
+            用错词生成故事
+          </button>
+        </div>
+
+        <div class="setting-item">
           <button class="modal-btn danger" onclick="App.clearWrongWords()">
             清空错词库
           </button>
@@ -258,6 +264,102 @@
     </div>
   </div>
 
+  <!-- 故事生成弹窗 -->
+  <div id="storyModal" class="modal-overlay hidden story-modal">
+    <div class="modal-content story-modal-content">
+      <div class="story-modal-header">
+        <h2>用错词生成故事</h2>
+        <button class="modal-close-btn" onclick="App.hideStoryModal()">&times;</button>
+      </div>
+
+      <!-- 设置区域 -->
+      <div class="story-settings" id="storySettings">
+        <!-- API Key 区域 -->
+        <div class="story-section">
+          <h3>API Key</h3>
+          <div class="api-key-status" id="apiKeyStatus">
+            <span class="api-key-label">未配置</span>
+          </div>
+          <div class="api-key-input-group">
+            <input type="password" id="apiKeyInput" placeholder="输入 Anthropic API Key" autocomplete="off">
+            <button class="btn-small" onclick="App.saveStoryApiKey()">保存</button>
+            <button class="btn-small btn-clear" onclick="App.clearStoryApiKey()">清除</button>
+          </div>
+          <p class="hint">API Key 保存在本地，不会上传到服务器</p>
+        </div>
+
+        <!-- 风格选择 -->
+        <div class="story-section">
+          <h3>故事风格</h3>
+          <div class="style-options" id="styleOptions">
+            <!-- 风格选项会动态生成 -->
+          </div>
+        </div>
+
+        <!-- 模型选择 -->
+        <div class="story-section">
+          <h3>AI 模型</h3>
+          <select id="modelSelect" class="model-select">
+            <!-- 模型选项会动态生成 -->
+          </select>
+        </div>
+
+        <!-- 错词数量 -->
+        <div class="story-section">
+          <div class="words-count-info">
+            <span>错词库: </span>
+            <span id="storyWordsCount">0</span>
+            <span> 个单词</span>
+            <span class="hint">(超过10个将随机选择)</span>
+          </div>
+        </div>
+
+        <!-- 生成按钮 -->
+        <div class="story-actions">
+          <button class="modal-btn confirm story-generate-btn" id="generateStoryBtn" onclick="App.generateStory()">
+            生成故事
+          </button>
+        </div>
+      </div>
+
+      <!-- 加载状态 -->
+      <div class="story-loading hidden" id="storyLoading">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">正在生成故事，请稍候...</p>
+        <p class="loading-hint">通常需要 10-30 秒</p>
+      </div>
+
+      <!-- 故事显示区域 -->
+      <div class="story-result hidden" id="storyResult">
+        <!-- 双语显示 -->
+        <div class="story-bilingual">
+          <div class="story-column story-english">
+            <div class="column-header">English</div>
+            <div class="story-content" id="storyEnglish"></div>
+          </div>
+          <div class="story-column story-chinese">
+            <div class="column-header">中文</div>
+            <div class="story-content" id="storyChinese"></div>
+          </div>
+        </div>
+
+        <!-- 控制按钮 -->
+        <div class="story-controls">
+          <div class="tts-controls">
+            <button class="btn-control" onclick="App.speakStoryEnglish()">▶ 朗读英文</button>
+            <button class="btn-control" onclick="App.speakStoryChinese()">▶ 朗读中文</button>
+            <button class="btn-control btn-stop" onclick="App.stopStorySpeaking()">⏹ 停止</button>
+          </div>
+          <div class="action-controls">
+            <button class="btn-control" onclick="App.copyStory()">复制</button>
+            <button class="btn-control" onclick="App.downloadStory()">下载</button>
+            <button class="btn-control btn-regenerate" onclick="App.showStorySettings()">重新生成</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- 页脚：访问统计 -->
   <footer class="site-footer">
     <div class="visitor-stats">
@@ -286,6 +388,7 @@
   <script src="js/config.js?v=7"></script>
   <script src="js/storage.js?v=7"></script>
   <script src="js/tts.js?v=7"></script>
+  <script src="js/story.js?v=7"></script>
   <script src="js/ui.js?v=7"></script>
   <script src="js/game.js?v=7"></script>
   <script src="js/app.js?v=7"></script>

@@ -316,6 +316,141 @@ const App = {
    */
   hideWordDetail() {
     UI.hideWordDetail();
+  },
+
+  // ========== 故事生成功能 ==========
+
+  /**
+   * 显示故事生成弹窗
+   */
+  showStoryModal() {
+    UI.showStoryModal();
+  },
+
+  /**
+   * 隐藏故事生成弹窗
+   */
+  hideStoryModal() {
+    UI.hideStoryModal();
+  },
+
+  /**
+   * 保存故事 API Key
+   */
+  saveStoryApiKey() {
+    const input = document.getElementById('apiKeyInput');
+    const key = input?.value?.trim();
+
+    if (!key) {
+      UI.alert('请输入 API Key');
+      return;
+    }
+
+    if (Story.saveApiKey(key)) {
+      input.value = '';
+      UI.updateApiKeyStatus();
+      UI.alert('API Key 已保存');
+    }
+  },
+
+  /**
+   * 清除故事 API Key
+   */
+  clearStoryApiKey() {
+    if (UI.confirm('确定要清除保存的 API Key 吗？')) {
+      Story.clearApiKey();
+      UI.updateApiKeyStatus();
+    }
+  },
+
+  /**
+   * 生成故事
+   */
+  async generateStory() {
+    const username = Game.state.currentUser || Storage.getCurrentUser();
+    if (!username) {
+      UI.alert('请先登录');
+      return;
+    }
+
+    // 获取错词列表
+    const wordsList = Storage.getWrongWordsList(username);
+    if (wordsList.length === 0) {
+      UI.alert('错词库是空的，请先积累一些错词再来生成故事');
+      return;
+    }
+
+    // 获取 API Key
+    const apiKey = Story.loadApiKey();
+    if (!apiKey) {
+      UI.alert('请先输入并保存 API Key');
+      return;
+    }
+
+    // 获取选择的风格和模型
+    const styleId = document.querySelector('.style-option.selected')?.dataset?.style || 'peppa';
+    const modelId = document.getElementById('modelSelect')?.value || Story.MODELS[0].id;
+
+    // 提取单词
+    const words = Story.extractWords(wordsList);
+
+    // 显示加载状态
+    UI.showStoryLoading();
+
+    try {
+      await Story.generateStory(words, styleId, modelId, apiKey);
+      UI.showStoryResult();
+    } catch (error) {
+      UI.hideStoryLoading();
+      UI.alert('生成失败: ' + error.message);
+    }
+  },
+
+  /**
+   * 显示故事设置（重新生成）
+   */
+  showStorySettings() {
+    UI.showStorySettings();
+  },
+
+  /**
+   * 朗读英文故事
+   */
+  speakStoryEnglish() {
+    Story.speakEnglish();
+  },
+
+  /**
+   * 朗读中文故事
+   */
+  speakStoryChinese() {
+    Story.speakChinese();
+  },
+
+  /**
+   * 停止故事朗读
+   */
+  stopStorySpeaking() {
+    Story.stopSpeaking();
+  },
+
+  /**
+   * 复制故事
+   */
+  async copyStory() {
+    const success = await Story.copyStory();
+    if (success) {
+      UI.alert('已复制到剪贴板');
+    } else {
+      UI.alert('复制失败');
+    }
+  },
+
+  /**
+   * 下载故事
+   */
+  downloadStory() {
+    Story.downloadStory();
   }
 };
 
