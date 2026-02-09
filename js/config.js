@@ -52,8 +52,8 @@ const GameConfig = {
 
   // 游戏规则
   rules: {
-    streakToLevelUp: 3,       // 连续答对多少次升级
-    streakToLevelDown: 2,     // 连续答错多少次降级
+    correctToLevelUp: 10,     // 累计答对多少次升级
+    streakToLevelDown: 3,     // 连续答错多少次降级
     maxLevel: 10,             // 最高级别
     minLevel: 0,              // 最低级别
   },

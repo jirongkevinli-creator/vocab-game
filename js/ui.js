@@ -132,12 +132,12 @@ const UI = {
   },
 
   /**
-   * 更新连胜显示
-   * @param {number} streak - 连胜次数
+   * 更新升级进度显示
+   * @param {number} levelCorrectCount - 当前级别累计答对数
    * @param {boolean} isWrongWordsPractice - 是否是错词库模式
    * @param {number} remainingCount - 剩余错词数量
    */
-  updateStreakDisplay(streak, isWrongWordsPractice = false, remainingCount = 0) {
+  updateStreakDisplay(levelCorrectCount, isWrongWordsPractice = false, remainingCount = 0) {
     const display = this.elements.streakDisplay;
 
     if (isWrongWordsPractice) {
@@ -145,12 +145,7 @@ const UI = {
       return;
     }
 
-    let displayText = '';
-    const maxStreak = GameConfig.rules.streakToLevelUp;
-    for (let i = 0; i < maxStreak; i++) {
-      displayText += i < streak ? '✓' : '○';
-    }
-    display.textContent = displayText;
+    display.textContent = `${levelCorrectCount}/${GameConfig.rules.correctToLevelUp}`;
   },
 
   /**
@@ -602,8 +597,12 @@ const UI = {
     // 初始化模型选项
     this.initStoryModelOptions();
 
+    // 初始化显示模式选项
+    this.initDisplayModeOptions();
+
     // 更新 API Key 状态
     this.updateApiKeyStatus();
+    this.updateOpenAIKeyStatus();
 
     // 更新错词数量
     this.updateStoryWordsCount();
@@ -695,6 +694,90 @@ const UI = {
   },
 
   /**
+   * 更新 OpenAI API Key 状态显示
+   */
+  updateOpenAIKeyStatus() {
+    const status = document.getElementById('openaiKeyStatus');
+    if (!status || typeof Story === 'undefined') return;
+
+    if (Story.hasOpenAIApiKey()) {
+      const masked = Story.getMaskedOpenAIKey();
+      status.innerHTML = `<span class="api-key-label api-key-saved">已保存: ${this.escapeHtml(masked)}</span>`;
+    } else {
+      status.innerHTML = `<span class="api-key-label">未配置</span>`;
+    }
+  },
+
+  /**
+   * 初始化显示模式选项
+   */
+  initDisplayModeOptions() {
+    const container = document.getElementById('displayModeOptions');
+    if (!container) return;
+
+    const options = container.querySelectorAll('.display-mode-option');
+    options.forEach(opt => {
+      opt.onclick = () => this.selectDisplayMode(opt.dataset.mode);
+    });
+
+    // 初始化跳过图片开关
+    const toggleSkipImages = document.getElementById('toggleSkipImages');
+    if (toggleSkipImages) {
+      toggleSkipImages.onclick = () => {
+        toggleSkipImages.classList.toggle('active');
+      };
+    }
+
+    // 默认选中普通模式
+    this.selectDisplayMode('normal');
+  },
+
+  /**
+   * 选择显示模式
+   * @param {string} mode - 模式ID ('normal' | 'picturebook')
+   */
+  selectDisplayMode(mode) {
+    const options = document.querySelectorAll('.display-mode-option');
+    options.forEach(opt => {
+      opt.classList.toggle('selected', opt.dataset.mode === mode);
+    });
+
+    // 显示/隐藏绘本选项
+    const picturebookOptions = document.getElementById('picturebookOptions');
+    const openaiKeySection = document.getElementById('openaiKeySection');
+
+    if (mode === 'picturebook') {
+      if (picturebookOptions) picturebookOptions.classList.remove('hidden');
+      if (openaiKeySection) openaiKeySection.classList.remove('hidden');
+    } else {
+      if (picturebookOptions) picturebookOptions.classList.add('hidden');
+    }
+
+    // 更新 Story 状态
+    if (typeof Story !== 'undefined') {
+      Story.state.displayMode = mode;
+    }
+  },
+
+  /**
+   * 获取当前选中的显示模式
+   * @returns {string}
+   */
+  getSelectedDisplayMode() {
+    const selected = document.querySelector('.display-mode-option.selected');
+    return selected ? selected.dataset.mode : 'normal';
+  },
+
+  /**
+   * 是否跳过图片生成
+   * @returns {boolean}
+   */
+  isSkipImages() {
+    const toggle = document.getElementById('toggleSkipImages');
+    return toggle ? toggle.classList.contains('active') : false;
+  },
+
+  /**
    * 更新错词数量显示
    */
   updateStoryWordsCount() {
@@ -719,10 +802,15 @@ const UI = {
     const settings = document.getElementById('storySettings');
     const loading = document.getElementById('storyLoading');
     const result = document.getElementById('storyResult');
+    const picturebookResult = document.getElementById('picturebookResult');
 
     if (settings) settings.classList.remove('hidden');
     if (loading) loading.classList.add('hidden');
     if (result) result.classList.add('hidden');
+    if (picturebookResult) picturebookResult.classList.add('hidden');
+
+    // 隐藏图片进度
+    this.hideImageProgress();
 
     // 移除全屏模式
     const modal = this.elements.storyModal;
@@ -792,6 +880,145 @@ const UI = {
         // 如果没有中文翻译，隐藏中文列
         chineseEl.parentElement.classList.add('hidden');
       }
+    }
+  },
+
+  /**
+   * 显示绘本结果
+   */
+  showPicturebookResult() {
+    const settings = document.getElementById('storySettings');
+    const loading = document.getElementById('storyLoading');
+    const storyResult = document.getElementById('storyResult');
+    const picturebookResult = document.getElementById('picturebookResult');
+
+    if (settings) settings.classList.add('hidden');
+    if (loading) loading.classList.add('hidden');
+    if (storyResult) storyResult.classList.add('hidden');
+    if (picturebookResult) picturebookResult.classList.remove('hidden');
+
+    // 添加全屏模式
+    const modal = this.elements.storyModal;
+    if (modal) modal.classList.add('fullscreen');
+
+    // 渲染第一页
+    this.renderPicturebookPage();
+
+    // 更新生成图片按钮状态
+    this.updateGenerateImagesButton();
+  },
+
+  /**
+   * 渲染绘本当前页
+   */
+  renderPicturebookPage() {
+    if (typeof Story === 'undefined') return;
+
+    const page = Story.getCurrentPage();
+    if (!page) return;
+
+    const currentPageNum = document.getElementById('currentPageNum');
+    const totalPageNum = document.getElementById('totalPageNum');
+    const prevBtn = document.getElementById('prevPageBtn');
+    const nextBtn = document.getElementById('nextPageBtn');
+    const imageContainer = document.getElementById('picturebookImage');
+    const englishEl = document.getElementById('picturebookEnglish');
+    const chineseEl = document.getElementById('picturebookChinese');
+
+    // 更新页码
+    if (currentPageNum) currentPageNum.textContent = Story.state.picturebook.currentPage + 1;
+    if (totalPageNum) totalPageNum.textContent = Story.getTotalPages();
+
+    // 更新导航按钮状态
+    if (prevBtn) prevBtn.disabled = Story.state.picturebook.currentPage === 0;
+    if (nextBtn) nextBtn.disabled = Story.state.picturebook.currentPage >= Story.getTotalPages() - 1;
+
+    // 更新图片
+    if (imageContainer) {
+      if (page.imageUrl) {
+        const img = document.createElement('img');
+        img.src = page.imageUrl;
+        img.alt = `Page ${Story.state.picturebook.currentPage + 1}`;
+        imageContainer.innerHTML = '';
+        imageContainer.appendChild(img);
+      } else {
+        imageContainer.innerHTML = `
+          <div class="image-placeholder">
+            <span class="placeholder-icon">🖼️</span>
+            <span class="placeholder-text">点击"生成全部图片"生成配图</span>
+          </div>
+        `;
+      }
+    }
+
+    // 更新文字
+    if (englishEl) {
+      englishEl.innerHTML = Story.markdownToHtml(page.englishText);
+    }
+    if (chineseEl) {
+      chineseEl.innerHTML = Story.markdownToHtml(page.chineseText);
+    }
+  },
+
+  /**
+   * 更新生成图片按钮状态
+   */
+  updateGenerateImagesButton() {
+    const btn = document.getElementById('generateImagesBtn');
+    if (!btn || typeof Story === 'undefined') return;
+
+    // 检查是否所有图片都已生成
+    const pages = Story.state.picturebook.pages;
+    const allGenerated = pages.every(p => p.imageUrl);
+
+    if (allGenerated) {
+      btn.textContent = '已生成全部图片';
+      btn.disabled = true;
+    } else if (!Story.hasOpenAIApiKey()) {
+      btn.textContent = '请先配置 OpenAI Key';
+      btn.disabled = true;
+    } else {
+      btn.textContent = '生成全部图片';
+      btn.disabled = false;
+    }
+  },
+
+  /**
+   * 显示图片生成进度
+   * @param {number} current - 当前进度
+   * @param {number} total - 总数
+   */
+  showImageProgress(current, total) {
+    const progress = document.getElementById('imageProgress');
+    const progressFill = document.getElementById('progressFill');
+    const progressText = document.getElementById('progressText');
+
+    if (progress) progress.classList.remove('hidden');
+    if (progressFill) {
+      const percent = total > 0 ? (current / total) * 100 : 0;
+      progressFill.style.width = `${percent}%`;
+    }
+    if (progressText) {
+      progressText.textContent = `正在生成图片 ${current}/${total}`;
+    }
+  },
+
+  /**
+   * 隐藏图片生成进度
+   */
+  hideImageProgress() {
+    const progress = document.getElementById('imageProgress');
+    if (progress) progress.classList.add('hidden');
+  },
+
+  /**
+   * 显示当前页图片加载状态
+   * @param {boolean} show
+   */
+  showImageLoading(show) {
+    const loading = document.getElementById('imageLoading');
+    if (loading) {
+      loading.classList.toggle('hidden', !show);
     }
   }
 };

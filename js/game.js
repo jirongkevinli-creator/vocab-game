@@ -11,6 +11,7 @@ const Game = {
     currentWord: null,
     correctStreak: 0,
     wrongStreak: 0,
+    levelCorrectCount: 0,
     totalAnswered: 0,
     totalCorrect: 0,
     sessionWrongWords: [],
@@ -37,6 +38,7 @@ const Game = {
       currentWord: null,
       correctStreak: 0,
       wrongStreak: 0,
+      levelCorrectCount: 0,
       totalAnswered: 0,
       totalCorrect: 0,
       sessionWrongWords: [],
@@ -60,7 +62,7 @@ const Game = {
 
     // 加载用户进度
     const progress = Storage.loadUserProgress(username);
-    this.state.currentLevel = progress.level || 0;
+    this.state.currentLevel = progress.level || 1;
 
     // 更新UI
     UI.showGameScreen();
@@ -265,6 +267,7 @@ const Game = {
         // 自动升级到下一级
         this.state.currentLevel++;
         this.state.correctStreak = 0;
+        this.state.levelCorrectCount = 0;
         UI.updateLevelDisplay(this.state.currentLevel);
         UI.showMessage(`Level ${this.state.currentLevel - 1} 全部完成！升级到 Level ${this.state.currentLevel}`, 'level-up', '🎉');
 
@@ -400,13 +403,16 @@ const Game = {
       // 正常模式：处理升级
       this.state.correctStreak++;
       this.state.wrongStreak = 0;
+      this.state.levelCorrectCount++;
 
-      if (this.state.correctStreak >= GameConfig.rules.streakToLevelUp &&
+      if (this.state.levelCorrectCount >= GameConfig.rules.correctToLevelUp &&
           this.state.currentLevel < GameConfig.rules.maxLevel) {
         setTimeout(() => {
           this.state.currentLevel++;
+          this.state.levelCorrectCount = 0;
           this.state.correctStreak = 0;
           UI.updateLevelDisplay(this.state.currentLevel);
+          UI.updateStreakDisplay(this.state.levelCorrectCount);
           UI.showMessage('升级啦！', 'level-up', '🚀');
         }, 600);
       }
@@ -435,7 +441,9 @@ const Game = {
         setTimeout(() => {
           this.state.currentLevel--;
           this.state.wrongStreak = 0;
+          this.state.levelCorrectCount = 0;
           UI.updateLevelDisplay(this.state.currentLevel);
+          UI.updateStreakDisplay(this.state.levelCorrectCount);
           UI.showMessage('别灰心，降一级再练练！', 'level-down', '💪');
         }, 600);
       }
@@ -449,7 +457,7 @@ const Game = {
     if (this.state.isWrongWordsPracticeMode) {
       UI.updateStreakDisplay(0, true, this.state.wrongWordsList.length);
     } else {
-      UI.updateStreakDisplay(this.state.correctStreak);
+      UI.updateStreakDisplay(this.state.levelCorrectCount);
       UI.updateLevelDisplay(this.state.currentLevel);
     }
   },
@@ -464,6 +472,7 @@ const Game = {
     this.state.currentLevel = level;
     this.state.correctStreak = 0;
     this.state.wrongStreak = 0;
+    this.state.levelCorrectCount = 0;
     // 切换级别时清空已答对列表，允许重新练习
     this.state.sessionCorrectWords = [];
 
@@ -490,6 +499,7 @@ const Game = {
 
     this.state.correctStreak = 0;
     this.state.wrongStreak = 0;
+    this.state.levelCorrectCount = 0;
     this.state.sessionWrongWords = [];
     this.state.sessionCorrectWords = [];  // 清空已答对列表
     this.state.totalAnswered = 0;
@@ -540,6 +550,7 @@ const Game = {
     this.state.currentLevel = 0;
     this.state.correctStreak = 0;
     this.state.wrongStreak = 0;
+    this.state.levelCorrectCount = 0;
     this.state.sessionCorrectWords = [];  // 清空已答对列表
     this.state.sessionWrongWords = [];
     this.state.totalAnswered = 0;
