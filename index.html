@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>词汇学习游戏 v2.0</title>
   <!-- CSS 模块 -->
-  <link rel="stylesheet" href="css/main.css?v=7">
-  <link rel="stylesheet" href="css/login.css?v=7">
-  <link rel="stylesheet" href="css/game.css?v=7">
-  <link rel="stylesheet" href="css/modal.css?v=7">
+  <link rel="stylesheet" href="css/main.css?v=8">
+  <link rel="stylesheet" href="css/login.css?v=8">
+  <link rel="stylesheet" href="css/game.css?v=8">
+  <link rel="stylesheet" href="css/modal.css?v=8">
 </head>
 <body>
   <!-- 登录界面 -->
@@ -117,7 +117,7 @@
     </div>
 
     <div class="level-hint">
-      连续答对3次升级 | 连续答错2次降级<br>
+      累计答对10次升级 | 连续答错3次降级<br>
       共1000+单词 | Level 7-10 带图标提示
     </div>
   </div>
@@ -274,9 +274,9 @@
 
       <!-- 设置区域 -->
       <div class="story-settings" id="storySettings">
-        <!-- API Key 区域 -->
+        <!-- Anthropic API Key 区域 -->
         <div class="story-section">
-          <h3>API Key</h3>
+          <h3>Anthropic API Key (故事生成)</h3>
           <div class="api-key-status" id="apiKeyStatus">
             <span class="api-key-label">未配置</span>
           </div>
@@ -285,7 +285,47 @@
             <button class="btn-small" onclick="App.saveStoryApiKey()">保存</button>
             <button class="btn-small btn-clear" onclick="App.clearStoryApiKey()">清除</button>
           </div>
-          <p class="hint">API Key 保存在本地，不会上传到服务器</p>
+          <p class="hint">用于生成故事文本，Key 保存在本地</p>
+        </div>
+
+        <!-- OpenAI API Key 区域 -->
+        <div class="story-section" id="openaiKeySection">
+          <h3>OpenAI API Key (绘本配图)</h3>
+          <div class="api-key-status" id="openaiKeyStatus">
+            <span class="api-key-label">未配置</span>
+          </div>
+          <div class="api-key-input-group">
+            <input type="password" id="openaiKeyInput" placeholder="输入 OpenAI API Key" autocomplete="off">
+            <button class="btn-small" onclick="App.saveOpenAIApiKey()">保存</button>
+            <button class="btn-small btn-clear" onclick="App.clearOpenAIApiKey()">清除</button>
+          </div>
+          <p class="hint">用于 DALL-E 3 生成配图，每张约 $0.04</p>
+        </div>
+
+        <!-- 显示模式选择 -->
+        <div class="story-section">
+          <h3>显示模式</h3>
+          <div class="display-mode-options" id="displayModeOptions">
+            <div class="display-mode-option selected" data-mode="normal">
+              <div class="mode-name">普通模式</div>
+              <div class="mode-desc">双列文字显示</div>
+            </div>
+            <div class="display-mode-option" data-mode="picturebook">
+              <div class="mode-name">绘本模式</div>
+              <div class="mode-desc">分页图文显示</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 绘本选项（仅绘本模式显示） -->
+        <div class="story-section picturebook-options hidden" id="picturebookOptions">
+          <div class="setting-item">
+            <div class="setting-label">
+              跳过图片生成
+              <span class="hint">节省成本，仅生成文字</span>
+            </div>
+            <div class="toggle-switch" id="toggleSkipImages"></div>
+          </div>
         </div>
 
         <!-- 风格选择 -->
@@ -329,7 +369,7 @@
         <p class="loading-hint">通常需要 10-30 秒</p>
       </div>
 
-      <!-- 故事显示区域 -->
+      <!-- 故事显示区域（普通模式） -->
       <div class="story-result hidden" id="storyResult">
         <!-- 双语显示 -->
         <div class="story-bilingual">
@@ -353,6 +393,61 @@
           <div class="action-controls">
             <button class="btn-control" onclick="App.copyStory()">复制</button>
             <button class="btn-control" onclick="App.downloadStory()">下载</button>
+            <button class="btn-control btn-regenerate" onclick="App.showStorySettings()">重新生成</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 绘本显示区域（绘本模式） -->
+      <div class="picturebook-result hidden" id="picturebookResult">
+        <!-- 页码导航 -->
+        <div class="picturebook-nav">
+          <button class="nav-btn" id="prevPageBtn" onclick="App.prevPicturebookPage()">←</button>
+          <span class="page-indicator">
+            第 <span id="currentPageNum">1</span> 页 / 共 <span id="totalPageNum">1</span> 页
+          </span>
+          <button class="nav-btn" id="nextPageBtn" onclick="App.nextPicturebookPage()">→</button>
+        </div>
+
+        <!-- 图片区域 -->
+        <div class="picturebook-image-container">
+          <div class="picturebook-image" id="picturebookImage">
+            <div class="image-placeholder">
+              <span class="placeholder-icon">🖼️</span>
+              <span class="placeholder-text">等待生成图片...</span>
+            </div>
+          </div>
+          <div class="image-loading hidden" id="imageLoading">
+            <div class="loading-spinner small"></div>
+            <span>正在生成图片...</span>
+          </div>
+        </div>
+
+        <!-- 文字区域 -->
+        <div class="picturebook-text">
+          <div class="picturebook-english" id="picturebookEnglish"></div>
+          <div class="picturebook-chinese" id="picturebookChinese"></div>
+        </div>
+
+        <!-- 图片生成进度 -->
+        <div class="image-progress hidden" id="imageProgress">
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <span class="progress-text" id="progressText">正在生成图片 0/0</span>
+          <button class="btn-control btn-stop" onclick="App.stopImageGeneration()">停止生成</button>
+        </div>
+
+        <!-- 控制按钮 -->
+        <div class="story-controls">
+          <div class="tts-controls">
+            <button class="btn-control" onclick="App.speakCurrentPage()">▶ 朗读本页</button>
+            <button class="btn-control" onclick="App.speakAllPages()">▶ 朗读全书</button>
+            <button class="btn-control btn-stop" onclick="App.stopStorySpeaking()">⏹ 停止</button>
+          </div>
+          <div class="action-controls">
+            <button class="btn-control" id="generateImagesBtn" onclick="App.generateAllImages()">生成全部图片</button>
+            <button class="btn-control" onclick="App.downloadPicturebook()">下载绘本</button>
             <button class="btn-control btn-regenerate" onclick="App.showStorySettings()">重新生成</button>
           </div>
         </div>
@@ -381,16 +476,16 @@
 
   <!-- JS 模块 -->
   <!-- 先加载旧词库（兼容） -->
-  <script src="words.js?v=7"></script>
+  <script src="words.js?v=8"></script>
   <!-- 加载新格式词库（包含转换逻辑） -->
-  <script src="data/words-en-zh.js?v=7"></script>
+  <script src="data/words-en-zh.js?v=8"></script>
   <!-- 核心模块 -->
-  <script src="js/config.js?v=7"></script>
-  <script src="js/storage.js?v=7"></script>
-  <script src="js/tts.js?v=7"></script>
-  <script src="js/story.js?v=7"></script>
-  <script src="js/ui.js?v=7"></script>
-  <script src="js/game.js?v=7"></script>
-  <script src="js/app.js?v=7"></script>
+  <script src="js/config.js?v=8"></script>
+  <script src="js/storage.js?v=8"></script>
+  <script src="js/tts.js?v=8"></script>
+  <script src="js/story.js?v=8"></script>
+  <script src="js/ui.js?v=8"></script>
+  <script src="js/game.js?v=8"></script>
+  <script src="js/app.js?v=8"></script>
 </body>
 </html>
